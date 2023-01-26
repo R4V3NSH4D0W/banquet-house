@@ -1,0 +1,24 @@
+   .btn-success{
+    background-color:  white!important;
+    width:45%!important;
+    border-radius: 10px!important;
+    color: #379441!important;
+    border-width: 2px;
+}
+.btn-success:hover{
+    background-color: #379441 !important;
+    color: white!important;
+
+} 
+   .btn-danger{
+    background-color:  white!important;
+    width:45%!important;
+    border-radius: 10px!important;
+    color: #AC2925!important;
+    border-width: 2px;
+}
+.btn-danger:hover{
+    background-color: #AC2925 !important;
+    color: white!important;
+
+} 

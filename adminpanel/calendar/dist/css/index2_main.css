@@ -1,0 +1,121 @@
+
+body {
+  padding-top: 70px;
+background: #ECF0F5;
+  /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+#calendar {
+  max-width: auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background: white;
+  /*border-style: solid;
+  border-width: 3px;
+  border-color: #C6CFD6;
+  border-radius:10px; */
+  top: -100px;
+  overflow-x: 0;
+}
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+.tooltip{
+  width:auto;
+  height:70px;
+  color:white;
+  background:#379441;
+  position:absolute;
+  z-index:10001;
+  border-radius:5px;
+  top: -300%;
+  left:50%;
+  padding:5px 10px;
+  margin-left:-60px;
+  bottom: 150%;
+  font-size: 15px;
+}
+.colors{
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  background: white;
+  /*border-style: solid;
+  border-width: 3px;
+  border-color: #C6CFD6;
+  border-radius:20px; */
+  height:500px;
+  width: 15%;
+  margin: 0px 0px;
+  padding: 0px 0px;
+
+}
+.colors-div{
+  font-size: 14px;
+  background: white;
+  /*border-style: solid;
+  border-width: 3px;
+  border-color: #C6CFD6;
+  border-radius:20px; */
+  padding: 5px;
+}
+.colors-header{
+  margin: 0 auto;
+  background-color:#379441;
+  width: 115%;
+  height: 9%;
+  padding: 10px;
+  border-style: solid;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  border-color: transparent;
+  margin-left: -15px;
+}
+.color-scheme-text{
+  font-size: 14px;
+
+}
+.color-text{
+  font-size: 10px;
+
+}
+
+.datepicker {
+  background: #f2f2f2!important;
+  /*  margin-top: 100px; */
+}
+.datepicker:hover {
+  background: white!important;
+}
+.btn-success{
+  background-color: white!important;
+  width:45%!important;
+  border-radius: 10px!important;
+  color: #379441!important;
+  border-width: 2px;
+  /* cursor: default!important; */
+
+}
+.btn-success:hover{
+  background-color: #2c7634 !important;
+  color: white!important;
+  /* cursor: default!important; */
+
+}
+.btn-danger{
+  background-color:  white!important;
+  width:45%!important;
+  border-radius: 10px!important;
+  color: #AC2925!important;
+  border-width: 2px;
+}
+.btn-danger:hover{
+  background-color: #AC2925 !important;
+  color: white!important;
+  cursor: default!important;
+}
+.white {
+  color: white;
+}
+.navbar{
+  background-color: #379441;
+  border: 0;"
+}
