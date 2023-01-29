@@ -24,6 +24,41 @@ include 'navbar.php';
         <?php
 include 'search.php';
 ?>
+        <form action="" method="post">
+            <div class="dash-content">
+                <div class="overview">
+                    <!-- featured images -->
+                    <div class="title">
+                        <i class="uil uil-tachometer-fast-alt"></i>
+                        <span class="text">Featured image</span>
+                    </div>
+                    <div>
+                        <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
+                        <input type="submit" value="Add Image" name="addimage" class="btn">
+                    </div>
+                    <!-- services -->
+                    <div class="title">
+                        <i class="uil uil-tachometer-fast-alt"></i>
+                        <span class="text">services</span>
+                    </div>
+                    <!-- our price -->
+                    <div class="title">
+                        <i class="uil uil-tachometer-fast-alt"></i>
+                        <span class="text">Price</span>
+                    </div>
+                    <div>
+                        For Birthday<br>
+                        <input type="number" name="price">
+                    </div>
+
+                    <!-- about us -->
+                    <div class="title">
+                        <i class="uil uil-tachometer-fast-alt"></i>
+                        <span class="text">About Us</span>
+                    </div>
+
+                </div>
+        </form>
     </section>
 
     <script src="script.js"></script>

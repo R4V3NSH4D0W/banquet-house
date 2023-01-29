@@ -15,7 +15,7 @@
                 </a></li>
             <li><a href="content.php">
                     <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Content</span>
+                    <span class="link-name">Services</span>
                 </a></li>
             <li><a href="./calendar/index.php">
                     <i class="uil uil-chart"></i>
