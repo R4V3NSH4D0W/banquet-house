@@ -1,6 +1,6 @@
 <div class="logo-details">
     <i class='bx bxl-c-plus-plus'></i>
-    <span class="logo_name">user name</span>
+    <span class="logo_name">username</span>
 </div>
 <ul class="nav-links">
     <li>

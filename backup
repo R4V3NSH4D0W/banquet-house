@@ -1,3 +1,27 @@
+<?php
+require 'config.php';
+$admin_id = $_SESSION['admin_id'];
+
+if (!isset($admin_id)) {
+    header('location:login.php');
+}
+// add service //
+if (isset($_POST["add"])) {
+    $name = mysqli_real_escape_string($conn, $_POST['service-name']);
+    $desc = mysqli_real_escape_string($conn, $_POST['service-description']);
+    $price = $_POST['service-price'];
+    $duplicate = mysqli_query($conn, "SELECT * FROM tbservice WHERE servicename = '$name' AND adminid='$admin_id'");
+    if (mysqli_num_rows($duplicate) > 0) {
+        echo
+        "<script> alert('service already exist'); </script>";
+    } else {
+        $query = "INSERT INTO tbservice VALUES('','$name','$desc','$price','$admin_id')";
+        mysqli_query($conn, $query);
+        echo
+        "<script> alert('Service Added'); </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -7,85 +31,42 @@
         Admin Panel
     </title>
     <link rel="stylesheet" href="style.css">
-    <!-- Boxiocns CDN Link -->
+    <link rel="stylesheet" href="style2.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
     <div class="sidebar close">
         <?php
-   include 'sidebar.php';
-   ?>
+        include 'sidebar.php';
+        ?>
     </div>
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
             <span class="text">Admin Dashboard</span>
         </div>
-        <div class="form-box">
-            <form>
-                <div class="form-group">
-                    <h1>Add services</h1>
-                    <label for="service-name">Service Name:</label>
-                    <input type="text" class="form-control" id="service-name" name="service-name"
-                        placeholder="Enter service name" required>
-                </div>
-                <div class="form-group">
-                    <label for="service-description">Service Description:</label>
-                    <textarea class="form-control" id="service-description" name="service-description" rows="3"
-                        placeholder="Enter service description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="service-price">Service Price:</label>
-                    <input type="number" class="form-control" id="service-price" name="service-price"
-                        placeholder="Enter service price" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
-            </form>
+        <div class="container">
+            <div class="main-container">
+                <h1>ADD Services</h1>
+                <form method="post">
+                    <label for="service-name">Service name:</label>
+                    <input type="text" id="service-name" name="service-name">
+
+                    <label for="service-description">Service description:</label>
+                    <textarea id="service-description" name="service-description"></textarea>
+
+                    <label for="service-price">Service price:</label>
+                    <input type="number" id="service-price" name="service-price">
+                    <button class="add" name="add"><i class='bx bx-plus'></i> Add</button>
+                </form>
+            </div>
         </div>
 
-
-
     </section>
-    <script src="script.js">
-    </script>
 </body>
+<script src="script.js"></script>
 
 </html>
-<style>
-/* Add services */
-
-form {
-    width: 50%;
-    margin: 0 auto;
-}
-
-label {
-    font-size: 1em;
-    font-weight: bold;
-    margin-top: 1em;
-    display: block;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.5em 1em;
-    margin-top: 1em;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-</style>

@@ -1,54 +1,6 @@
 <?php
-require 'config.php';
-if(!empty($_SESSION["id"])){
-  header("Location: index.php");
-}
-if(isset($_POST["signin"])){
-  $email = $_POST["email"];
-  $password = $_POST["password"];
-  $result = mysqli_query($conn, "SELECT * FROM user WHERE email= '$email'");
-  $row = mysqli_fetch_assoc($result);
-  if(mysqli_num_rows($result) > 0){
-    if($password == $row['password']){
-      $_SESSION["login"] = true;
-      $_SESSION["id"] = $row["id"];
-      header("Location:index.php");
-    }
-    else{
-      echo
-      "<script> alert('Wrong Password'); </script>";
-    }
-  }
-  else{
-    echo
-    "<script> alert('User Not Registered'); </script>";
-  }
-}
-if(isset($_POST["signup"])){
-  $name = $_POST["name"];
-  $email = $_POST["email"];
-  $password = $_POST["password"];
-  $confirmpassword =$_POST['confirm'];
-  $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE name = '$name' OR email = '$email'");
-  if(mysqli_num_rows($duplicate) > 0){
-    echo
-    "<script> alert('Username or Email Has Already Taken'); </script>";
-  }
-  else{
-    if($password == $confirmpassword){
-      $query = "INSERT INTO user VALUES('','$name','$email','$password','user')";
-      mysqli_query($conn, $query);
-      echo
-      "<script> alert('Registration Successful'); </script>";
-    }
-    else{
-      echo
-      "<script> alert('Password Does Not Match'); </script>";
-    }
-  }
-}
+require 'configlogin.php';
 ?>
-
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -96,9 +48,9 @@ if(isset($_POST["signup"])){
                                 <i class="fas fa-lock"></i>
                                 <input type="password" name="password" placeholder="Enter your password" required>
                             </div>
-                            <div class="text"><a href="#">Forgot password?</a></div>
+                            <div class="text"></div>
                             <div class="button input-box">
-                                <input type="submit" name="signin" value="Sumbit">
+                                <input type="submit" name="signin" value="Signin">
                             </div>
                             <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label>
                             </div>
@@ -126,7 +78,7 @@ if(isset($_POST["signup"])){
                                 <input type="password" name="confirm" placeholder="confirm your password" required>
                             </div>
                             <div class="button input-box">
-                                <input type="submit" name="signup" value="Sumbit">
+                                <input type="submit" name="signup" value="Signup">
                             </div>
                             <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label>
                             </div>
