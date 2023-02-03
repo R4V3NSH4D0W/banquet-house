@@ -21,7 +21,8 @@ function submitData(action) {
                 console.log(data);
 
                 if (response == "Admin Login Successful") {
-                    window.location.href = "http://localhost/banquethouses/admin/pages/";
+                    window.location.href =
+                        "http://localhost/banquethouses/admin/pages/services/index.php";
                 } else if (response == "Register sucessful") {
                     window.location.href = "login.php";
                 } else {
