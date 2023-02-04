@@ -51,7 +51,7 @@ if (!isset($admin_id)) {
 
     </section>
 </body>
-<?php require 'script.php'; ?>
+<?php require './script.php'; ?>
 <script src="../sidebar/script.js"></script>
 
 </html>
