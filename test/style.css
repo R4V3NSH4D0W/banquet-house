@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.data-container{
+    display: flex;
+    justify-content: center;
+
+}
+.small-container{
+    margin-top:2.1rem;
+}
+table th{
+    justify-content: space-between;
+    padding-left: 3rem;
+}
+table td{
+    padding-left: 3rem;
+}

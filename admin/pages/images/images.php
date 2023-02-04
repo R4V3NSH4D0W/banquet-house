@@ -21,9 +21,6 @@ if (!isset($admin_id)) {
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-
 </head>
 
 <body>
@@ -38,12 +35,18 @@ if (!isset($admin_id)) {
             <span class="text">Admin Dashboard</span>
         </div>
         <!-- upload image section -->
+        <!-- <form method="post" action="" enctype="multipart/form-data">
+            <input type="file" id="images" name="images">
+            <button onclick="submitData('upload');" class="upload">upload</button>
+        </form> -->
+
+
         <label for="images" class="drop-container">
             <span class="drop-title">Drop files here</span>
             or
             <form method="post" action="" enctype="multipart/form-data">
                 <input type="file" id="images" name="images" required>
-                <button onclick="submitData('upload',this);" class="upload">upload</button>
+                <button onclick="submitData('upload');" class="upload">upload</button>
             </form>
         </label>
         <!-- end upload image section -->
@@ -128,7 +131,7 @@ if (!isset($admin_id)) {
 
     </section>
     <?php
-    require 'script.php';
+    require './script.php';
     ?>
     <!-- <script>
     $(document).ready(function() {

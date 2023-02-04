@@ -13,7 +13,7 @@
         <input type="hidden" id="action" value="signin">
         <input type="text" id="email" placeholder="Enter email"><br>
         <input type="password" id="password" placeholder="Enter Password"><br>
-        <button type="button" onclick="submitData('signin');">Login</button>
+        <button type="button" onclick="submitData('signin',this);">Login</button>
     </form>
     <?php
     require 'script.php';

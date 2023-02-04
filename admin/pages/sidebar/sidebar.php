@@ -1,6 +1,10 @@
+<?php
+$admin_id = $_SESSION['admin_id'];
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM user WHERE id = $admin_id"));
+?>
 <div class="logo-details">
     <i class='bx bxl-c-plus-plus'></i>
-    <span class="logo_name">username</span>
+    <span class="logo_name"><?php echo $user["name"] ?></span>
 </div>
 <ul class="nav-links">
     <li>
@@ -14,7 +18,7 @@
     </li>
     <li>
         <div class="iocn-link">
-            <a href="#">
+            <a href="">
                 <i class='bx bx-collection'></i>
                 <span class="link_name">Services</span>
             </a>
@@ -42,7 +46,7 @@
         </ul>
     </li>
     <li>
-        <a href="#">
+        <a href="../images/images.php">
             <i class='bx bx-images'></i>
             <span class="link_name">Images</span>
         </a>
@@ -74,7 +78,7 @@
         </div>
         <ul class="sub-menu">
             <li><a class="link_name" href="#">Booking</a></li>
-            <li><a href="#">New Booking</a></li>
+            <li><a href="../Booking/Newbooking/newbooking.php">New Booking</a></li>
             <li><a href="#">Approved Booking</a></li>
             <li><a href="#">Cancelled booking</a></li>
             <li><a href="#">All booking</a></li>
@@ -118,10 +122,10 @@
                 <!--<img src="image/profile.jpg" alt="profileImg">-->
             </div>
             <div class="name-job">
-                <div class="profile_name">test</div>
-                <div class="job">Desginer</div>
+                <div class="profile_name">Logout</div>
+                <!-- <div class="job">Desginer</div> -->
             </div>
-            <a href="logout.php"> <i class='bx bx-log-out'></i></a>
+            <a href="../services/logout.php"> <i class='bx bx-log-out'></i></a>
         </div>
     </li>
 </ul>

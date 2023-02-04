@@ -14,20 +14,23 @@ if (isset($_POST["action"])) {
 function signup()
 {
     global $conn;
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $name = mysqli_real_escape_string($conn, $_POST['username']);
+    $email = mysqli_real_escape_string($conn, $_POST['useremail']);
     $password = mysqli_real_escape_string($conn, md5($_POST['password']));
     $confirm =  mysqli_real_escape_string($conn, md5($_POST['confirm']));
     $duplicate = mysqli_query($conn, "SELECT * FROM user WHERE name = '$name' OR email = '$email'");
     if (mysqli_num_rows($duplicate) > 0) {
         echo "username or email already taken";
+        exit;
     } else {
         if ($password == $confirm) {
             $query = "INSERT INTO user VALUES('','$name','$email','$password','user')";
-            mysqli_query($conn, $query);
-            echo "Register sucessfull";
+            if (mysqli_query($conn, $query)) {
+                return 1;
+            }
         } else {
             echo "password doesnot match";
+            exit;
         }
     }
 }
@@ -55,7 +58,7 @@ function signin()
                 echo "User Login Successful";
             }
         } else {
-            echo "wrong password";
+            echo "incorrect username or password";
             exit;
         }
     } else {

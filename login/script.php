@@ -2,12 +2,15 @@
 </script>
 <script type="text/javascript">
 function submitData(action) {
+
     $(document).ready(function() {
         var data = {
             action: action,
             name: $("#name").val(),
+            username: $("#username").val(),
             email: $("#email").val(),
-            password: $("#password").val(),
+            useremail: $("#useremail").val(),
+            password: $("#userpassword").val(),
             confirm: $("#confirm").val(),
 
         };
@@ -23,8 +26,10 @@ function submitData(action) {
                 if (response == "Admin Login Successful") {
                     window.location.href =
                         "http://localhost/banquethouses/admin/pages/services/index.php";
-                } else if (response == "Register sucessful") {
-                    window.location.href = "login.php";
+
+                } else if (response == 1) {
+                    alert(response);
+                    window.location.href = "index.php";
                 } else {
                     alert(response);
                 }
