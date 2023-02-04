@@ -6,37 +6,6 @@ if (!isset($admin_id)) {
     header('location:../../../login/login.php');
 }
 
-if (isset($_POST['upload'])) {
-    $file = $_FILES['image'];
-    $filename = $_FILES['image']['name'];
-    $file_tmp_name = $_FILES['image']['tmp_name'];
-    $filesize = $_FILES['image']['size'];
-    $fileerror = $_FILES['image']['error'];
-    $filetype = $_FILES['image']['type'];
-    $fileExt = explode('.', $filename);
-    $fileActualExt = strtolower(end($fileExt));
-    $allowed = array('jpg', 'jpeg', 'png');
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileerror === 0) {
-            if ($filesize < 2000000) {
-                $filenamenew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = 'uploads/' . $filenamenew;
-                move_uploaded_file($file_tmp_name, $fileDestination);
-                $query = "INSERT INTO images values('','$filenamenew','$admin_id')";
-                if (mysqli_query($conn, $query)) {
-                    echo "<script> alert('new image uploaded'); </script>";
-                }
-            } else {
-                echo "file is to big";
-            }
-        } else {
-            echo "There was an error uplading an file";
-        }
-    } else {
-        echo "you can not upload file of this type!";
-    }
-}
-
 
 ?>
 <!DOCTYPE html>
@@ -72,34 +41,111 @@ if (isset($_POST['upload'])) {
         <label for="images" class="drop-container">
             <span class="drop-title">Drop files here</span>
             or
-            <form method="POST" enctype="multipart/form-data">
-                <input type="file" name="image" required>
-                <input type="submit" value="upload" class="upload" name="upload" class="btn">
+            <form method="post" action="" enctype="multipart/form-data">
+                <input type="file" id="images" name="images" required>
+                <button onclick="submitData('upload',this);" class="upload">upload</button>
             </form>
         </label>
+        <!-- end upload image section -->
+
+
+        <!-- start display image section -->
         <h1>Uploaded Images</h1>
         <div class="image-wrapper">
-            <?php
-            $row = mysqli_query($conn, "SELECT * FROM images where admin_id='$admin_id'");
-            $i = 1;
-            ?>
-            <?php foreach ($row as $row) : ?>
             <div class="media">
                 <div class="overlay"></div>
-                <img src="uploads/<?php echo $row['images']; ?>" alt="">
+                <img src="./uploaded_image/1.jpg" alt="">
                 <div class="image-details">
-                    <a href="images.php?delete=<?php echo $row['id']; ?>"
-                        onclick="return confirm('delete this image');">
-                        <p><i class='bx bx-trash'></i></p>
-                    </a>
-
+                    <p>Image 1</p>
                 </div>
             </div>
-            <?php endforeach; ?>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/2.png" alt="">
+                <div class="image-details">
+                    <p>Image 2</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/3.jpg" alt="">
+                <div class="image-details">
+                    <p>Image 3</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/4.jpg" alt="">
+                <div class="image-details">
+                    <p>Image 4</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/6.jpg" alt="">
+                <div class="image-details">
+                    <p>Image 5</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/5.png" alt="">
+                <div class="image-details">
+                    <p>Image 6</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/7.png" alt="">
+                <div class="image-details">
+                    <p>Image 7</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/9.jpg" alt="">
+                <div class="image-details">
+                    <p>Image 8</p>
+                </div>
+            </div>
+
+            <div class="media">
+                <div class="overlay"></div>
+                <img src="./uploaded_image/8.png" alt="">
+                <div class="image-details">
+                    <p>Image 9</p>
+                </div>
+            </div>
+
         </div>
 
     </section>
-    <?php require 'script.php'; ?>
+    <?php
+    require 'script.php';
+    ?>
+    <!-- <script>
+    $(document).ready(function() {
+        $("#submit").click(function(e) {
+            e.preventDefault();
+
+            let form_data = new FormData();
+            let img = $("#myImage")[0].files;
+            //check image selected or not
+            if(img.length>0){
+
+            }else{
+
+            }
+        });
+    })
+    </script> -->
     <script src="../sidebar/script.js">
     </script>
 </body>
