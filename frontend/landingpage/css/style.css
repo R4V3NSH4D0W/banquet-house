@@ -30,6 +30,7 @@ html::-webkit-scrollbar-thumb{
     min-height: 100vh;
     background: #eceaff;
     color: #525252;
+    
 }
 
 .navbar{
@@ -38,11 +39,13 @@ html::-webkit-scrollbar-thumb{
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
-    background-color: #4CA1AF;
+    background-color: #76828d;
+    /* position: fixed; */
 }
 
 .logo{
-    width: 50px;
+    width: 50px; 
+    cursor: pointer;
 }
 
 .user-pic{
@@ -194,7 +197,6 @@ html::-webkit-scrollbar-thumb{
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
     background-color: #eee;
     padding: 25px;
-    height: auto;
 }
 
 .about-contents .ab-article h3{
@@ -218,6 +220,87 @@ html::-webkit-scrollbar-thumb{
 .about-img img{
     width: 100%;
     height: auto;
+}
+
+/* services */
+
+.service .title{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.service .title h1{
+    font-size: 35px;
+}
+
+.service .title span{
+    color: #333;
+}
+
+.service .title h1::after{
+    content: '';
+    width: 150px;
+    height: 3px;
+    position: relative;
+    border: 6px;
+    margin: auto;
+    background-color: #fff;
+    display: block;
+}
+
+.service-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;   
+}
+
+.service-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: auto;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    margin: 15px;
+    padding: 20px;
+    transition: .3s;
+}
+
+.service-box h3{
+    text-transform: capitalize;
+}
+
+.service-container i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border: 6px solid #ddd;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-color: #007aff;
+    color: #fff;
+}
+
+.service-container .fas{
+    font-size: 30px;
+}
+
+.service-container .service-box:hover{
+    background: #949da5;
+    cursor: pointer;
+    color: #fff;
 }
 
 
