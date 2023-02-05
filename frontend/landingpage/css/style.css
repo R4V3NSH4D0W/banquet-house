@@ -38,7 +38,7 @@ html::-webkit-scrollbar-thumb{
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
-    background-color: #333;
+    background-color: #4CA1AF;
 }
 
 .logo{
@@ -152,4 +152,77 @@ html::-webkit-scrollbar-thumb{
     width:100%;
     object-fit: cover;
 }
+
+
+/* about section */
+
+.about-content{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.about-content .ab-title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    padding: 50px 0;
+}
+
+.about-content .ab-title h2::after{
+    content: '';
+    height: 4px;
+    width: 110px;
+    background-color: #525252;
+    border: 6px;
+    position: relative;
+    display: block;
+    margin: auto;
+}
+
+.about-contents{
+     width: 85%;
+     display: grid;
+     grid-template-columns: repeat(2,1fr);
+     grid-gap: 40px;
+     margin: 30px auto;
+}
+
+.about-contents .ab-article{
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
+    background-color: #eee;
+    padding: 25px;
+    height: auto;
+}
+
+.about-contents .ab-article h3{
+    font-size: 22px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
+}
+
+.about-contents .ab-article p{
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.about-img{
+    width: 100%;
+    margin: auto;
+    box-shadow: #444;
+}
+
+.about-img img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
 

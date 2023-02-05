@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banquet House</title>
 
+    <!-- animation -->
+    
     <!-- Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
@@ -23,7 +25,7 @@
             <img src="img/logo.png" alt="" class="logo">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="">Gallery</a></li>
                 <li><a href="">Pricing</a></li>
                 <li><a href="">Contact us</a></li>
@@ -50,25 +52,35 @@
 
             <div class="swiper-container home-slider">
                 <div class="swiper-wrapper">
-                    <?php
-                        require '/programs/xampp/htdocs/banquethouses/connection/config.php';
-                        $rows = mysqli_query($conn, "SELECT * FROM banquet");
-
-                        ?>
-                    <?php
-                        foreach ($rows as $rows) :
-                        ?>
-                    <div class="swiper-slide"><img src="uploads/<?php echo $rows["swiperimage"];?>" alt=""></div>
-                    <!-- <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
+               
+                    <div class="swiper-slide"><img src="images/g-1.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-3.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-4.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-5.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div> -->
+                    <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div>
                 </div>
             </section>
         </section>
         
         
+        <!-- About Us -->
+        <section class="about-content" id="about">
+            <div class="ab-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-contents">
+                <div class="ab-article">
+                    <h3>we will give a very special celebration on you</h3>           
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et alias distinctio doloremque quis voluptates. Totam perferendis est officia vitae facere. Pariatur odio dolor modi rem eum assumenda incidunt officia. Atque fugit dolores quia repellendus, ratione accusamus ipsa perferendis. Recusandae quam nemo dolores eligendi eius vitae sit dignissimos asperiores tempore fugiat.
+                    </p>
+                </div>
+                <div class="about-img">
+                    <img src="images/about-img.jpg" alt=""> 
+                </div>
+            </div>
+        </section>
         
         
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
