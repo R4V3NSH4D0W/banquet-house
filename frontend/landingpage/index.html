@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banquet House</title>
 
+    <!-- animation -->
+    
     <!-- Slider -->
     <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
 />
+
+     <!-- font awesome cdn link  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
     <!-- css linked -->
@@ -22,14 +27,14 @@
     <section class="header">
         <div class="navbar">
             <img src="img/logo.png" alt="" class="logo">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Gallery</a></li>
-                    <li><a href="">Pricing</a></li>
-                    <li><a href="">Contact us</a></li>
-                </ul>
-                <!-- <div class="search">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Services</a></li>
+                <li><a href="">Pricing</a></li>
+                <li><a href="">Contact us</a></li>
+            </ul>
+            <!-- <div class="search">
                     <span class="icon">
                         <ion-icon name="search-outline"></ion-icon>
                         <ion-icon name="close-outline"></ion-icon>
@@ -43,26 +48,111 @@
             </div>   
             <section class="home" id="home">
 
-                <div class="home-section">
-                    <h1>its time to celebrate!<br>the best event organizers</h1>
-                </div>
-                
-                <!-- slider -->
-                
-                <div class="swiper-container home-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="images/slide-1.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-3.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-4.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-5.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div>
-                    </div>
+            <div class="home-section">
+                <h1>its time to celebrate!<br>the best event organizers</h1>
+            </div>
+
+            <!-- slider -->
+
+            <div class="swiper-container home-slider">
+                <div class="swiper-wrapper">
+                    <?php
+                        require '/programs/xampp/htdocs/banquethouses/connection/config.php';
+                        $rows = mysqli_query($conn, "SELECT * FROM banquet");
+
+                        ?>
+                    <?php
+                        foreach ($rows as $rows) :
+                        ?>
+                    <div class="swiper-slide"><img src="uploads/<?php echo $rows["swiperimage"];?>" alt=""></div>
+                    <!-- <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-3.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-4.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-5.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div> -->
                 </div>
             </section>
         </section>
         
         
+        <!-- About Us -->
+        <section class="about-content" id="about">
+            <div class="ab-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-contents">
+                <div class="ab-article">
+                    <h3>we will give a very special celebration on you</h3>           
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et alias distinctio doloremque quis voluptates. Totam perferendis est officia vitae facere. Pariatur odio dolor modi rem eum assumenda incidunt officia. Atque fugit dolores quia repellendus, ratione accusamus ipsa perferendis. Recusandae quam nemo dolores eligendi eius vitae sit dignissimos asperiores tempore fugiat.
+                    </p>
+                </div>
+                <div class="about-img">
+                    <img src="images/about-img.jpg" alt=""> 
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Services Section -->
+
+        <section class="service" id="service">
+            <div class="title">
+                <h1>Our <span>Services</span> </h1>
+            </div>
+            <div class="service-container">
+                <div class="service-box">
+                    <i class="fas fa-map-marker-alt"></i>
+            <h3>venue selection</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-envelope"></i>
+            <h3>Invitation Card</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+                <div class="service-box">
+                    <div class="ser-img">
+                        <i class="fas fa-music"></i>
+                    </div>
+                   
+            <h3>Music</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-utensils"></i>
+            <h3>Food and drinks</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-photo-video"></i>
+            <h3>photos and videos</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-birthday-cake"></i>
+            <h3>Custom Food</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, suscipit.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
