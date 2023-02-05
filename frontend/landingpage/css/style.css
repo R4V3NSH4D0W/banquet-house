@@ -4,6 +4,25 @@
     box-sizing: border-box;
 }
 
+html{
+    /* font-size: 62.5%; */
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+    width:1rem;
+}
+
+html::-webkit-scrollbar-track{
+    background: #444;
+}
+
+html::-webkit-scrollbar-thumb{
+    border-radius: 5rem;
+}
+
 .header{
     width: 100%;
     min-height: 100vh;
@@ -17,7 +36,7 @@
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
-    background-color: rgb(125, 183, 238);
+    background-color: #333;
 }
 
 .logo{
@@ -44,6 +63,7 @@
 }
 
 .navbar ul li a{
+    font-family: 'Nunito', sans-serif;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
@@ -63,4 +83,70 @@
 
 .navbar ul li:hover::after{
     width: 100%;
+}
+
+.navbar .search{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    z-index: 10;
+    cursor: pointer;
+}
+/* search btn */
+/* .search-box{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    padding: 0 30px;
+    transition: 0.5s ease-in-out;
+}
+
+.search-box input{
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 50px;
+    font-size: 1.25em;
+    background: #fff;
+    border-radius: 1px solid rgba(0,0,0,0.5);
+} */
+
+
+/* home-section */
+.home-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.home-section h1{
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: 0.048em;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* slider */
+
+
+
+.header .home .home-slider .swiper-slide{
+    overflow: hidden;
+    border-radius: .5rem;
+    height: 45rem;
+    width:34rem;
+}
+
+.header .home .home-slider .swiper-slide img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
 }
