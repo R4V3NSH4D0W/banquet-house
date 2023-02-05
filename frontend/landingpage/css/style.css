@@ -9,6 +9,8 @@ html{
     overflow-x: hidden;
     scroll-padding-top: 7rem;
     scroll-behavior: smooth;
+    background: #eceaff;
+
 }
 
 html::-webkit-scrollbar{
@@ -141,8 +143,8 @@ html::-webkit-scrollbar-thumb{
 .header .home .home-slider .swiper-slide{
     overflow: hidden;
     border-radius: .5rem;
-    height: 45rem;
-    width:34rem;
+    height: 60vh;
+    width:40vw;
 }
 
 .header .home .home-slider .swiper-slide img{
@@ -150,3 +152,4 @@ html::-webkit-scrollbar-thumb{
     width:100%;
     object-fit: cover;
 }
+
