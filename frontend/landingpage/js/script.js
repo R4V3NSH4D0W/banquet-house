@@ -19,10 +19,10 @@ var swiper = new Swiper(".home-slider", {
   });
   
   var swiper = new Swiper(".review-slider", {
-      slidesPerView: 1,
+      slidesPerView: 5,
       grabCursor: true,
       loop:true,
-      spaceBetween: 10,
+      spaceBetween: 30,
       breakpoints: {
         0: {
             slidesPerView: 1,
