@@ -56,20 +56,13 @@
 
             <div class="swiper-container home-slider">
                 <div class="swiper-wrapper">
-                    <?php
-                        require '/programs/xampp/htdocs/banquethouses/connection/config.php';
-                        $rows = mysqli_query($conn, "SELECT * FROM banquet");
-
-                        ?>
-                    <?php
-                        foreach ($rows as $rows) :
-                        ?>
-                    <div class="swiper-slide"><img src="uploads/<?php echo $rows["swiperimage"];?>" alt=""></div>
-                    <!-- <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
+        
+                    <div class="swiper-slide"><img src="images/g-1.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-3.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-4.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="images/slide-5.jpg" alt=""></div>
-                    <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div> -->
+                    <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div>
                 </div>
             </section>
         </section>
