@@ -1,6 +1,6 @@
 <?php
 $admin_id = $_SESSION['admin_id'];
-$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM user WHERE id = $admin_id"));
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id = $admin_id"));
 ?>
 <div class="logo-details">
     <i class='bx bxl-c-plus-plus'></i>
@@ -46,12 +46,17 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM user WHERE id = $a
         </ul>
     </li>
     <li>
-        <a href="../images/images.php">
-            <i class='bx bx-images'></i>
-            <span class="link_name">Images</span>
-        </a>
-        <ul class="sub-menu blank">
-            <li><a class="link_name" href="../images/images.php">Images</a></li>
+        <div class="iocn-link">
+            <a href="">
+                <i class='bx bx-images'></i>
+                <span class="link_name">Images</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+            <li><a class="link_name">Images</a></li>
+            <li><a href="../featuredimage/featureimage.html">Featured Images</a></li>
+            <li><a href="../images/images.php">Gallary</a></li>
         </ul>
     </li>
     <li>

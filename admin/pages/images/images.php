@@ -1,9 +1,8 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 $admin_id = $_SESSION['admin_id'];
-
 if (!isset($admin_id)) {
-    header('location:../../../login/login.php');
+    header('location:../../../login/index.php');
 }
 
 
@@ -34,121 +33,81 @@ if (!isset($admin_id)) {
             <i class='bx bx-menu'></i>
             <span class="text">Admin Dashboard</span>
         </div>
-        <!-- upload image section -->
-        <!-- <form method="post" action="" enctype="multipart/form-data">
-            <input type="file" id="images" name="images">
-            <button onclick="submitData('upload');" class="upload">upload</button>
-        </form> -->
-
-
         <label for="images" class="drop-container">
-            <span class="drop-title">Drop files here</span>
-            or
-            <form method="post" action="" enctype="multipart/form-data">
-                <input type="file" id="images" name="images" required>
-                <button onclick="submitData('upload');" class="upload">upload</button>
+            <!-- <span class="drop-title">Drop files here</span>
+            or -->
+            <form id="upload-form">
+                <input type="file" name="file">
+                <input type="submit" class="upload" value="Upload">
             </form>
+
         </label>
         <!-- end upload image section -->
 
 
         <!-- start display image section -->
-        <h1>Uploaded Images</h1>
+        <h1>Gallary</h1>
         <div class="image-wrapper">
+            <?php
+            $rows = mysqli_query($conn, "SELECT * FROM images where admin_id='$admin_id'");
+            foreach ($rows as $rows) :
+            ?>
             <div class="media">
                 <div class="overlay"></div>
-                <img src="./uploaded_image/1.jpg" alt="">
+                <img src="./uploads/<?php echo $rows['images']; ?>" alt="">
                 <div class="image-details">
-                    <p>Image 1</p>
+                    <p class="delete-button" data-file="<?php echo $rows['images']; ?>"><i class='bx bx-trash'></i></p>
                 </div>
             </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/2.png" alt="">
-                <div class="image-details">
-                    <p>Image 2</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/3.jpg" alt="">
-                <div class="image-details">
-                    <p>Image 3</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/4.jpg" alt="">
-                <div class="image-details">
-                    <p>Image 4</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/6.jpg" alt="">
-                <div class="image-details">
-                    <p>Image 5</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/5.png" alt="">
-                <div class="image-details">
-                    <p>Image 6</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/7.png" alt="">
-                <div class="image-details">
-                    <p>Image 7</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/9.jpg" alt="">
-                <div class="image-details">
-                    <p>Image 8</p>
-                </div>
-            </div>
-
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploaded_image/8.png" alt="">
-                <div class="image-details">
-                    <p>Image 9</p>
-                </div>
-            </div>
-
+            <?php endforeach; ?>
         </div>
 
     </section>
-    <?php
-    require './script.php';
-    ?>
-    <!-- <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
     $(document).ready(function() {
-        $("#submit").click(function(e) {
-            e.preventDefault();
+        $('#upload-form').submit(function(event) {
+            event.preventDefault();
 
-            let form_data = new FormData();
-            let img = $("#myImage")[0].files;
-            //check image selected or not
-            if(img.length>0){
+            var formData = new FormData(this);
 
-            }else{
+            $.ajax({
+                url: 'upload.php',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    if (data == "File uploaded successfully.") {
+                        location.reload();
+                    }
+                    alert(data);
+                }
+            });
 
-            }
         });
-    })
-    </script> -->
+        $('.delete-button').click(function() {
+            var file = $(this).data('file');
+
+            $.ajax({
+                url: 'delete.php',
+                type: 'POST',
+                data: {
+                    file: file
+                },
+                success: function(data) {
+                    if (data === "File deleted successfully.") {
+                        location.reload();
+
+                    } else {
+                        console.log(data);
+                    }
+                }
+            });
+        });
+    });
+    </script>
+
     <script src="../sidebar/script.js">
     </script>
 </body>

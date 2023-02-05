@@ -1,41 +1,40 @@
-
 var swiper = new Swiper(".home-slider", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 2,
-      slideShadows: true,
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 0,
+    depth: 100,
+    modifier: 2,
+    slideShadows: true,
+  },
+  loop: true,
+  autoplay: {
+    delay: 1500,
+    disableOnInteraction: false,
+  },
+});
+
+var swiper = new Swiper(".review-slider", {
+  slidesPerView: 5,
+  grabCursor: true,
+  loop: true,
+  spaceBetween: 30,
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
     },
-    loop:true,
-    autoplay:{
-      delay: 3000,
-      disableOnInteraction:false,
-    }
-  });
-  
-  var swiper = new Swiper(".review-slider", {
-      slidesPerView: 5,
-      grabCursor: true,
-      loop:true,
-      spaceBetween: 30,
-      breakpoints: {
-        0: {
-            slidesPerView: 1,
-        },
-        700: {
-          slidesPerView: 2,
-        },
-        1050: {
-          slidesPerView: 3,
-        },    
-      },
-      autoplay:{
-        delay: 5000,
-        disableOnInteraction:false,
-    }
-  });
+    700: {
+      slidesPerView: 2,
+    },
+    1050: {
+      slidesPerView: 3,
+    },
+  },
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+});

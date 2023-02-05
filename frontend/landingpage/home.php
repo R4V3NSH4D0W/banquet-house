@@ -52,7 +52,7 @@
                 <div class="swiper-wrapper">
                     <?php
                     require '/programs/xampp/htdocs/banquethouses/connection/config.php';
-                    $rows = mysqli_query($conn, "SELECT * FROM swiperimage where admin_id='5'");
+                    $rows = mysqli_query($conn, "SELECT * FROM swiperimage where admin_id='5' LIMIT 6");
 
                     ?>
                     <?php
@@ -60,11 +60,6 @@
                     ?>
                         <div class="swiper-slide"><img src="uploads/<?php echo $rows["swiperimage"]; ?>" alt=""></div>
                     <?php endforeach; ?>
-                    <!-- <div class="swiper-slide"><img src="images/slide-2.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-3.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-4.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-5.jpg" alt=""></div>
-                        <div class="swiper-slide"><img src="images/slide-6.jpg" alt=""></div> -->
                 </div>
             </div>
         </section>
