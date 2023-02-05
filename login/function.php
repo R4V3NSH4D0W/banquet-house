@@ -1,7 +1,6 @@
 <?php
-session_start();
-$conn = mysqli_connect("localhost", "magar", "", "banquethouse");
-// IF
+require '/programs/xampp/htdocs/banquethouses/connection/config.php';
+
 if (isset($_POST["action"])) {
     if ($_POST["action"] == "signup") {
         signup();
@@ -39,7 +38,7 @@ function signin()
 {
     global $conn;
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $password = mysqli_real_escape_string($conn, md5($_POST['password1']));
     $result = mysqli_query($conn, "SELECT * FROM user WHERE email= '$email'");
     $row = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) > 0) {

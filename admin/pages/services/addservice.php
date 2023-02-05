@@ -3,7 +3,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:../../../login/login.php');
+    header('location:../../../login/index.php');
 }
 ?>
 <!DOCTYPE html>

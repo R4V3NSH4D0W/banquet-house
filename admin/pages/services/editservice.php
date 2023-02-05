@@ -3,7 +3,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
-    header('location:../../../login/login.php');
+    header('location:../../../login/index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -49,12 +49,10 @@ if (!isset($admin_id)) {
                     <input type="text" id="service-name" name="service-name" value="<?php echo $row['servicename']; ?>">
 
                     <label for="service-description">Service description:</label>
-                    <textarea id="service-description"
-                        name="service-description"><?php echo $row['servicedesc']; ?></textarea>
+                    <textarea id="service-description" name="service-description"><?php echo $row['servicedesc']; ?></textarea>
 
                     <label for="service-price">Service price:</label>
-                    <input type="number" id="service-price" name="service-price"
-                        value="<?php echo $row['serviceprice']; ?>">
+                    <input type="number" id="service-price" name="service-price" value="<?php echo $row['serviceprice']; ?>">
                     <button class="add" onclick="submitData('edit');" name="update">Update</button>
                 </form>
             </div>
