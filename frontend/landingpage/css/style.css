@@ -245,7 +245,7 @@ html::-webkit-scrollbar-thumb{
     height: 3px;
     position: relative;
     border: 6px;
-    margin: auto;
+    margin: 8px auto;
     background-color: #fff;
     display: block;
 }
@@ -301,6 +301,62 @@ html::-webkit-scrollbar-thumb{
     background: #949da5;
     cursor: pointer;
     color: #fff;
+}
+
+/* our gallery  */
+
+.gallery .gallery-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+.gallery .gallery-title h2::after{
+    content: '';
+    width: 70%;
+    height: 3px;
+    position: relative;
+    position: relative;
+    display: block;
+    background-color: #fff;
+    margin: 8px auto;
+    
+}
+
+
+.gallery-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    /* background: #000; */
+
+}
+
+.gallery-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+
+.gallery-row img{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  object-position: bottom;
+  padding: 8px;
+  border-radius: 20px;
+  transition: transform .2s;
+}
+
+.gallery-row img:hover{
+    transform: scale(1.3);
 }
 
 
