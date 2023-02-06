@@ -375,7 +375,6 @@ html::-webkit-scrollbar-thumb{
     width: 70%;
     height: 3px;
     position: relative;
-    position: relative;
     display: block;
     background-color: #475462;
     margin: 8px auto;
@@ -415,11 +414,120 @@ html::-webkit-scrollbar-thumb{
   padding: 8px;
   border-radius: 20px;
   transition: transform .2s;
+  
+
 }
 
 .gallery-row img:hover{
     transform: scale(1.3);
 }
+
+
+
+/* price section */
+
+.pricing .title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+.pricing{
+    font-family: 'Roboto', sans-serif;
+}
+
+.pricing .title h1{
+    font-size: 30px;
+}
+
+.pricing .title span{
+    color: #00a7ff;
+}
+
+.pricing .title h1::after{
+    content: '';
+    width: 75%;
+    height: 3px;
+    display: block;
+    background-color: #475462;
+    margin: 8px auto;
+    position: relative;
+}
+
+.pricing .price-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    gap: 1.5rem;
+    margin: 3rem;
+}
+
+.pricing .price-container .price-box{
+    padding: 32px 0;
+    background: #00a7ff;
+    border-radius: .5rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   
+}
+
+.pricing .price-container .price-box:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+
+.pricing .price-container .price-box .price-title{
+    color: #fff;
+    padding: 1.1rem 0;
+    font-size: 2rem;
+    background: #333;
+    margin-bottom: 1rem;
+}
+.pricing .price-container .price-box .price-title ,
+.price-amount{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.pricing .price-container .price-box ul{
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.pricing .price-container .price-box ul li{
+    font-size: 1.5rem;
+    color: #eeee;
+    padding: 0.8rem 0;
+    text-transform: capitalize;
+}
+
+.pricing .price-container .price-box ul li i{
+    padding-right: .5rem;
+    font-size: 1.5rem;
+}
+
+.pricing .price-container .price-box .priceBtn{
+    text-decoration: none;
+    border: 2px solid #eeee;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #eee;
+    border-radius: 15px;
+}
+
+.pricing .price-container .price-box .priceBtn:hover{
+    color: #fff;
+    background: #0080ff;
+    border: none;
+   
+}
+
+.pricing .price-container .price-box:hover{
+    transform: scale(1.03);
+}
+
+
+
+
 
 
 
