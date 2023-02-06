@@ -45,6 +45,14 @@ if (!isset($admin_id)) {
                     ?>
 
                     <input type="hidden" name="id" id="service-id" value="<?php echo $row['id']; ?>">
+                    <label for="Icon-name">Icon type:</label>
+                    <select id="icons">
+                        <option value="fas fa-map-marker-alt">Map</option>
+                        <option value="fas fa-envelope">Invitation Card</option>
+                        <option value="ffas fa-utensils">Food and Drinks</option>
+                        <option value="fas fa-photo-video">photos and Video</option>
+                        <option value="fas fa-birthday-cake">Birthday Cake</option>
+                    </select>
                     <label for="service-name">Service name:</label>
                     <input type="text" id="service-name" name="service-name" value="<?php echo $row['servicename']; ?>">
 

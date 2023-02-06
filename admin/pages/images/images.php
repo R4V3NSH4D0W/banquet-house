@@ -52,60 +52,61 @@ if (!isset($admin_id)) {
             $rows = mysqli_query($conn, "SELECT * FROM images where admin_id='$admin_id'");
             foreach ($rows as $rows) :
             ?>
-            <div class="media">
-                <div class="overlay"></div>
-                <img src="./uploads/<?php echo $rows['images']; ?>" alt="">
-                <div class="image-details">
-                    <p class="delete-button" data-file="<?php echo $rows['images']; ?>"><i class='bx bx-trash'></i></p>
+                <div class="media">
+                    <div class="overlay"></div>
+                    <img src="./uploads/<?php echo $rows['images']; ?>" alt="">
+                    <div class="image-details">
+                        <p class="delete-button" data-file="<?php echo $rows['images']; ?>"><i class='bx bx-trash'></i></p>
+                    </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
 
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#upload-form').submit(function(event) {
-            event.preventDefault();
+        $(document).ready(function() {
+            $('#upload-form').submit(function(event) {
+                event.preventDefault();
 
-            var formData = new FormData(this);
+                var formData = new FormData(this);
 
-            $.ajax({
-                url: 'upload.php',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    if (data == "File uploaded successfully.") {
-                        location.reload();
+                $.ajax({
+                    url: 'upload.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        if (data == "File uploaded successfully.") {
+                            location.reload();
+                        }
+                        alert(data);
                     }
-                    alert(data);
-                }
+                });
+
             });
+            $('.delete-button').click(function() {
+                var file = $(this).data('file');
 
-        });
-        $('.delete-button').click(function() {
-            var file = $(this).data('file');
+                $.ajax({
+                    url: 'delete.php',
+                    type: 'POST',
+                    data: {
+                        file: file
+                    },
+                    success: function(data) {
+                        if (data === "File deleted successfully.") {
+                            alert(data);
+                            location.reload();
 
-            $.ajax({
-                url: 'delete.php',
-                type: 'POST',
-                data: {
-                    file: file
-                },
-                success: function(data) {
-                    if (data === "File deleted successfully.") {
-                        location.reload();
-
-                    } else {
-                        console.log(data);
+                        } else {
+                            alert(data);
+                        }
                     }
-                }
+                });
             });
         });
-    });
     </script>
 
     <script src="../sidebar/script.js">

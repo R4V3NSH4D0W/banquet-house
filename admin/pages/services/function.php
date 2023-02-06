@@ -21,14 +21,19 @@ function add()
     $admin_id = $_SESSION['admin_id'];
     $servicename = mysqli_real_escape_string($conn, $_POST['service_name']);
     $servicedesc = mysqli_real_escape_string($conn, $_POST['service_desc']);
+    $icons = $_POST['icons'];
     $serviceprice = $_POST['service_price'];
-    $duplicate = mysqli_query($conn, "SELECT * FROM tbservice WHERE servicename = ' $servicename' AND adminid='$admin_id'");
-    if (mysqli_num_rows($duplicate) > 0) {
-        echo "Service already exist";
+    if (empty($servicename || $servicedesc || $serviceprice)) {
+        echo "The Input Field is empty.";
     } else {
-        $query = "INSERT INTO tbservice VALUES('',' $servicename','$servicedesc','$serviceprice','$admin_id')";
-        mysqli_query($conn, $query);
-        echo "service added successfully";
+        $duplicate = mysqli_query($conn, "SELECT * FROM tbservice WHERE servicename = ' $servicename' AND adminid='$admin_id'");
+        if (mysqli_num_rows($duplicate) > 0) {
+            echo "Service already exist";
+        } else {
+            $query = "INSERT INTO tbservice VALUES('',' $servicename','$servicedesc','$serviceprice','$admin_id','$icons')";
+            mysqli_query($conn, $query);
+            echo "service added successfully";
+        }
     }
 }
 function edit()

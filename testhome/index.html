@@ -6,9 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #textarea {
+  width: 500px;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+#done-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+#done-button:hover {
+  background-color: #3e8e41;
+}
+</style>
 <body>
-    <div class="container">
-        <img src="./images/1.jpg" style="width:30%">
-    </div>
+    <div>
+        <textarea id="textarea"></textarea>
+        <br>
+        <button id="done-button">Done</button>
+      </div>
 </body>
 </html>

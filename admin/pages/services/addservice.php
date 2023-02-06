@@ -19,6 +19,7 @@ if (!isset($admin_id)) {
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 </head>
 
 <body>
@@ -36,14 +37,22 @@ if (!isset($admin_id)) {
             <div class="main-container">
                 <h1>ADD Services</h1>
                 <form autocomplete="off" action="" method="post">
+                    <label for="Icon-name">Icon type:</label>
+                    <select id="icons">
+                        <option value="fas fa-map-marker-alt">Map</option>
+                        <option value="fas fa-envelope">Invitation Card</option>
+                        <option value="fas fa-utensils">Food and Drinks</option>
+                        <option value="fas fa-photo-video">photos and Video</option>
+                        <option value="fas fa-birthday-cake">Birthday Cake</option>
+                    </select>
                     <label for="service-name">Service name:</label>
-                    <input type="text" id="service-name" name="service-name">
+                    <input type="text" id="service-name" name="service-name" required>
 
                     <label for="service-description">Service description:</label>
-                    <textarea id="service-description" name="service-description"></textarea>
+                    <textarea id="service-description" name="service-description" required></textarea>
 
                     <label for="service-price">Service price:</label>
-                    <input type="number" id="service-price" name="service-price">
+                    <input type="number" id="service-price" name="service-price" required>
                     <button class="add" onclick="submitData('add');" name="add"><i class='bx bx-plus'></i> Add</button>
                 </form>
             </div>

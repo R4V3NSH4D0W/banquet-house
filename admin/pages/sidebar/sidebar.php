@@ -55,7 +55,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         </div>
         <ul class="sub-menu">
             <li><a class="link_name">Images</a></li>
-            <li><a href="../featuredimage/featureimage.html">Featured Images</a></li>
+            <li><a href="../featuredimage/fimages.php">Featured Images</a></li>
             <li><a href="../images/images.php">Gallary</a></li>
         </ul>
     </li>
