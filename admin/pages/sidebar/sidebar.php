@@ -69,8 +69,8 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         </div>
         <ul class="sub-menu">
             <li><a class="link_name" href="#">Pages</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="../aboutus&contactus/aboutus.php">About us</a></li>
+            <li><a href="../aboutus&contactus/contactus.php">Contact us</a></li>
         </ul>
     </li>
     <li>

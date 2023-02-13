@@ -90,6 +90,7 @@
       </div>
     </div>
   </div>
+
   <?php require 'script.php'; ?>
   <script src="app.js"></script>
 </body>

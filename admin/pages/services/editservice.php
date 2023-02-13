@@ -46,7 +46,7 @@ if (!isset($admin_id)) {
 
                     <input type="hidden" name="id" id="service-id" value="<?php echo $row['id']; ?>">
                     <label for="Icon-name">Icon type:</label>
-                    <select id="icons">
+                    <select id="icons" style="font-size:16px;padding:10px;">
                         <option value="fas fa-map-marker-alt">Map</option>
                         <option value="fas fa-envelope">Invitation Card</option>
                         <option value="ffas fa-utensils">Food and Drinks</option>

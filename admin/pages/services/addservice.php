@@ -38,7 +38,7 @@ if (!isset($admin_id)) {
                 <h1>ADD Services</h1>
                 <form autocomplete="off" action="" method="post">
                     <label for="Icon-name">Icon type:</label>
-                    <select id="icons">
+                    <select id="icons" style="font-size:16px;padding:10px;">
                         <option value="fas fa-map-marker-alt">Map</option>
                         <option value="fas fa-envelope">Invitation Card</option>
                         <option value="fas fa-utensils">Food and Drinks</option>
