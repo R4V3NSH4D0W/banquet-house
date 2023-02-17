@@ -17,7 +17,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- css linked -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/teststyle.css">
 </head>
 
 <body>
@@ -25,7 +25,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
     <section class="header">
         <div class="navbar">
-            <img src="img/logo.png" alt="" class="logo">
+            <lable style="color: white;text-align:justify; font-weight:bold;">BanquetHouse</lable>
+            <!-- <img src="img/logo.png" alt="" class="logo"> -->
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#service">services</a></li>
@@ -48,11 +49,10 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <section class="home" id="home">
 
             <div class="home-section">
-                <h1>its time to celebrate!<br>the best event organizers</h1>
+                <h1 style="text-align:center;">its time to celebrate!<br>the best event organizers</h1>
             </div>
 
-            <!-- slider -->
-
+            <!-- slider section starts here -->
             <div class="swiper-container home-slider">
                 <div class="swiper-wrapper">
                     <?php
@@ -64,28 +64,12 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     <?php endforeach; ?>
                 </div>
             </div>
+            <!-- slider section ends here -->
         </section>
     </section>
 
 
     <!-- Services Section -->
-
-    <!-- <section class="service" id="service">
-        <div class="title">
-            <?php
-            $rows = mysqli_query($conn, "SELECT * FROM tbservice where adminid='5'");
-            foreach ($rows as $rows) :
-            ?>
-                <div class="service-box">
-                    <i class="<?php echo $rows["icons"]; ?>"></i>
-                    <h3><?php echo $rows["servicename"]; ?></h3>
-                    <p><?php echo $rows["servicedesc"]; ?></p>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-    </section> -->
-
     <section class="service" id="service">
         <div class="title">
             <h1>Our <span>Services</span> </h1>
@@ -105,9 +89,9 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         </div>
 
     </section>
-
     <!-- section end -->
 
+    <!-- gallary section starts here -->
     <section class="gallery" id="gallery">
         <div class="gallery-title">
             <h2>Our Celebration</h2>
@@ -125,9 +109,40 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             </div>
         </div>
     </section>
+    <!-- gallary section ends here -->
+    <!-- pricing section starts here -->
+    <section class="pricing" id="pricing">
+        <div class="title">
+            <h1><span>Pricing</span> For <span>C</span>elebration</h1>
+        </div>
+        <div class="price-container">
+            <?php
+            $row = mysqli_query($conn, "SELECT * FROM packages where admin_id='5' limit 4");
+            foreach ($row as $row) :
+            ?>
+                <div class="price-box">
+                    <h3 class="price-title"><?php echo $row['packagename']; ?></h3>
+                    <h3 class="price-amount">NRS <?php echo $row['totalprice']; ?></h3>
+                    <?php
+                    $services = explode(",", $row['services']);
+                    foreach ($services as $service) :
+                    ?>
+                        <ul>
+                            <li><i class="fas fa-check"></i><?php echo $service; ?></li>
+                        </ul>
+                    <?php
+                    endforeach;
+                    ?>
+                    <a href="#" class="priceBtn">Book Now</a>
+                </div>
+            <?php
+            endforeach;
+            ?>
+        </div>
 
+    </section>
 
-
+    <!-- pricing section ends here -->
 
 
 

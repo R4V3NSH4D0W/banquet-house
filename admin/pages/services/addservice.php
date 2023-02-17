@@ -44,6 +44,9 @@ if (!isset($admin_id)) {
                         <option value="fas fa-utensils">Food and Drinks</option>
                         <option value="fas fa-photo-video">photos and Video</option>
                         <option value="fas fa-birthday-cake">Birthday Cake</option>
+                        <option value="fas fa-light fa-square-heart">Decoration</option>
+                        <option value="fas fa-regular fa-music">Music</option>
+                        <option value="fas fa-duotone fa-teddy-bear">Games</option>
                     </select>
                     <label for="service-name">Service name:</label>
                     <input type="text" id="service-name" name="service-name" required>

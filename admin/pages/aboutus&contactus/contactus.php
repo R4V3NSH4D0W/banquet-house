@@ -55,9 +55,9 @@ if (!isset($admin_id)) {
                                                                     } else {
                                                                         echo $row['number'];
                                                                     } ?>" required>
-                    <label for="Icon-name">Page Description:</label>
+                    <label>Page Description:</label>
                     <textarea id="desc"><?php if ($row === NULL || $row['description'] === NULL) {
-                                            echo "D-204, Hole Town South West,Delhi-110096,India";
+                                            echo "N-230, koteshowr 36, Nepal";
                                         } else {
                                             echo $row['description'];
                                         } ?></textarea>

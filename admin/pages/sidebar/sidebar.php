@@ -34,14 +34,14 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         <div class="iocn-link">
             <a href="#">
                 <i class='bx bx-book-alt'></i>
-                <span class="link_name">Events</span>
+                <span class="link_name">Package Manager</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-            <li><a class="link_name" href="#">Events</a></li>
-            <li><a href="#">Add event type</a></li>
-            <li><a href="#">Manage event type</a></li>
+            <li><a class="link_name" href="#">Package Manager</a></li>
+            <li><a href="../PackageManager/addpackage.php">Add Packages</a></li>
+            <li><a href="../PackageManager/managepackage.php">Manage Packages</a></li>
 
         </ul>
     </li>
