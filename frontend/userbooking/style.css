@@ -1,0 +1,78 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    /* border: 2px solid #ccc;
+    border-radius: 5px; */
+    font-size: 18px;
+    max-width: 500px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input[type="date"], input[type="number"],select, textarea {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    /* width: 100%; */
+  }
+  
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .success {
+    color: green;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .image-container {
+    position: fixed;
+    top: 1.8rem;
+    right: 7rem;
+
+    width: 55%; /* Adjust the width as needed */
+    height: 100%; /* Stretch to full height of the screen */
+    /* background-color: #f1f1f1;  */
+  }
+  
+  .image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px; /* Optional: Add padding to the image */
+  }

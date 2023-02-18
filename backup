@@ -1,126 +1,111 @@
-<?php
-require 'config.php';
-$admin_id = $_SESSION['admin_id'];
-
-if (!isset($admin_id)) {
-    header('location:login.php');
-}
-// add service //
-if (isset($_POST["add"])) {
-    $name = mysqli_real_escape_string($conn, $_POST['service-name']);
-    $desc = mysqli_real_escape_string($conn, $_POST['service-description']);
-    $price = $_POST['service-price'];
-    $duplicate = mysqli_query($conn, "SELECT * FROM tbservice WHERE servicename = '$name' AND adminid='$admin_id'");
-    if (mysqli_num_rows($duplicate) > 0) {
-        echo
-        "<script> alert('service already exist'); </script>";
-    } else {
-        $query = "INSERT INTO tbservice VALUES('','$name','$desc','$price','$admin_id')";
-        mysqli_query($conn, $query);
-        echo
-        "<script> alert('Service Added'); </script>";
-    }
-}
-?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>
-        Admin Panel
-    </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style2.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Include the Leaflet CSS and JavaScript files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
-    <div class="sidebar close">
-        <?php
-        include 'sidebar.php';
-        ?>
-    </div>
-    <section class="home-section">
-        <div class="home-content">
-            <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
-        </div>
-        <div class="container">
-            <div class="main-container">
-                <h1>ADD Services</h1>
-                <form method="post">
-                    <label for="service-name">Service name:</label>
-                    <input type="text" id="service-name" name="service-name">
+    <div id="map"></div>
+    <input type="hidden" id="latitude" name="latitude" value="">
+    <input type="hidden" id="longitude" name="longitude" value="">
+    <button type="submit" id="submit">Submit</button>
 
-                    <label for="service-description">Service description:</label>
-                    <textarea id="service-description" name="service-description"></textarea>
 
-                    <label for="service-price">Service price:</label>
-                    <input type="number" id="service-price" name="service-price">
-                    <button class="add" name="add"><i class='bx bx-plus'></i> Add</button>
-                </form>
-            </div>
-        </div>
-
-    </section>
 </body>
-<script src="script.js"></script>
+<style>
+    #map {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+<script>
+    var map = L.map('map').setView([27.6588, 85.3247], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 18
+    }).addTo(map);
+    var marker = L.marker([27.6588, 85.3247], {
+        draggable: true
+    }).addTo(map);
+    marker.on('dragend', function(event) {
+        var marker = event.target;
+        var position = marker.getLatLng();
+        document.getElementById('latitude').value = position.lat;
+        document.getElementById('longitude').value = position.lng;
+    });
+</script>
+<script>
+    document.getElementById('submit').addEventListener('click', function(event) {
+        event.preventDefault();
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Do something with the response from the server
+                    console.log(xhr.responseText);
+                } else {
+                    // Handle errors
+                    console.log('Error: ' + xhr.status);
+                }
+            }
+        };
+        xhr.open('POST', 'save_location.php');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        var latitude = document.getElementById('latitude').value;
+        var longitude = document.getElementById('longitude').value;
+        var data = 'latitude=' + encodeURIComponent(latitude) + '&longitude=' + encodeURIComponent(longitude);
+        console.log(data);
+        xhr.send(data);
+    });
+</script>
+
 
 </html>
 
 
+getlocation.php
 <?php
-require '/programs/xampp/htdocs/banquethouses/connection/config.php';
+// Connect to MySQL database
+$host = 'localhost';  // Your MySQL host name
+$user = 'root';       // Your MySQL username
+$pass = '';           // Your MySQL password
+$db = 'location_db';  // Your MySQL database name
+$conn = new mysqli($host, $user, $pass, $db);
 
-if (isset($_POST["action"])) {
-    if ($_POST["action"] == "upload") {
-        upload();
-    } else {
-        delete();
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve location data from the database
+$sql = "SELECT * FROM locations";
+$result = $conn->query($sql);
+$locations = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $location = array(
+            'lat' => $row['latitude'],
+            'lng' => $row['longitude'],
+            'name' => $row['name']
+        );
+        array_push($locations, $location);
     }
 }
-function upload()
-{
-    global $conn;
-    $admin_id = $_SESSION['admin_id'];
-    $file = $_FILES['image'];
-    $filename = $_FILES['image']['name'];
-    $file_tmp_name = $_FILES['image']['tmp_name'];
-    $filesize = $_FILES['image']['size'];
-    $fileerror = $_FILES['image']['error'];
-    $filetype = $_FILES['image']['type'];
-    $fileExt = explode('.', $filename);
-    $fileActualExt = strtolower(end($fileExt));
-    $allowed = array('jpg', 'jpeg', 'png');
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileerror === 0) {
-            if ($filesize < 2000000) {
-                $filenamenew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = 'uploads/' . $filenamenew;
-                move_uploaded_file($file_tmp_name, $fileDestination);
-                $query = "INSERT INTO images values('','$filenamenew','$admin_id')";
-                if (mysqli_query($conn, $query)) {
-                    echo "sucessfully uploaded";
-                }
-            } else {
-                echo "file is to big";
-            }
-        } else {
-            echo "There was an error uplading an file";
-        }
-    } else {
-        echo "you can not upload file of this type!";
-    }
-}
-function edit()
-{
-    global $conn;
-}
-function delete()
-{
-    global $conn;
-}
+
+// Send location data back to the client
+header('Content-Type: application/json');
+echo json_encode($locations);
+
+// Close database connection
+$conn->close();
 ?>

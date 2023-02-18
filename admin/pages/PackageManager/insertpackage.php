@@ -21,8 +21,7 @@ if (empty($package_name)) {
             $service_names[] = $service_name;
         }
     }
-    print_r($total_price);
-    print_r($service_names);
     $services_str = implode(',', $service_names);
     $sql = mysqli_query($conn, "Insert into packages VALUES('','$package_name','$total_price','$admin_id','$services_str')");
+    echo "Package Added";
 }

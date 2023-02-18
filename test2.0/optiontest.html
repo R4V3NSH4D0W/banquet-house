@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="custom-select">
+        <div class="select-selected">Select an option</div>
+        <div class="select-items">
+          <div class="select-item">Option 1</div>
+          <div class="select-item">Option 2</div>
+          <div class="select-item">Option 3</div>
+          <div class="select-item">Option 4</div>
+        </div>
+        <select name="select[]" multiple style="display:none;">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+        </select>
+      </div>
+</body>
+<style>
+    /* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  display: inline-block;
+}
+
+/* Hide the original select element: */
+.custom-select select {
+  display: none;
+}
+
+/* Style the select-selected element: */
+.select-selected {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Style the select-items div (dropdown content): */
+.select-items {
+  position: absolute;
+  background-color: #f9f9f9;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  display: none;
+}
+
+/* Style the select-items div and the select-item class (used to format the options): */
+.select-item {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+/* Add a background color to the active/current option: */
+.select-item:hover, .same-as-selected {
+  background-color: #ddd;
+}
+    </style>
+    <script>
+        var select = document.querySelector(".custom-select select");
+var options = document.querySelectorAll(".custom-select .select-item");
+
+document.querySelector(".custom-select .select-selected").addEventListener("click", function() {
+  this.nextSibling.classList.toggle("select-hide");
+});
+
+for (var i = 0; i < options.length; i++) {
+  options[i].addEventListener("click", function() {
+    var value = this.textContent;
+    var hiddenSelect = this.parentNode.previousSibling;
+    var option = document.createElement("option");
+    option.text = value;
+    hiddenSelect.add(option);
+    this.classList.toggle("same-as-selected");
+  });
+}
+
+document.addEventListener("click", function(e) {
+  if (!e.target.matches(".custom-select .select-selected")) {
+    var selects = document.querySelectorAll(".custom-select .select-items");
+    for (var i = 0; i < selects.length; i++) {
+      var select = selects[i];
+      if (!select.classList.contains("select-hide")) {
+        select.classList.add("select-hide");
+      }
+    }
+  }
+});
+        </script>
+</html>

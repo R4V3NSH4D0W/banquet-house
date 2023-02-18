@@ -13,7 +13,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
             <span class="link_name">Dashboard</span>
         </a>
         <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">Category</a></li>
+            <li><a class="link_name" href="../dashboard/index.php">Dashboard</a></li>
         </ul>
     </li>
     <li>
@@ -34,7 +34,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         <div class="iocn-link">
             <a href="#">
                 <i class='bx bx-book-alt'></i>
-                <span class="link_name">Package Manager</span>
+                <span class="link_name">Packages</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
         </div>
@@ -83,7 +83,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         </div>
         <ul class="sub-menu">
             <li><a class="link_name" href="#">Booking</a></li>
-            <li><a href="../Booking/Newbooking/newbooking.php">New Booking</a></li>
+            <li><a href="../Booking/newbooking.php">New Booking</a></li>
             <li><a href="#">Approved Booking</a></li>
             <li><a href="#">Cancelled booking</a></li>
             <li><a href="#">All booking</a></li>

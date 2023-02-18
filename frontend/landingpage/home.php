@@ -1,5 +1,6 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
+$id = $_GET["page_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,11 +57,12 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <div class="swiper-container home-slider">
                 <div class="swiper-wrapper">
                     <?php
-                    $rows = mysqli_query($conn, "SELECT * FROM swiperimage where admin_id='5'");
+                    $rows = mysqli_query($conn, "SELECT * FROM swiperimage where admin_id='$id'");
                     foreach ($rows as $rows) :
                     ?>
-                        <div class="swiper-slide"><img src="../../admin/pages/featuredimage/uploads/<?php echo $rows["swiperimage"]; ?>" alt="">
-                        </div>
+                    <div class="swiper-slide"><img
+                            src="../../admin/pages/featuredimage/uploads/<?php echo $rows["swiperimage"]; ?>" alt="">
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -76,14 +78,14 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         </div>
         <div class="service-container">
             <?php
-            $rows = mysqli_query($conn, "SELECT * FROM tbservice where adminid='5'");
+            $rows = mysqli_query($conn, "SELECT * FROM tbservice where adminid='$id'");
             foreach ($rows as $rows) :
             ?>
-                <div class="service-box"><?php
+            <div class="service-box"><?php
                                             echo "<i class='" . $rows['icon'] . "'></i> "; ?>
-                    <h3><?php echo $rows["servicename"]; ?></h3>
-                    <p><?php echo $rows["servicedesc"]; ?></p>
-                </div>
+                <h3><?php echo $rows["servicename"]; ?></h3>
+                <p><?php echo $rows["servicedesc"]; ?></p>
+            </div>
             <?php endforeach; ?>
         </div>
         </div>
@@ -99,12 +101,12 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <div class="gallery-container">
             <div class="gallery-box">
                 <?php
-                $rows = mysqli_query($conn, "SELECT * FROM images where admin_id='5' limit 8");
+                $rows = mysqli_query($conn, "SELECT * FROM images where admin_id='$id' limit 8");
                 foreach ($rows as $rows) :
                 ?>
-                    <div class=" gallery-row">
-                        <img src="../../admin/pages/images/uploads/<?php echo $rows['images']; ?>" alt="">
-                    </div>
+                <div class=" gallery-row">
+                    <img src="../../admin/pages/images/uploads/<?php echo $rows['images']; ?>" alt="">
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -117,41 +119,36 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         </div>
         <div class="price-container">
             <?php
-            $row = mysqli_query($conn, "SELECT * FROM packages where admin_id='5' limit 4");
+            $row = mysqli_query($conn, "SELECT * FROM packages where admin_id='$id' limit 4");
             foreach ($row as $row) :
             ?>
-                <div class="price-box">
-                    <h3 class="price-title"><?php echo $row['packagename']; ?></h3>
-                    <h3 class="price-amount">NRS <?php echo $row['totalprice']; ?></h3>
-                    <?php
+            <div class="price-box">
+                <h3 class="price-title"><?php echo $row['packagename']; ?></h3>
+                <h3 class="price-amount">NRS <?php echo $row['totalprice']; ?></h3>
+                <?php
                     $services = explode(",", $row['services']);
                     foreach ($services as $service) :
                     ?>
-                        <ul>
-                            <li><i class="fas fa-check"></i><?php echo $service; ?></li>
-                        </ul>
-                    <?php
+                <ul>
+                    <li><i class="fas fa-check"></i><?php echo $service; ?></li>
+                </ul>
+                <?php
                     endforeach;
                     ?>
-                    <a href="#" class="priceBtn">Book Now</a>
-                </div>
+                <a href="#" class="priceBtn">Book Now</a>
+            </div>
             <?php
             endforeach;
             ?>
         </div>
-
+        <div class="option" style="text-align:center;">
+            <span style="font-size: 20px; font-weight:bold;">OR</span> <br>
+            <a href="../userbooking/booking.php?page_id=<?php echo $id; ?>"
+                style="border: 1px solid; margin-top:3rem; margin-bottom:5rem;">custom book</a>
+        </div>
     </section>
 
     <!-- pricing section ends here -->
-
-
-
-
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 

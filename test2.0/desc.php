@@ -20,10 +20,10 @@
             <th>Servce Price</th>
         </tr>
         <?php foreach ($rows as $rows) : ?>
-            <tr>
-                <td><?php echo $rows['servicename']; ?></td>
-                <td><?php echo $rows['serviceprice']; ?></td>
-            </tr>
+        <tr>
+            <td><?php echo $rows['servicename']; ?></td>
+            <td><?php echo $rows['serviceprice']; ?></td>
+        </tr>
         <?php endforeach; ?>
     </table>
 </body>
