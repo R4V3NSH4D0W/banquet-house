@@ -1,7 +1,7 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
-$sql = "SELECT * FROM map WHERE admin_id = 5";
+$sql = "SELECT * FROM map WHERE admin_id = 6";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) == 0) {
     die("Location not found");

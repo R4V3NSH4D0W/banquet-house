@@ -142,7 +142,7 @@ $id = $_GET["page_id"];
             ?>
         </div>
         <div class="option" style="text-align:center;">
-            <span style="font-size: 20px; font-weight:bold;">OR</span> <br>
+            <!-- <span>OR</span><br> -->
             <a href="../userbooking/booking.php?page_id=<?php echo $id; ?>"
                 style="border: 1px solid; margin-top:3rem; margin-bottom:5rem;">custom book</a>
         </div>

@@ -31,7 +31,7 @@ if (!isset($admin_id)) {
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
+            <span class="text">Dashboard</span>
         </div>
         <label for="images" class="drop-container">
             <!-- <span class="drop-title">Drop files here</span>
@@ -96,8 +96,8 @@ if (!isset($admin_id)) {
                     file: file
                 },
                 success: function(data) {
-                    if (data === "File deleted successfully.") {
-                        customAlert.alert(data);
+                    if (data == "File deleted successfully.") {
+                        alert(data);
                         location.reload();
 
                     } else {

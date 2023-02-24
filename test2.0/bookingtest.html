@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booking Form</title>
+    <style>
+      #action-popup {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.2);
+      }
+      .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .booking-table th, .booking-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      .booking-table th {
+        background-color: #f2f2f2;
+      }
+      .booking-table tr:hover {
+        background-color: #f5f5f5;
+      }
+      .booking-table td.action-cell {
+        position: relative;
+      }
+      .booking-table td.action-cell:hover #action-popup {
+        display: block;
+      }
+      #action-popup a {
+        display: block;
+        padding: 5px;
+        text-decoration: none;
+        color: #333;
+      }
+      #action-popup a:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>SN</th>
+          <th>Customer Name</th>
+          <th>Mobile Number</th>
+          <th>Services</th>
+          <th>No. of Guests</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ABC</td>
+          <td>0000000000</td>
+          <td>Service 1</td>
+          <td>2</td>
+          <td>Pending</td>
+          <td class="action-cell">
+            <span>Hover over me</span>
+            <div id="action-popup">
+              <a href="#">Accepted</a>
+              <a href="#">Rejected</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ABC</td>
+          <td>0000000000</td>
+          <td>Service 2</td>
+          <td>4</td>
+          <td>Confirmed</td>
+          <td class="action-cell">
+            <span>Hover over me</span>
+            <div id="action-popup">
+              <a href="#">Accepted</a>
+              <a href="#">Rejected</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

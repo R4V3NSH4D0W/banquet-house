@@ -29,7 +29,7 @@ if (!isset($admin_id)) {
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
+            <span class="text">Dashboard</span>
         </div>
         <div class="main">
             <div class="cards">
@@ -111,11 +111,11 @@ if (!isset($admin_id)) {
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">$4500</div>
+                        <div class="number">NRS 4500</div>
                         <div class="card-name">Earnings</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-dollar-sign"></i>
+                        <!-- <i class="fa-regular fa-money-bill"></i> -->
                     </div>
                 </div>
             </div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Booking Form</title>
+    <style>
+    /* CSS for styling the form and image */
+    #form-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    #form-container form {
+        width: 40%;
+    }
+
+    #form-container img {
+        width: 50%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0062cc;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="form-container">
+        <form>
+            <label for="booking-from">Booking From:</label>
+            <input type="date" id="booking-from" name="booking-from">
+            <label for="booking-to">Booking To:</label>
+            <input type="date" id="booking-to" name="booking-to">
+            <label for="num-guests">Number of guests:</label>
+            <input type="number" id="num-guests" name="num-guests">
+            <label for="service-type">Type of service:</label>
+            <select id="service-type" name="service-type">
+                <option value="room-service">Room service</option>
+                <option value="housekeeping">Housekeeping</option>
+                <option value="concierge">Concierge</option>
+            </select>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+        <img src="https://via.placeholder.com/600x400" alt="Hotel image">
+    </div>
+</body>
+
+</html>

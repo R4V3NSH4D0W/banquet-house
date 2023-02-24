@@ -60,7 +60,7 @@ form {
     margin-top: 5px;
   }
   .image-container {
-    position: fixed;
+    position: relative;
     top: 1.8rem;
     right: 7rem;
 

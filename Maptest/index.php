@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
         crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 </head>
 
@@ -36,6 +38,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
     maxZoom: 18
 }).addTo(map);
+
 var marker = L.marker([27.6588, 85.3247], {
     draggable: true
 }).addTo(map);
@@ -44,6 +47,22 @@ marker.on('dragend', function(event) {
     var position = marker.getLatLng();
     document.getElementById('latitude').value = position.lat;
     document.getElementById('longitude').value = position.lng;
+});
+
+// Add search control
+var searchControl = L.Control.geocoder({
+    placeholder: 'Search for an address...',
+    defaultMarkGeocode: false,
+    collapsed: false,
+}).addTo(map);
+
+// Handle geocode event
+searchControl.on('markgeocode', function(e) {
+    marker.setLatLng(e.geocode.center);
+    map.setView(e.geocode.center, 15);
+    document.getElementById('latitude').value = e.geocode.center.lat;
+    document.getElementById('longitude').value = e.geocode.center.lng;
+    document.getElementById('address').value = e.geocode.name;
 });
 </script>
 <script>

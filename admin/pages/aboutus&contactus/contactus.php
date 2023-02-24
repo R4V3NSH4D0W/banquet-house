@@ -32,7 +32,7 @@ if (!isset($admin_id)) {
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
+            <span class="text">Dashboard</span>
         </div>
         <div class="container">
             <div class="main-container">
@@ -73,27 +73,27 @@ if (!isset($admin_id)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#update-form').submit(function(e) {
-            e.preventDefault();
+        $(document).ready(function() {
+            $('#update-form').submit(function(e) {
+                e.preventDefault();
 
-            var data = {
+                var data = {
 
-                email: $("#contactemail").val(),
-                number: $("#contactnumber").val(),
-                desc: $("#desc").val(),
-            }
-            console.log(data);
-            $.ajax({
-                type: "POST",
-                url: "updatecontact.php",
-                data: data,
-                success: function(response) {
-                    alert(response);
+                    email: $("#contactemail").val(),
+                    number: $("#contactnumber").val(),
+                    desc: $("#desc").val(),
                 }
+                console.log(data);
+                $.ajax({
+                    type: "POST",
+                    url: "updatecontact.php",
+                    data: data,
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
             });
         });
-    });
     </script>
     <script src="../sidebar/script.js">
     </script>

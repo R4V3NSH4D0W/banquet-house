@@ -3,7 +3,8 @@ $admin_id = $_SESSION['admin_id'];
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id = $admin_id"));
 ?>
 <div class="logo-details">
-    <i class='bx bxl-c-plus-plus'></i>
+    <i class='bx bxl-xing bx-flip-horizontal' style='color:#e01111'></i>
+
     <span class="logo_name"><?php echo $user["name"] ?></span>
 </div>
 <ul class="nav-links">
@@ -105,11 +106,11 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
     </li>
     <li>
         <a href="#">
-            <i class='bx bx-history'></i>
-            <span class="link_name">History</span>
+            <i class='bx bxs-map'></i>
+            <span class="link_name">Map</span>
         </a>
         <ul class="sub-menu blank">
-            <li><a class="link_name" href="#">History</a></li>
+            <li><a class="link_name" href="../Map/index.php">Map</a></li>
         </ul>
     </li>
     <li>

@@ -27,6 +27,6 @@ if (empty($booking_from || $booking_to || $no_of_guests || $message)) {
         }
     }
     $services_str = implode(',', $service_names);
-    $sql = mysqli_query($conn, "Insert into booking VALUES('','$user_id','$booking_from','$booking_to','$services_str','$no_of_guests','','','$page_id')");
+    $sql = mysqli_query($conn, "Insert into booking VALUES('','$user_id','$booking_from','$booking_to','$services_str','$no_of_guests','','pending','$page_id','$total_price')");
     echo "Your Booking has been sent we will contact you soon";
 }

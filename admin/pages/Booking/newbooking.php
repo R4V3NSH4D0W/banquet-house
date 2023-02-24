@@ -17,8 +17,10 @@ if (!isset($admin_id)) {
     </title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../services/style2.css">
+    <link rel="stylesheet" href="../sidebar/style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -31,60 +33,50 @@ if (!isset($admin_id)) {
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
+            <span class="text">Dashboard</span>
         </div>
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-            <link rel="stylesheet" href="../sidebar/style.css">
-        </head>
-
-        <body>
-            <div class="container">
-                <div class="main-container">
-                    <h1>New Booking</h1>
-                    <table>
-                        <tr>
-                            <th>S.N</th>
-                            <th>Services</th>
-                            <th>No of Guests</th>
-                            <th>Status</th>
-                            <th>Remark</th>
+        <div class="container">
+            <div class="main-container">
+                <h1>New Booking</h1>
+                <table>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Name</th>
+                        <th>gmail</th>
+                        <th>No of Guests</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <?php
+                    $row = mysqli_query($conn, "SELECT *
+                         FROM booking 
+                          JOIN user on
+                           booking.user_id=user.id 
+                           where booking.admin_id='$admin_id'");
+                    $i = 1;
+                    ?>
+                    <?php foreach ($row as $row) : ?>
+                        <!-- <tr id=<?php echo $row["id"]; ?>> -->
+                        <td><?php echo $i++ ?></td>
+                        <td><?php echo $row["name"]; ?></td>
+                        <td><?php echo $row["email"]; ?></td>
+                        <td><?php echo $row["Noofguests"]; ?></td>
+                        <td><?php echo $row["status"]; ?></td>
+                        <td><a style="color:blue;" href="action.php?id=<?php echo $row['ID']; ?>"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>
-                        <?php
-                        $row = mysqli_query($conn, "SELECT * FROM booking where admin_id='$admin_id'");
-                        $i = 1;
-                        ?>
-                        <?php foreach ($row as $row) : ?>
-                            <!-- <tr id=<?php echo $row["id"]; ?>> -->
-                            <td><?php echo $i++ ?></td>
-                            <td><?php echo $row["Services"]; ?></td>
-                            <td><?php echo $row["Noofguests"]; ?></td>
-                            <td><?php echo $row["status"]; ?></td>
-                            <td><?php echo $row["Remark"]; ?></td>
-                            <!-- <td>
-                                    <a class="edit" href="editservice.php?id=<?php echo $row['id']; ?>"><i class='bx bx-edit'></i></a>
-                                    <a class="delete" onclick="submitData(<?php echo $row['id']; ?>);"><i class='bx bx-trash'></i></a>
-                                </td> -->
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
+                    <?php endforeach; ?>
+                </table>
             </div>
+        </div>
 
 
-        </body>
+</body>
 
-        </html>
+</html>
 
-    </section>
-    <script src="../sidebar/script.js">
-    </script>
+</section>
+<script src="../sidebar/script.js">
+</script>
 </body>
 
 </html>

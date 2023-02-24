@@ -1,14 +1,19 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+  --orange:#ffa500;
 }
 
+*{
+  font-family: 'Nunito', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  outline: none; border:none;
+  text-decoration: none;
+  transition: all .2s linear;
+}
 html{
     /* font-size: 62.5%; */
     overflow-x: hidden;
@@ -526,6 +531,30 @@ html::-webkit-scrollbar-thumb{
     transform: scale(1.03);
 }
 
+
+.pricing .option{
+    margin: 4rem 0;
+}
+/* 
+.pricing .option span{
+    font-size: 25px;
+    margin: 5rem 0;
+} */
+
+
+.pricing .option a{
+    text-decoration: none;
+    border: 2px solid #eeee;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    text-transform: capitalize;
+}
+
+.pricing .option a:hover{
+    background: #0080ff;
+    color: #fff;
+}
 
 
 

@@ -16,7 +16,7 @@ if (isset($_POST['upload'])) {
                 $filenamenew = uniqid('', true) . "." . $fileActualExt;
                 $fileDestination = 'uploads/' . $filenamenew;
                 move_uploaded_file($file_tmp_name, $fileDestination);
-                $query = "INSERT INTO banquet values('','$filenamenew','8','KARKAKN')";
+                $query = "INSERT INTO banquet values('','$filenamenew','7','ZETA House')";
                 mysqli_query($conn, $query);
             } else {
                 echo "file is to big";

@@ -31,7 +31,7 @@ if (!isset($admin_id)) {
     <section class="home-section">
         <div class="home-content">
             <i class='bx bx-menu'></i>
-            <span class="text">Admin Dashboard</span>
+            <span class="text">Dashboard</span>
         </div>
         <!DOCTYPE html>
         <html lang="en">
