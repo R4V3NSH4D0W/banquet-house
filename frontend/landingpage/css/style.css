@@ -474,7 +474,7 @@ html::-webkit-scrollbar-thumb{
 /* testimonials */
 
 
-/* .review .review-title{
+.review .review-title{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -490,7 +490,32 @@ html::-webkit-scrollbar-thumb{
     background-color: #475462;
     margin: auto;
     position: relative;
-} */
+}
+
+
+
+.review .review-slider{
+    border: 1px solid #000;
+    padding: 1rem; 
+}
+
+.review .review-slider .box{
+    background: #fff;
+    border-radius: .5rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    outline-offset: -1rem;
+    border: 0px solid red;
+}
+
+.review .review-slider .box img{
+    text-align: center;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+
+
 
 
 /* 
