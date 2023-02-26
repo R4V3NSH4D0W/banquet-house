@@ -57,6 +57,9 @@
     padding: 5px 10px;
     cursor: pointer;
   }
+  .active-button:hover {
+    background-color:#32CD32;
+  }
   
   .deactive-button {
     background-color: red;
@@ -64,6 +67,9 @@
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+  }
+  .deactive-button:hover{
+    background-color: #FF6347;
   }
   /* pagination */
   .pagination {
@@ -90,3 +96,29 @@
     color: white;
     border: 1px solid #007aff;
   }
+  /* Style for search field */
+.search-field {
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px;
+  margin-right: 10px;
+}
+
+/* Style for search button */
+.search-button {
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Hover effect for search button */
+.search-button:hover {
+  background-color: #0069d9;
+}
