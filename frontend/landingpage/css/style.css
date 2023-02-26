@@ -517,6 +517,7 @@ html::-webkit-scrollbar-thumb{
     width: 10rem;
     height: 10rem;
     object-fit: cover;
+    border: 4px solid #0080ff;
 }
 
 .review .review-slider .box p{
