@@ -32,7 +32,7 @@ section{
 
 .heading{
   text-align: center;
-  padding:2.5rem 0
+  padding:2.5rem 0;
 }
 
 .heading span{
@@ -612,6 +612,7 @@ header .search-bar-container label:hover{
 
 .footer{
   background:#333;
+  /* background-color: #333; */
 }
 
 .footer .box-container{
@@ -622,6 +623,7 @@ header .search-bar-container label:hover{
 
 .footer .box-container .box{
   padding:1rem 0;
+
   flex:1 1 25rem;
 }
 
@@ -663,6 +665,9 @@ header .search-bar-container label:hover{
   color:var(--orange);
 }
 
+/* .leaflet-control-zoom {
+  position: relative;
+} */
 
 
 
@@ -755,5 +760,17 @@ header .search-bar-container label:hover{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-
-
+.view-more{
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.view-more:hover{
+  background-color: #0062cc;
+}

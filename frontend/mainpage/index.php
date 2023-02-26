@@ -7,7 +7,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complete responsive tour and travel agency website design tutorial</title>
+    <title>Banquet house</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -87,7 +87,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <h3>THE BANQUET HOUSE</h3>
             <p>Where every occasion becomes a cherished memory</p>
             <a href="#" class="btn">discover more</a>
-        </div> -->
+        </div>
 
         <div class="controls">
             <span class="vid-btn active" data-src="images/vid-2.mp4"></span>
@@ -220,16 +220,22 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <div class="box-container">
             <?php
             $rows = mysqli_query($conn, "SELECT *
-            FROM map
-            JOIN banquet
-            ON map.admin_id = banquet.admin_id;");
-
+    FROM map
+    JOIN banquet
+    ON map.admin_id = banquet.admin_id
+    WHERE banquet.status = 'active';");
+            $count = mysqli_num_rows($rows);
+            $i = 0;
             foreach ($rows as $rows) :
-                $address_parts = explode(',', $rows['address']);
-                $address = trim($address_parts[0]);
+                if ($rows['status'] !== 'pending' && $rows['status'] !== 'deactive') {
+                    if ($i >= 3) {
+                        break;
+                    }
+                    $address_parts = explode(',', $rows['address']);
+                    $address = trim($address_parts[0]);
             ?>
             <div class="box">
-                <img src="./uploads/<?php echo $rows["image"]; ?>" alt="">
+                <img src="../../user-admin/uploads/<?php echo $rows["image"]; ?>" alt="">
                 <div class="content">
                     <h3><?php echo $rows["banquetname"]; ?> <p><?php echo $rows["capacity"]; ?> Guests</p>
                     </h3>
@@ -248,9 +254,20 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     <a href="../landingpage/home.php?page_id=<?php echo $rows["admin_id"]; ?>" class="btn">View More</a>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php
+                    $i++;
+                }
 
+            endforeach;
+            if ($count > 3) {
+                ?>
+            <button class="view-more" onclick="location.href='./viewall/allbanquets.php';">View All</button>
+            <?php
+            }
+            ?>
         </div>
+
+
 
     </section>
     <section class="Location" id="location">
@@ -265,9 +282,45 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <span>N</span>
             <span>S</span>
         </h1>
-        <div id="map" style="height: 500px;"></div>
+        <div id="map" style="height: 500px; margin-top: 50px;"></div>
     </section>
+    <!-- footer section -->
 
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur adipisci expedita, est facilis
+                    nisi qui facere nesciunt laudantium quibusdam, repellat nihil, nulla dolorem saepe debitis
+                    reiciendis incidunt. Labore, autem praesentium.</p>
+            </div>
+            <div class="box">
+                <h3>Avilabe Locations</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
+
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
+
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">facebook</a>
+                <a href="#">instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">github</a>
+
+            </div>
+        </div>
+        <h1 class="credit">created by<span> Team GOF</span> | all right reserved !</h1>
+    </section>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- custom js file link  -->

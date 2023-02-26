@@ -32,6 +32,9 @@ function submitData(action) {
                 } else if (response == "User Login Successful") {
 
                     window.location.href = "http://localhost/banquethouses/frontend/mainpage/";
+                } else if (response == "super admin login sucessful") {
+                    window.location.href =
+                        "http://localhost/banquethouses/superadmin/pages/dashboard/index.php";
                 } else if (response == "user not registered") {
                     alert(response);
                 } else if (response == 1) {

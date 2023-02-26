@@ -55,6 +55,12 @@ function signin()
                 $_SESSION['user_email'] = $row['email'];
                 $_SESSION['user_id'] = $row['id'];
                 echo "User Login Successful";
+            } elseif ($row['type'] == 'superadmin') {
+
+                $_SESSION['super_name'] = $row['name'];
+                $_SESSION['super_email'] = $row['email'];
+                $_SESSION['super_id'] = $row['id'];
+                echo "super admin login sucessful";
             }
         } else {
             echo "incorrect username or password";

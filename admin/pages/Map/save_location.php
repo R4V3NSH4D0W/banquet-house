@@ -9,5 +9,5 @@ $lat = $_POST['latitude'];
 $long = $_POST['longitude'];
 $address = $_POST['address'];
 $detail = $_POST['detail'];
-$result = mysqli_query($conn, "Insert into map VALUES('','$address','$detail','$lat','$long','$admin_id')");
+$result = mysqli_query($conn, "Insert into map VALUES('','$address','$detail','$lat','$long','$admin_id','kathmandu')");
 echo "added sucessfully";

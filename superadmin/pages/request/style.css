@@ -1,0 +1,68 @@
+/* Style the table */
+.container{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+#myTable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #myTable th, #myTable td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  #myTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  #myTable th {
+    background-color: #007aff;
+    color: white;
+  }
+.status{
+    width: 4rem;
+    border: none;
+    height:26px;
+  }
+  /* Style the action buttons */
+  /* .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  } */
+  .active-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .deactive-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

@@ -119,7 +119,7 @@ searchInput.addEventListener("keydown", function (event) {
   }
 });
 // map script
-var mymap = L.map("map").setView([27.7172, 85.324], 10);
+var mymap = L.map("map").setView([27.7172, 85.324], 6);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
@@ -131,6 +131,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   tileSize: 512,
   zoomOffset: -1,
 }).addTo(mymap);
+mymap.removeControl(mymap.zoomControl);
 
 var markers = L.markerClusterGroup({
   iconCreateFunction: function (cluster) {

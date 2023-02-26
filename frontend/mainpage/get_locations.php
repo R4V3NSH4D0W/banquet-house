@@ -1,7 +1,7 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
-$sql = "SELECT * FROM map join  banquet on map.admin_id= banquet.admin_id";
+$sql = "SELECT * FROM map join  banquet on map.admin_id= banquet.admin_id where banquet.status='active' ";
 $result = $conn->query($sql);
 $locations = array();
 if ($result->num_rows > 0) {
