@@ -205,12 +205,12 @@ html::-webkit-scrollbar-thumb{
     font-size: 1.2rem;
     background-color: #0080ff;
     border-radius: 10px;
+    font
 }
 
 .about-content .about-contents .ab-article .abt-btn a:hover{
     background-color: #00c6ff;
     border: none;
-    font-weight: bold;
 }
 
 
