@@ -482,6 +482,10 @@ html::-webkit-scrollbar-thumb{
     margin: 4rem;
 }
 
+.review .review-title span{
+    color: #00c6ff;
+}
+
 .review .review-title h3::after{
     content: '';
     width: 80%;
@@ -490,6 +494,10 @@ html::-webkit-scrollbar-thumb{
     background-color: #475462;
     margin: auto;
     position: relative;
+}
+
+.review-slider {
+    display: grid;
 }
 
 .review .review-slider .review-wrapper{
@@ -507,7 +515,8 @@ html::-webkit-scrollbar-thumb{
     background-color: #f3f6f3;
     border-radius: 3.5rem;
     padding: 3rem 2rem;
-    width: 35%;
+    
+    /* width: 35%; */
     text-align: center;
     margin: 0.5rem;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
@@ -594,6 +603,83 @@ html::-webkit-scrollbar-thumb{
     margin: 4rem;
     text-transform: capitalize;
 }
+
+.contact .heading span{
+    color: #00a7ff;
+}
+
+.contact .heading h2::after{
+    content: '';
+    width: 80%;
+    height: 3px;
+    background: #333;
+    display: block;
+    margin: auto;
+}
+
+.contact-col{
+    display: grid;
+    grid-template-columns: 
+    repeat(2,1fr
+    );
+}
+
+.contact .contact-col .contact-data{
+    margin: 0 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact .contact-col label{
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.contact .contact-col input, textarea{
+    width: 100%;
+    padding: 5px;
+}
+
+.contact .contact-col textarea{
+    width: 100%;
+}
+
+
+
+.contact .contact-col button{
+    width: 7rem;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 5px;
+    background: #00a7ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.contact .contact-col button a{
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.031em;
+    font-weight: 600;
+}
+
+.contact .contact-col .location{
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .contact-col .location iframe{
+    padding: 20px 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
 
 
 
