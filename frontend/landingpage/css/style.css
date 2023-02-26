@@ -641,9 +641,6 @@ html::-webkit-scrollbar-thumb{
     padding: 5px;
 }
 
-.contact .contact-col textarea{
-    width: 100%;
-}
 
 
 
@@ -676,6 +673,27 @@ html::-webkit-scrollbar-thumb{
     height: 100%;
 }
 
+
+
+/* 
+
+============================
+Footer
+============================ */
+
+
+.footer{
+    background: #0080ff;
+    width: 100%;
+    height: 200px;
+    margin-top: 5rem ;
+}
+
+.footer-col{
+    display: grid;
+    grid-template-columns: repeat(3,1fr
+    );
+}
 
 
 
