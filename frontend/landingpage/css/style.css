@@ -131,14 +131,13 @@ html::-webkit-scrollbar-thumb{
     /* border-radius: .5rem; */
     height: 80vh;
     width:100vw;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .header .home .home-slider .swiper-slide img{
     height:100%;
-    width:100%;
+    width:100%;    
     object-fit: cover;
+    background-size: auto;
 }
 
 
@@ -205,7 +204,7 @@ html::-webkit-scrollbar-thumb{
     font-size: 1.2rem;
     background-color: #0080ff;
     border-radius: 10px;
-    font
+
 }
 
 .about-content .about-contents .ab-article .abt-btn a:hover{
@@ -222,8 +221,6 @@ html::-webkit-scrollbar-thumb{
     box-shadow: rgba(0, 0, 0, 0.4) 0px 22px 70px 4px;
 }
 
-.about-contents .about-img{
-}
 
 /* services */
 
@@ -503,9 +500,10 @@ html::-webkit-scrollbar-thumb{
 .cta{
     margin: 40px auto;
     width: 92%;
-    background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.5)) ,url(g-5.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(/frontend/landingpage/images/g-2.jpg);
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
     border-radius: 10px;
     text-align: center;
     padding: 50px 0;
@@ -514,7 +512,7 @@ html::-webkit-scrollbar-thumb{
 .cta h1{
     color: #ffff;
     font-size: 55px;
-    margin: 20px 0;
+    margin: 18px 0;
 }
 
 .cta .cta-btn{
@@ -522,7 +520,7 @@ html::-webkit-scrollbar-thumb{
     border: 2px solid #eeee;
     padding: 10px 15px;
     font-weight: bold;
-    color: #000;
+    color: #fff;
     border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
