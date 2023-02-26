@@ -317,45 +317,45 @@ section{
     padding-right: .5rem;
 }
 
-.reivew .box{
+.review .box{
     border-radius: .5rem;
     background: #333;
     padding:2rem;
     position: relative;
 }
 
-.reivew .box .fa-quote-right{
+.review .box .fa-quote-right{
     position: absolute;
     top:2rem; right: 2rem;
     color:var(--main-color);
     font-size: 5rem;
 }
 
-.reivew .box .user{
+.review .box .user{
     display: flex;
     align-items: center;
     gap:1.5rem;
     padding-bottom: 1rem;
 }
 
-.reivew .box .user img{
+.review .box .user img{
     height:7rem;
     width: 7rem;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.reivew .box .user h3{
+.review .box .user h3{
     font-size: 2rem;
     color:#fff;
 }
 
-.reivew .box .user span{
+.review .box .user span{
     font-size: 1.5rem;
     color:#eee;
 }
 
-.reivew .box p{
+.review .box p{
     line-height: 2;
     color:#eee;
     padding:.5rem 0;

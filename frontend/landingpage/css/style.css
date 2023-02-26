@@ -105,31 +105,6 @@ html::-webkit-scrollbar-thumb{
     z-index: 10;
     cursor: pointer;
 }
-/* search btn */
-/* .search-box{
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    background: #fff;
-    align-items: center;
-    padding: 0 30px;
-    transition: 0.5s ease-in-out;
-}
-
-.search-box input{
-    width: 100%;
-    border: none;
-    outline: none;
-    height: 50px;
-    font-size: 1.25em;
-    background: #fff;
-    border-radius: 1px solid rgba(0,0,0,0.5);
-} */
-
-
-/* home-section */
 .home-section{
     display: flex;
     align-items: center;
@@ -153,9 +128,11 @@ html::-webkit-scrollbar-thumb{
 
 .header .home .home-slider .swiper-slide{
     overflow: hidden;
-    border-radius: .5rem;
-    height: 60vh;
-    width:40vw;
+    /* border-radius: .5rem; */
+    height: 80vh;
+    width:100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .header .home .home-slider .swiper-slide img{
@@ -166,66 +143,6 @@ html::-webkit-scrollbar-thumb{
 
 
 /* about section */
-
-
-
-/* .about-content .ab-title{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    letter-spacing: 1.5px;
-    padding: 50px 0;
-}
-
-.about-content .ab-title h2::after{
-    content: '';
-    height: 4px;
-    width: 110px;
-    background-color: #525252;
-    border: 6px;
-    position: relative;
-    display: block;
-    margin: auto;
-}
-
-.about-contents{
-     width: 85%;
-     display: grid;
-     grid-template-columns: repeat(2,1fr);
-     grid-gap: 40px;
-     margin: 30px auto;
-}
-
-.about-contents .ab-article{
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
-    background-color: #eee;
-    padding: 25px;
-}
-
-.about-contents .ab-article h3{
-    font-size: 22px;
-    line-height: 1.5;
-    letter-spacing: 1px;
-    padding-bottom: 20px;
-}
-
-.about-contents .ab-article p{
-    font-size: 19px;
-    line-height: 1.5;
-}
-
-.about-img{
-    width: 100%;
-    margin: auto;
-    box-shadow: #444;
-}
-
-.about-img img{
-    width: 100%;
-    height: auto;
-} */
 
 
 .about-content .ab-title{
@@ -257,24 +174,56 @@ html::-webkit-scrollbar-thumb{
 }
 
 .about-contents{
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 30px;
+    margin: 50px auto;
 }
 
-.about-contents .ab-article{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.about-content .about-contents .ab-article h3{
+    padding: 10px 0;
+    text-transform: capitalize;
+    font-size: 23px;
 }
 
-.about-contents .ab-article .about-img img{
-    width: 200px;
-    height: 200px;
+.about-content .about-contents .ab-article p{
+    text-align: justify;
+    line-height: 1.3;
+    margin-right:23px;
+}
+
+.about-content .about-contents .ab-article .abt-btn{
+    margin: 25px 0;
+    
+}
+
+.about-content .about-contents .ab-article .abt-btn a{
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #fff;
+    font-size: 1.2rem;
+    background-color: #0080ff;
+    border-radius: 10px;
+}
+
+.about-content .about-contents .ab-article .abt-btn a:hover{
+    background-color: #00c6ff;
+    border: none;
+    font-weight: bold;
 }
 
 
+
+.about-contents .about-img img{
+    width: 90%;
+    height: 80%;
+    border: 3px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 22px 70px 4px;
+}
+
+.about-contents .about-img{
+}
 
 /* services */
 
@@ -524,6 +473,155 @@ html::-webkit-scrollbar-thumb{
 .pricing .price-container .price-box:hover{
     transform: scale(1.03);
 }
+
+/* testimonials */
+
+
+/* .review .review-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 4rem;
+}
+
+.review .review-title h3::after{
+    content: '';
+    width: 80%;
+    height: 3px;
+    display: block;
+    background-color: #475462;
+    margin: auto;
+    position: relative;
+} */
+
+
+/* 
+
+------------- call to action --------------- */
+
+.cta{
+    margin: 40px auto;
+    width: 92%;
+    background: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.5)) ,url(g-5.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.cta h1{
+    color: #ffff;
+    font-size: 55px;
+    margin: 20px 0;
+}
+
+.cta .cta-btn{
+    text-decoration: none;
+    border: 2px solid #eeee;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #000;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.cta .cta-btn:hover{
+    background: #00a7ff;
+    color: #ffff;
+    transform: 0.10s;
+}
+
+.contact .heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 4rem;
+    text-transform: capitalize;
+}
+
+
+.contact .heading h3::after{
+    content: '';
+    width: 80%;
+    height: 3px;
+    display: block;
+    background-color: #475462;
+    margin: auto;
+    position: relative;
+}
+
+.contact .heading span{
+    color: #00a7ff;
+}
+    
+
+
+.contact form{
+    max-width: 70rem;
+    margin:1rem auto;
+    text-align: center;
+}
+
+.contact form .inputBox{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .inputBox input,
+.contact form textarea{
+    width: 100%;
+    background:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.5));
+    border-radius: .5rem;
+    padding:1rem;
+    margin:.7rem 0;
+    font-size: 1.5rem;
+    color:#fff;
+    text-transform: none;
+}
+
+.contact form .inputBox input::placeholder,
+.contact form textarea::placeholder{
+    color:#eee;
+    text-transform: capitalize;
+}
+
+.contact form .inputBox input:focus,
+.contact form textarea:focus{
+    background:#444;
+}
+
+.contact form .inputBox input{
+    width: 49%;
+}
+
+.contact form textarea{
+    resize: none;
+}
+
+
+.contact form .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding:.8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    background: #666;
+    color:#fff;
+    cursor: pointer;
+    font-weight: 600;
+ }
+
+ .contact form .btn:hover{
+    background-color: #00a7ff;
+    color: #ffff;
+ }
+
+
 
 
 
