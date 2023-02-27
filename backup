@@ -1,3 +1,56 @@
+<?php
+require '/programs/xampp/htdocs/banquethouses/connection/config.php';
+
+if (!isset($_SESSION['super_id'])) {
+    header('location:../../../login/index.php');
+    exit();
+}
+
+$i = 1;
+$rows_per_page = 8;
+
+if (!isset($_GET['page'])) {
+    $page = 1;
+} else {
+    $page = $_GET['page'];
+}
+
+$start = ($page - 1) * $rows_per_page;
+
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $sql = "SELECT * FROM user 
+            JOIN banquet ON banquet.admin_id=user.id  
+            JOIN map ON map.admin_id=banquet.admin_id 
+            WHERE user.name LIKE '%$search%' OR 
+                  user.email LIKE '%$search%' OR 
+                  banquet.banquetname LIKE '%$search%' OR 
+                  map.city LIKE '%$search%' 
+            LIMIT $start, $rows_per_page";
+    $total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user 
+                                       JOIN banquet ON banquet.admin_id=user.id  
+                                       JOIN map ON map.admin_id=banquet.admin_id 
+                                       WHERE user.name LIKE '%$search%' OR 
+                                             user.email LIKE '%$search%' OR 
+                                             banquet.banquetname LIKE '%$search%' OR 
+                                             map.city LIKE '%$search%'");
+} else {
+    $sql = "SELECT * FROM user 
+            JOIN banquet ON banquet.admin_id=user.id  
+            JOIN map ON map.admin_id=banquet.admin_id 
+            LIMIT $start, $rows_per_page";
+    $total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user 
+                                       JOIN banquet ON banquet.admin_id=user.id  
+                                       JOIN map ON map.admin_id=banquet.admin_id");
+}
+
+$rows = mysqli_query($conn, $sql);
+
+$total_rows = mysqli_fetch_assoc($total_rows)['total'];
+
+$total_pages = ceil($total_rows / $rows_per_page);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,107 +58,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <!-- Include the Leaflet CSS and JavaScript files -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../sidebar/style.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Admin</title>
 </head>
 
 <body>
-    <div id="map"></div>
-    <input type="hidden" id="latitude" name="latitude" value="">
-    <input type="hidden" id="longitude" name="longitude" value="">
-    <button type="submit" id="submit">Submit</button>
-
-
-</body>
-<style>
-    #map {
-        width: 100%;
-        height: 500px;
-    }
-</style>
-<script>
-    var map = L.map('map').setView([27.6588, 85.3247], 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        maxZoom: 18
-    }).addTo(map);
-    var marker = L.marker([27.6588, 85.3247], {
-        draggable: true
-    }).addTo(map);
-    marker.on('dragend', function(event) {
-        var marker = event.target;
-        var position = marker.getLatLng();
-        document.getElementById('latitude').value = position.lat;
-        document.getElementById('longitude').value = position.lng;
-    });
-</script>
-<script>
-    document.getElementById('submit').addEventListener('click', function(event) {
-        event.preventDefault();
+    <div class="sidebar close">
+        <?php include '../sidebar/sidebar.php'; ?>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Admin</span>
+        </div>
+        <div class="container">
+            <h3>Banquet Status</h3>
+            <br>
+            <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <input type="text" name="search" placeholder="Search..."
+                    value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <br>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Banquet Name</th>
+                            <th>Admin Name</th>
+                            <th>Email</th>
+                            <th>City</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (mysqli_num_rows($rows) > 0) {
+                            while ($data = mysqli_fetch_assoc($rows)) {
+                        ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $data['banquetname']; ?></td>
+                            <td><?php echo $data['name']; ?></td>
+                            <td><?php echo $data['email']; ?></td>
+                            <td><?php echo $data['city']; ?></td>
+                            <td>
+                                <?php if ($data['status'] == 'active') : ?>
+                                <button class="status" style="background-color: green; color: white;">Active</button>
+                                <?php elseif ($data['status'] == 'pending') : ?>
+                                <button class="status" style="background-color: blue; color: white;">Pending</button>
+                                <?php else : ?>
+                                <button class="status" style="background-color: red; color: white;">Deactive</button>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <button class="active-button"
+                                    onclick="updateStatus('active', <?php echo $data['admin_id']; ?>)">Active</button>
+                                <button class="deactive-button"
+                                    onclick="updateStatus('deactive', <?php echo $data['admin_id']; ?>)">Deactive</button>
+                            </td>
+                        </tr>
+                        <?php
+                                $i++;
+                            }
+                        } else {
+                            echo '<tr><td colspan="7" style="text-align:center;">No Data Found</td></tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <br>
+                <div class="pagination">
+                    <?php
+                    if ($total_pages > 1) {
+                        if ($page > 1) {
+                            echo '<a href="banquet-status.php?page=' . ($page - 1) . '">Prev</a>';
+                        }
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            if ($i == $page) {
+                                echo '<span class="current">' . $i . '</span>';
+                            } else {
+                                echo '<a href="banquet-status.php?page=' . $i . '">' . $i . '</a>';
+                            }
+                        }
+                        if ($page < $total_pages) {
+                            echo '<a href="banquet-status.php?page=' . ($page + 1) . '">Next</a>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../sidebar/script.js"></script>
+    <script>
+    function updateStatus(status, id) {
+        // Send an AJAX request to update the status of the record
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    // Do something with the response from the server
-                    console.log(xhr.responseText);
+                    // Update the status in the table row
+                    var statusCell = document.querySelector(`tr[data-id="${id}"] td:nth-child(6)`);
+                    statusCell.innerHTML =
+
+                        `<button style="background-color: ${status === 'active' ? 'green' : 'red'}; color: white;width: 4rem; height:26px;border:none;">${status.charAt(0).toUpperCase() + status.slice(1)}</button>`;
                 } else {
-                    // Handle errors
                     console.log('Error: ' + xhr.status);
                 }
             }
         };
-        xhr.open('POST', 'save_location.php');
+        xhr.open('POST', 'update_status.php');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var latitude = document.getElementById('latitude').value;
-        var longitude = document.getElementById('longitude').value;
-        var data = 'latitude=' + encodeURIComponent(latitude) + '&longitude=' + encodeURIComponent(longitude);
-        console.log(data);
+        var data = `id=${encodeURIComponent(id)}&status=${encodeURIComponent(status)}`;
         xhr.send(data);
-    });
-</script>
-
+    }
+    </script>
+</body>
 
 </html>
-
-
-getlocation.php
-<?php
-// Connect to MySQL database
-$host = 'localhost';  // Your MySQL host name
-$user = 'root';       // Your MySQL username
-$pass = '';           // Your MySQL password
-$db = 'location_db';  // Your MySQL database name
-$conn = new mysqli($host, $user, $pass, $db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve location data from the database
-$sql = "SELECT * FROM locations";
-$result = $conn->query($sql);
-$locations = array();
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $location = array(
-            'lat' => $row['latitude'],
-            'lng' => $row['longitude'],
-            'name' => $row['name']
-        );
-        array_push($locations, $location);
-    }
-}
-
-// Send location data back to the client
-header('Content-Type: application/json');
-echo json_encode($locations);
-
-// Close database connection
-$conn->close();
-?>

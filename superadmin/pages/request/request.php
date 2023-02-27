@@ -6,9 +6,44 @@ if (!isset($_SESSION['super_id'])) {
     header('location:../../../login/index.php');
     exit();
 }
+// Check if a search term was submitted
 
-$rows = mysqli_query($conn, "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id  JOIN map ON map.admin_id=banquet.admin_id");
+
 $i = 1;
+$rows_per_page = 8;
+
+if (!isset($_GET['page'])) {
+    $page = 1;
+} else {
+    $page = $_GET['page'];
+}
+
+$start = ($page - 1) * $rows_per_page;
+
+$sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id  JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
+
+$rows = mysqli_query($conn, $sql);
+
+$total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user JOIN banquet ON banquet.admin_id=user.id  JOIN map ON map.admin_id=banquet.admin_id");
+$total_rows = mysqli_fetch_assoc($total_rows)['total'];
+
+$total_pages = ceil($total_rows / $rows_per_page);
+if (isset($_GET['search'])) {
+    $search_term = mysqli_real_escape_string($conn, $_GET['search']);
+
+    // Modify the SQL query to include a WHERE clause with the search term
+    $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id
+            WHERE user.name LIKE '%$search_term%'
+            OR user.email LIKE '%$search_term%'
+            OR banquet.banquetname LIKE '%$search_term%'
+            OR map.city LIKE '%$search_term%'
+            LIMIT $start, $rows_per_page";
+} else {
+    // If no search term was submitted, use the original query
+    $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
+}
+$rows = mysqli_query($conn, $sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +55,7 @@ $i = 1;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="../sidebar/style.css">
     <link rel="stylesheet" href="style.css">
     <title>Admin</title>
@@ -35,8 +71,12 @@ $i = 1;
             <span class="text">Admin</span>
         </div>
         <div class="container">
-            <h3>Applications</h3>
+            <h3>Banquet Status</h3>
             <br>
+            <form method="get" action="">
+                <input type="text" name="search" placeholder="Search.." class="search-field">
+                <button type="submit" class="search-button">Search</button>
+            </form>
             <table id="myTable">
                 <thead>
                     <tr>
@@ -74,32 +114,32 @@ $i = 1;
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?> class="active" <?php endif; ?>><?php echo $i; ?></a>
+                <?php endfor; ?>
+            </div>
+
         </div>
-    </section>
-
-    <script src="../sidebar/script.js"></script>
-    <script>
-        function updateStatus(status, id) {
-            // Send an AJAX request to update the status of the record
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // Update the status in the table row
-                        var statusCell = document.querySelector(`tr[data-id="${id}"] td:nth-child(6)`);
-                        statusCell.innerHTML =
-
-                            `<button style="background-color: ${status === 'active' ? 'green' : 'red'}; color: white;width: 4rem; height:26px;border:none;">${status.charAt(0).toUpperCase() + status.slice(1)}</button>`;
-                    } else {
-                        console.log('Error: ' + xhr.status);
+        <script>
+            function updateStatus(status, id) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "update_status.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                        location.reload();
                     }
-                }
-            };
-            xhr.open('POST', 'update_status.php');
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            var data = `id=${encodeURIComponent(id)}&status=${encodeURIComponent(status)}`;
-            xhr.send(data);
-        }
-    </script>
+                };
+                xhr.send("status=" + status + "&id=" + id);
+            }
+        </script>
+
+</body>
+
+</html>
+
+<script src="../sidebar/script.js"></script>
 
 </html>
