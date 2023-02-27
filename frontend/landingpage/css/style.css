@@ -496,9 +496,9 @@ html::-webkit-scrollbar-thumb{
     position: relative;
 }
 
-.review-slider {
+/* .review-slider {
     display: grid;
-}
+} */
 
 .review .review-slider .review-wrapper{
     padding: 1rem 2rem; 
@@ -515,8 +515,6 @@ html::-webkit-scrollbar-thumb{
     background-color: #f3f6f3;
     border-radius: 3.5rem;
     padding: 3rem 2rem;
-    
-    /* width: 35%; */
     text-align: center;
     margin: 0.5rem;
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
@@ -524,8 +522,8 @@ html::-webkit-scrollbar-thumb{
 .review .review-slider .box img{
     text-align: center;
     border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
     object-fit: cover;
     border: 4px solid #0080ff;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
