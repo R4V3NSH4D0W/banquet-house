@@ -7,13 +7,12 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complete responsive tour and travel agency website design tutorial</title>
+    <title>near by </title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
 
@@ -97,6 +96,44 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <span>U</span>
         </h1>
         <div id="banquets"></div>
+
+    </section>
+    <!-- footer section -->
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur adipisci expedita, est facilis
+                    nisi qui facere nesciunt laudantium quibusdam, repellat nihil, nulla dolorem saepe debitis
+                    reiciendis incidunt. Labore, autem praesentium.</p>
+            </div>
+            <div class="box">
+                <h3>Avilabe Locations</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
+
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
+
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">facebook</a>
+                <a href="#">instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">github</a>
+
+            </div>
+        </div>
+        <h1 class="credit">created by<span> Team GOF</span> | all right reserved !</h1>
     </section>
 
 </body>
@@ -105,24 +142,24 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 <!-- custom js file link  -->
 <script src="../script.js"></script>
 <script>
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showBanquets);
-} else {
-    alert("Geolocation is not supported by this browser.");
-}
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showBanquets);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
 
-function showBanquets(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("banquets").innerHTML = this.responseText;
-        }
-    };
-    xmlhttp.open("GET", "function.php?lat=" + lat + "&lng=" + lng, true);
-    xmlhttp.send();
-}
+    function showBanquets(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("banquets").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "function.php?lat=" + lat + "&lng=" + lng, true);
+        xmlhttp.send();
+    }
 </script>
 
 </html>

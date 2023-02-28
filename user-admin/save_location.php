@@ -25,7 +25,7 @@ $fileActualExt = strtolower(end($fileExt));
 
 $allowed = array('jpg', 'jpeg', 'png', 'pdf');
 $check = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM map where admin_id=$user_id"));
-if ($check['admin_id'] != $user_id) {
+// if ($check['admin_id'] != $user_id) {
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
             if ($fileSize < 100000000) {
@@ -52,6 +52,6 @@ if ($check['admin_id'] != $user_id) {
     }
 
     echo "sent sucessfully";
-} else {
-    echo "user already send request";
-}
+// // } else {
+// //     echo "user already send request";
+// }

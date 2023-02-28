@@ -12,7 +12,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
 
@@ -159,7 +160,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     </section>
     <!-- collection section -->
 
-    <section class="packages" id="packages">
+    <!-- <section class="packages" id="packages">
 
         <h1 class="heading">
             <span>T</span>
@@ -180,20 +181,59 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                 <img src="./uploads/Kathmandu.jpg" alt="Image 1">
                 <div class="image-text">
                     <h3>KATHMANDU</h3>
-                    <!-- <p>Image 1 description goes here</p> -->
                 </div>
             </div>
             <div class="image-item">
                 <img src="./uploads/63df75b8abb864.08054382.jpg" alt="Image 2">
                 <div class="image-text">
                     <h3>POKHARA</h3>
-                    <!-- <p>Image 2 description goes here</p> -->
                 </div>
             </div>
             <div class="image-item">
                 <img src="./uploads/63f784bfe1a3e0.12268603.jpg" alt="Image 3">
                 <div class="image-text">
                     <h3>DHANKUTA</h3>
+    
+                </div>
+            </div>
+        </div>
+
+
+    </section> -->
+    <!-- collection section end here -->
+    <!-- our venu section starts here -->
+    <section class="packages" id="packages">
+
+        <h1 class="heading">
+            <span>O</span>
+            <span>U</span>
+            <span>R</span>
+            <span class="space"></span>
+            <span>V</span>
+            <span>E</span>
+            <span>N</span>
+            <span>U</span>
+            <span>E</span>
+        </h1>
+        <div class="image-collection" id="venue">
+            <div class="image-item">
+                <img src="./uploads/wedding.jpg" alt="Image 1" onclick="location.href='venue.php?type=wedding';">
+                <div class="image-text">
+                    <h3>Wedding</h3>
+                </div>
+            </div>
+            <div class="image-item">
+                <img src="./uploads/conference.jpg" alt="Image 2" onclick="location.href='venue.php?type=conference';">
+                <div class="image-text">
+                    <h3>Conference</h3>
+                    <!-- <p>Image 2 description goes here</p> -->
+                </div>
+            </div>
+            <div class="image-item">
+                <img src="./uploads/63f784bfe1a3e0.12268603.jpg" alt="Image 3"
+                    onclick="location.href='venue.php?type=other';">
+                <div class=" image-text">
+                    <h3>Others</h3>
                     <!-- <p>Image 3 description goes here</p> -->
                 </div>
             </div>
@@ -202,7 +242,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
 
     </section>
-    <!-- collection section end here -->
+    <!-- our venue section ends here -->
+
 
     <section class="packages" id="packages">
 
@@ -233,34 +274,34 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     $address_parts = explode(',', $rows['address']);
                     $address = trim($address_parts[0]);
             ?>
-                    <div class="box">
-                        <img src="../../user-admin/uploads/<?php echo $rows["image"]; ?>" alt="">
-                        <div class="content">
-                            <h3><?php echo $rows["banquetname"]; ?> <p><?php echo $rows["capacity"]; ?> Guests</p>
-                            </h3>
+            <div class="box">
+                <img src="../../user-admin/uploads/<?php echo $rows["image"]; ?>" alt="">
+                <div class="content">
+                    <h3><?php echo $rows["banquetname"]; ?> <p><?php echo $rows["capacity"]; ?> Guests</p>
+                    </h3>
 
-                            <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                            <p><?php echo $rows["details"]; ?></p>
+                    <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                    <p><?php echo $rows["details"]; ?></p>
 
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <!-- <div class="price"> $90.00 <span>$120.00</span> </div> -->
-                            <a href="../landingpage/home.php?page_id=<?php echo $rows["admin_id"]; ?>" class="btn">View More</a>
-                        </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
-                <?php
+                    <!-- <div class="price"> $90.00 <span>$120.00</span> </div> -->
+                    <a href="../landingpage/home.php?page_id=<?php echo $rows["admin_id"]; ?>" class="btn">View More</a>
+                </div>
+            </div>
+            <?php
                     $i++;
                 }
 
             endforeach;
             if ($count > 3) {
                 ?>
-                <button class="view-more" onclick="location.href='./viewall/allbanquets.php';">View All</button>
+            <button class="view-more" onclick="location.href='./viewall/allbanquets.php';">View All</button>
             <?php
             }
             ?>
@@ -318,7 +359,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
             </div>
         </div>
-        <h1 class="credit">created by<span> Team GOF</span> | all right reserved !</h1>
+        <h1 class="credit">created by<span> GoFFy Guys</span> | all right reserved !</h1>
     </section>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 

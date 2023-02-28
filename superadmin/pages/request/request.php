@@ -1,30 +1,39 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
-
 if (!isset($_SESSION['super_id'])) {
     header('location:../../../login/index.php');
     exit();
 }
-// Check if a search term was submitted
-
 
 $i = 1;
 $rows_per_page = 8;
 
-if (!isset($_GET['page'])) {
+if (!isset($_POST['page'])) {
     $page = 1;
 } else {
-    $page = $_GET['page'];
+    $page = $_POST['page'];
 }
 
 $start = ($page - 1) * $rows_per_page;
 
-$sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id  JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
+
+if (isset($_POST['status'])) {
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
+    if ($status == 'All') {
+        $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
+        $total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id");
+    } else {
+        $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id WHERE banquet.status = '$status' LIMIT $start, $rows_per_page";
+        $total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id WHERE banquet.status = '$status'");
+    }
+} else {
+    $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
+    $total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id");
+}
 
 $rows = mysqli_query($conn, $sql);
 
-$total_rows = mysqli_query($conn, "SELECT COUNT(*) as total FROM user JOIN banquet ON banquet.admin_id=user.id  JOIN map ON map.admin_id=banquet.admin_id");
 $total_rows = mysqli_fetch_assoc($total_rows)['total'];
 
 $total_pages = ceil($total_rows / $rows_per_page);
@@ -42,8 +51,7 @@ if (isset($_GET['search'])) {
     // If no search term was submitted, use the original query
     $sql = "SELECT * FROM user JOIN banquet ON banquet.admin_id=user.id JOIN map ON map.admin_id=banquet.admin_id LIMIT $start, $rows_per_page";
 }
-$rows = mysqli_query($conn, $sql);
-
+$filter = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -71,28 +79,40 @@ $rows = mysqli_query($conn, $sql);
             <span class="text">Admin</span>
         </div>
         <div class="container">
-            <h3>Banquet Status</h3>
+            <h2>Banquet Status</h2>
             <br>
             <form method="get" action="">
                 <input type="text" name="search" placeholder="Search.." class="search-field">
                 <button type="submit" class="search-button">Search</button>
             </form>
+            <form action="" method="POST">
+                <label for="status">Filter by:</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="All">All</option>
+                    <option value="active">Active</option>
+                    <option value="deactive">Deactive</option>
+                </select>
+                <button type="submit" name="submit-filter" class="btn btn-primary"><i class="fa fa-filter"></i>
+                    Filter</button>
+            </form>
+
             <table id="myTable">
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Banquet name</th>
-                        <th>City</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Banquet name</th>
+                            <th>City</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
                 <tbody>
-                    <?php foreach ($rows as $row) : ?>
-                        <tr data-id="<?php echo $row['admin_id']; ?>">
-                            <td><?php echo $i++; ?></td>
+                    <?php while ($row = mysqli_fetch_assoc($rows)) { ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
                             <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['email']; ?></td>
                             <td><?php echo $row['banquetname']; ?></td>
@@ -111,35 +131,47 @@ $rows = mysqli_query($conn, $sql);
                                 <button class="deactive-button" onclick="updateStatus('deactive', <?php echo $row['admin_id']; ?>)">Deactive</button>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                        <?php $i++; ?>
+                    <?php } ?>
                 </tbody>
             </table>
-
             <div class="pagination">
-                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                    <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?> class="active" <?php endif; ?>><?php echo $i; ?></a>
-                <?php endfor; ?>
+                <?php for ($p = 1; $p <= $total_pages; $p++) { ?>
+                    <lable class="<?php if ($page === (string)$p) echo 'active'; ?>">
+                        <a href="#" class="page-link" onclick="submitForm(<?php echo $p; ?>)">
+                            <?php echo $p; ?>
+                        </a>
+                    </lable>
+                <?php } ?>
+                <form id="pagination-form" method="POST">
+                    <input type="hidden" name="page" id="page" value="">
+                </form>
             </div>
-
         </div>
-        <script>
-            function updateStatus(status, id) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "update_status.php", true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function() {
-                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                        location.reload();
-                    }
-                };
-                xhr.send("status=" + status + "&id=" + id);
-            }
-        </script>
 
+    </section>
+    </div>
+    <script>
+        function updateStatus(status, id) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "update_status.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    location.reload();
+                }
+            };
+            xhr.send("status=" + status + "&id=" + id);
+        }
+    </script>
+    <script>
+        function submitForm(page) {
+            document.getElementById("page").value = page;
+            document.getElementById("pagination-form").submit();
+        }
+
+        document.querySelector('.bx-menu').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('close');
+        });
+    </script>
 </body>
-
-</html>
-
-<script src="../sidebar/script.js"></script>
-
-</html>

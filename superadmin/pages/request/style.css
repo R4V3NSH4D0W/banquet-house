@@ -90,12 +90,21 @@
   .pagination a:hover {
     background-color:#1a6ec9;
   }
-  
-  .pagination .active {
+  .page-link .active{
     background-color:#007aff;
     color: white;
     border: 1px solid #007aff;
   }
+  /* .pagination a:active {
+    background-color:#007aff;
+    color: white;
+    border: 1px solid #007aff;
+} */
+  /* .pagination .active {
+    background-color:#007aff;
+    color: white;
+    border: 1px solid #007aff;
+  } */
   /* Style for search field */
 .search-field {
   padding: 10px;
@@ -121,4 +130,21 @@
 /* Hover effect for search button */
 .search-button:hover {
   background-color: #0069d9;
+}
+.filter-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-form label {
+  margin-right: 10px;
+}
+
+.filter-form select {
+  margin-right: 10px;
+}
+
+.filter-form button {
+  margin-left: auto;
 }

@@ -188,3 +188,11 @@ function showBanquets(position) {
   xmlhttp.open("GET", "nearbybanquet.php?lat=" + lat + "&lng=" + lng, true);
   xmlhttp.send();
 }
+// function get_venue(type){
+// var xmlhttp=new XMLHttpRequest();
+// xmlhttp.onreadystatechange=function(){
+//   if(this.readyState==4 && this.readystatus==200){
+// document.getElementById()
+//   }
+// }
+// }

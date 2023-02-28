@@ -774,3 +774,29 @@ header .search-bar-container label:hover{
 .view-more:hover{
   background-color: #0062cc;
 }
+
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: left;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 16px;
+  border: 1px solid #469af3;
+  margin: 0 4px;
+}
+
+.pagination a:hover {
+  background-color:#1a6ec9;
+}
+
+.pagination .active {
+  background-color:#007aff;
+  color: white;
+  border: 1px solid #007aff;
+}

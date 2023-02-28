@@ -12,7 +12,7 @@ if (isset($_GET['lat']) && isset($_GET['lng'])) {
 FROM map m
 JOIN banquet b ON m.admin_id = b.admin_id 
 WHERE b.status = 'active'
-HAVING distance < 10 
+HAVING distance < 5
 ORDER BY distance
 LIMIT 0, 20;";
     $result = mysqli_query($conn, $sql);
