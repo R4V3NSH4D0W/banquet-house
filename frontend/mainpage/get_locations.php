@@ -8,8 +8,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $location = array(
             'name' => $row['banquetname'],
-            // 'admin_id' => $row['admin_id'],
-            // 'image' => $row['image'],
+            'admin_id' => $row['admin_id'],
+            'image' => $row['image'],
             'latitude' => $row['lat'],
             'longitude' => $row['lng']
         );

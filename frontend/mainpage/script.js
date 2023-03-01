@@ -148,10 +148,20 @@ xhttp.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     var locations = JSON.parse(this.responseText);
     for (var i = 0; i < locations.length; i++) {
-      var marker = L.marker([
-        locations[i].latitude,
-        locations[i].longitude,
-      ]).bindPopup(locations[i].name);
+      var marker = L.marker([locations[i].latitude, locations[i].longitude])
+        .bindPopup(
+          `
+      <div style="width:600px; height: 230px; overflow: auto;">
+        <h3>${locations[i].name}</h3>
+        <a href="../landingpage/home.php?page_id=${locations[i].admin_id}">
+          <img src="../../user-admin/uploads/${locations[i].image}" style="max-width: 300px;">
+        </a>
+      </div>`
+        )
+
+        .on("click", function () {
+          this.openPopup();
+        });
       markers.addLayer(marker);
     }
     mymap.addLayer(markers);
