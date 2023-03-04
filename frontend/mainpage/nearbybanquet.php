@@ -21,18 +21,18 @@ LIMIT 0, 20;";
     $i = 0;
     if (mysqli_num_rows($result) > 0) {
 ?>
-        <h1 class="heading">
-            <span>N</span>
-            <span>E</span>
-            <span>A</span>
-            <span>R</span>
-            <span class="space"></span>
-            <span>Y</span>
-            <span>O</span>
-            <span>U</span>
-        </h1>
-        <div class="box-container">
-            <?php
+<h1 class="heading">
+    <span>N</span>
+    <span>E</span>
+    <span>A</span>
+    <span>R</span>
+    <span class="space"></span>
+    <span>Y</span>
+    <span>O</span>
+    <span>U</span>
+</h1>
+<div class="box-container">
+    <?php
             // Output the banquet house locations within a certain range
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['status'] !== 'pending') {
@@ -43,24 +43,24 @@ LIMIT 0, 20;";
                         $address_parts = explode(',', $row['address']);
                         $address = trim($address_parts[0]);
             ?>
-                        <div class="box">
-                            <img src="../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
-                            <div class="content">
-                                <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
-                                    <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                                    <p><?php echo $row["details"]; ?></p>
-                                    <div class="stars">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </div>
-                                    <a href="../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View More</a>
+    <div class="box">
+        <img src="../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
+        <div class="content">
+            <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
+                <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                <p><?php echo $row["details"]; ?></p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <a href="../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View More</a>
 
-                            </div>
-                        </div>
-        <?php
+        </div>
+    </div>
+    <?php
                         $i++;
                         // echo "<b>" . $row["address"] . "<br>Latitude: " . $row["banquetname"] . " Longitude: " . $row["lng"] . "<br><br>";
                     }
@@ -70,7 +70,7 @@ LIMIT 0, 20;";
     }
     if ($count > 3) {
         ?>
-        <button class="view-more" onclick="location.href='./viewall/viewall.php';">View All</button>
+    <button class="view-more" onclick="location.href='./viewall/viewall.php';">View All</button>
     <?php
     }
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head><link rel="stylesheet" href="reviewstye.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+    <button id="add-review-btn">Add Review</button>
+
+    <div id="modal" class="hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form>
+          <h2>Add <span style="color:#007aff;">Review</span></h2>
+
+          <!-- <label for="review-body">Review:</label> -->
+          <textarea id="review-body" placeholder="Add your review here ..." name="review-body"></textarea><br>
+    
+         <h3> <label for="review-rating" style="color:#007aff;">Rating</label></h3>
+          <div id="rating-stars">
+            <input type="radio" name="rating" id="rating-5" value="5"><label for="rating-5"><i class="fas fa-star"></i></label>
+            <input type="radio" name="rating" id="rating-4" value="4"><label for="rating-4"><i class="fas fa-star"></i></label>
+            <input type="radio" name="rating" id="rating-3" value="3"><label for="rating-3"><i class="fas fa-star"></i></label>
+            <input type="radio" name="rating" id="rating-2" value="2"><label for="rating-2"><i class="fas fa-star"></i></label>
+            <input type="radio" name="rating" id="rating-1" value="1"><label for="rating-1"><i class="fas fa-star"></i></label>
+          </div>
+    
+          <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+    
+    <div id="overlay" class="hidden"></div>
+    
+</body>
+<script src="review.js">
+
+</script>
+</html>

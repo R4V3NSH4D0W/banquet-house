@@ -13,12 +13,16 @@ $id = $_GET["page_id"];
     <!-- <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'> -->
     <!-- Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- css linked -->
     <link rel="stylesheet" href="css/teststyle.css">
+    <link rel="stylesheet" href="css/reviewstye.css">
 </head>
 
 <body>
@@ -135,6 +139,7 @@ $id = $_GET["page_id"];
                 <?php
                     endforeach;
                     ?>
+                <br>
                 <a href="#" class="priceBtn">Book Now</a>
             </div>
             <?php
@@ -150,10 +155,155 @@ $id = $_GET["page_id"];
 
     <!-- pricing section ends here -->
 
+    <!-- review section stats here -->
+    <section class="review" id="review">
+        <div class="review-title">
+            <h3>Client's <span>Review</span> </h3>
+        </div>
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper review-wrapper">
+                <div class="swiper-slide box">
+
+                    <img src="images/g-1.jpg" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti enim quod aut doloremque
+                        nostrum velit!
+                    </p>
+                    <h3>
+                        Manish Shrestha
+                    </h3>
+                    <div class="stars">
+                        <i class="fas fa-solid fa-star">
+                        </i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+
+                    <img src="images/g-2.jpg" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti enim quod aut doloremque
+                        nostrum velit!
+                    </p>
+                    <h3>
+                        Lenish Magar
+                    </h3>
+                    <div class="stars">
+                        <i class="fas fa-solid fa-star">
+                        </i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+
+                    <img src="images/g-3.jpg" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti enim quod aut doloremque
+                        nostrum velit!
+                    </p>
+                    <h3>
+                        Manish Shrestha
+                    </h3>
+                    <div class="stars">
+                        <i class="fas fa-solid fa-star">
+                        </i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+
+                    <img src="images/g-4.jpg" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti enim quod aut doloremque
+                        nostrum velit!
+                    </p>
+                    <h3>
+                        Lenish Magar
+                    </h3>
+                    <div class="stars">
+                        <i class="fas fa-solid fa-star">
+                        </i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="swiper-slide box">
+
+                    <img src="images/g-5.jpg" alt="">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti enim quod aut doloremque
+                        nostrum velit!
+                    </p>
+                    <h3>
+                        Manish Shrestha
+                    </h3>
+                    <div class="stars">
+                        <i class="fas fa-solid fa-star">
+                        </i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-solid fa-star"></i>
+                        <i class="fas fa-regular fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- review section ends here -->
+    <!-- add review section -->
+    <section id="addreview">
+        <button id="add-review-btn">Add Review</button>
+
+        <div id="modal" class="hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form>
+                    <h2>Add <span style="color:#007aff;">Review</span></h2>
+                    <textarea id="review-body" placeholder="Add your review here ..." name="review-body"></textarea><br>
+                    <h3> <label for="review-rating" style="color:#007aff;">Rating</label></h3>
+                    <div id="rating-stars">
+                        <input type="radio" id="rating-5" value="5" name="rating"><label for="rating-5"><i
+                                class="fas fa-star"></i></label>
+                        <input type="radio" id="rating-4" value="4" name="rating"><label for="rating-4"><i
+                                class="fas fa-star"></i></label>
+                        <input type="radio" id="rating-3" value="3" name="rating"><label for="rating-3"><i
+                                class="fas fa-star"></i></label>
+                        <input type="radio" id="rating-2" value="2" name="rating"><label for="rating-2"><i
+                                class="fas fa-star"></i></label>
+                        <input type="radio" id="rating-1" value="1" name="rating"><label for="rating-1"><i
+                                class="fas fa-star"></i></label>
+                    </div>
+                    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div id="overlay" class="hidden"></div>
+    </section>
+    <!-- add review section ends here -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!-- link js -->
     <script src="js/script.js"></script>
+    <script src="js/review.js"></script>
+
 
 
 </body>

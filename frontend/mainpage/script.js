@@ -151,11 +151,19 @@ xhttp.onreadystatechange = function () {
       var marker = L.marker([locations[i].latitude, locations[i].longitude])
         .bindPopup(
           `
-      <div style="width:600px; height: 230px; overflow: auto;">
+      <div style="width:500px; height: 245px; overflow: auto;">
         <h3>${locations[i].name}</h3>
         <a href="../landingpage/home.php?page_id=${locations[i].admin_id}">
-          <img src="../../user-admin/uploads/${locations[i].image}" style="max-width: 300px;">
+          <img src="../../user-admin/uploads/${locations[i].image}" style="max-width: 300px;  height:200px;">
         </a>
+        <div class="stars" style="font-size: 1.7rem;
+        color: #007aff;">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+    </div>
       </div>`
         )
 
