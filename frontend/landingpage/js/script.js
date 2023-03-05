@@ -17,7 +17,6 @@ var swiper = new Swiper(".home-slider", {
   },
 });
 
-
 // var swiper = new Swiper(".review-slider", {
 //   effect: "coverflow",
 //   grabCursor: true,
@@ -50,5 +49,3 @@ var swiper = new Swiper(".review-slider", {
     disableOnInteraction: false,
   },
 });
-
-

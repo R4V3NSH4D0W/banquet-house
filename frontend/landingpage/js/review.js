@@ -35,14 +35,8 @@ reviewForm.addEventListener("submit", function (event) {
   // Get the review body and rating values
   const reviewBody = document.getElementById("review-body").value;
   const rating = document.querySelector('input[name="rating"]:checked').value;
-
-  // Create a new XMLHttpRequest object
   const xhr = new XMLHttpRequest();
-
-  // Set the method to "POST"
   xhr.open("POST", "functions/send_review.php");
-
-  // Set the appropriate request headers
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   // Create a FormData object and append the review body, rating, and page_id values
@@ -59,10 +53,8 @@ reviewForm.addEventListener("submit", function (event) {
     encodeURIComponent(rating) +
     "&page_id=" +
     encodeURIComponent(pageId);
-  // Send the Ajax request with the FormData object
   xhr.send(data);
 
-  // When the Ajax request completes, do something
   xhr.addEventListener("load", function () {
     console.log(data);
     // Handle the response from the server here

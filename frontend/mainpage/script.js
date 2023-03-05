@@ -142,7 +142,6 @@ var markers = L.markerClusterGroup({
     });
   },
 }).addTo(mymap);
-
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
@@ -151,22 +150,19 @@ xhttp.onreadystatechange = function () {
       var marker = L.marker([locations[i].latitude, locations[i].longitude])
         .bindPopup(
           `
-      <div style="width:500px; height: 245px; overflow: auto;">
-        <h3>${locations[i].name}</h3>
-        <a href="../landingpage/home.php?page_id=${locations[i].admin_id}">
-          <img src="../../user-admin/uploads/${locations[i].image}" style="max-width: 300px;  height:200px;">
-        </a>
-        <div class="stars" style="font-size: 1.7rem;
-        color: #007aff;">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
-    </div>
-      </div>`
-        )
+          <div style="width:500px; height: 245px; overflow: auto;">
+            <h3>${locations[i].name}</h3>
+            <a href="../landingpage/home.php?page_id=${locations[i].admin_id}">
+              <img src="../../user-admin/uploads/${
+                locations[i].image
+              }" style="max-width: 300px;  height:200px;">
+            </a>
+            <div class="stars" style="font-size: 1.7rem; color: #007aff;">
+  ${getStarRating(locations[i].average_rating)}
+</div>
 
+          </div>`
+        )
         .on("click", function () {
           this.openPopup();
         });
@@ -177,6 +173,23 @@ xhttp.onreadystatechange = function () {
 };
 xhttp.open("GET", "get_locations.php", true);
 xhttp.send();
+
+function getStarRating(rating) {
+  var fullStars = Math.floor(rating);
+  var halfStars = Math.round(rating - fullStars);
+  var emptyStars = 5 - fullStars - halfStars;
+  var stars = "";
+  for (var i = 0; i < fullStars; i++) {
+    stars += '<i class="fas fa-star"></i>';
+  }
+  for (var i = 0; i < halfStars; i++) {
+    stars += '<i class="fas fa-star-half-alt"></i>';
+  }
+  for (var i = 0; i < emptyStars; i++) {
+    stars += '<i class="far fa-star"></i>';
+  }
+  return stars;
+}
 
 var mapContainer = document.getElementById("map");
 

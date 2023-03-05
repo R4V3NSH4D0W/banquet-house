@@ -1,7 +1,12 @@
 <?php
 require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
-$sql = "SELECT * FROM map join  banquet on map.admin_id= banquet.admin_id where banquet.status='active' ";
+$sql = "SELECT map.*, banquet.*, AVG(review.rating) AS average_rating
+        FROM map
+        JOIN banquet ON map.admin_id = banquet.admin_id
+        LEFT JOIN review ON map.admin_id = review.admin_id
+        WHERE banquet.status = 'active'
+        GROUP BY map.admin_id";
 $result = $conn->query($sql);
 $locations = array();
 if ($result->num_rows > 0) {
@@ -11,7 +16,8 @@ if ($result->num_rows > 0) {
             'admin_id' => $row['admin_id'],
             'image' => $row['image'],
             'latitude' => $row['lat'],
-            'longitude' => $row['lng']
+            'longitude' => $row['lng'],
+            'average_rating' => round($row['average_rating'], 1)
         );
         array_push($locations, $location);
     }
