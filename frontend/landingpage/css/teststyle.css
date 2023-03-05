@@ -663,7 +663,7 @@ header{
 .review .review-slider .box p{
     margin: 1rem 0;
     color: #000;
-    text-align: justify;
+    text-align:center;
     font-family: 'Roboto', sans-serif;
     text-transform: capitalize;
 
@@ -675,7 +675,7 @@ header{
 }
 
 .review .review-slider .box .stars{
-    color: rgb(252, 198, 61);
+    color: #007aff;
 }
 
 /* review section ends here */
