@@ -25,35 +25,30 @@ $result = mysqli_query($conn, $sql);
                 $address_parts = explode(',', $rows['address']);
                 $address = trim($address_parts[0]);
     ?>
-    <div class="box">
-        <img src="../../user-admin/uploads/<?php echo $rows["image"]; ?>" alt="">
-        <div class="content">
-            <h3><?php echo $rows["banquetname"]; ?> <p><?php echo $rows["capacity"]; ?> Guests</p>
-                <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                <p><?php echo $rows["details"]; ?></p>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                <div class="box">
+                    <img src="../../user-admin/uploads/<?php echo $rows["image"]; ?>" alt="">
+                    <div class="content">
+                        <h3><?php echo $rows["banquetname"]; ?> <p><?php echo $rows["capacity"]; ?> Guests</p>
+                            <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                            <p><?php echo $rows["details"]; ?></p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                            <a href="../landingpage/home.php?page_id=<?php echo $rows["admin_id"]; ?>" class="btn">View More</a>
+
+                    </div>
                 </div>
-
-                <a href="../landingpage/home.php?page_id=<?php echo $rows["admin_id"]; ?>" class="btn">View More</a>
-
-        </div>
-    </div>
-    <?php
-            }else{
-                ?>
-    <img style="padding-left:32rem;" src="./images/errorresult.png">
-    <?php
+        <?php
             }
         }
-        
     } else {
-    ?>
-    <img style="padding-left:32rem;" src="./images/errorresult.png">
+        ?>
+        <img style="padding-left:32rem;" src="./images/errorresult.png">
     <?php
     }
     ?>
