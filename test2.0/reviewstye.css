@@ -1,160 +1,37 @@
-.hidden {
-    display: none;
-  }
-  
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-  }
-  
-  #modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  form label {
-    margin-bottom: 10px;
-  }
-  
-  form input, form textarea, form select {
-    margin-bottom: 20px;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 16px;
-  }
-  
-  form button[type=submit] {
-    /* background-color: #4CAF50; */
-    /* color: white; */
-    background:none;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  font-weight: bold;
-  }
-  
-  
-  
-  #overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-  }
-  
-  #modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  form label {
-    margin-bottom: 10px;
-  }
-  
-  form input, form textarea, form select {
-    margin-bottom: 20px;
-    width: 30rem;
-    resize: none;
-    height: 10rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 16px;
-  }
-  button[type="submit"] i.fa-solid.fa-paper-plane {
-    color: #007aff;
-    font-size: 30px; /* adjust as needed */
-  }
-  
-  button[type="submit"] i.fa-solid.fa-paper-plane:hover {
-    color: blue;
-    font-size: 30px; /* adjust as needed */
-  }
-  #rating-stars {
-    margin-bottom: 20px;
-  }
-  
-  #rating-stars input[type="radio"] {
-    display: none;
-  }
-  
-  #rating-stars label {
-  float: right;
-    font-size: 30px;
-    color: #ccc;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-  }
-  
-  #rating-stars label:hover, #rating-stars label:hover ~ label {
-    color: #007aff;
-  }
-  
-  #rating-stars input[type="radio"]:checked ~ label {
-    color: #007aff;
-  }
-  
-  
+#book-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#booking-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+#booking-form h2 {
+  margin-top: 0;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}

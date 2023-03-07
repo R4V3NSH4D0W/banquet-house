@@ -86,7 +86,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <div class="content">
             <h3>THE BANQUET HOUSE</h3>
             <p>Where every occasion becomes a cherished memory</p>
-            <a href="#" class="btn">discover more</a>
+            <a href="../mainpage/viewall/allbanquets.php" class="btn">discover more</a>
         </div>
 
         <div class="controls">

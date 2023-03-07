@@ -16,7 +16,7 @@ if ($row < 1) {
         echo "Error updating About us ";
     }
 } else {
-    $query = " UPDATE `contactus` SET description='$aboutus' WHERE admin_id='$admin_id' ";
+    $query = " UPDATE `about us` SET description='$aboutus' WHERE admin_id='$admin_id' ";
     if (mysqli_query($conn, $query)) {
         echo "About us updated";
     } else {
