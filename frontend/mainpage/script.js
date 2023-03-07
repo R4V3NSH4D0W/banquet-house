@@ -1,6 +1,5 @@
 let searchBtn = document.querySelector("#search-btn");
 let searchBar = document.querySelector(".search-bar-container");
-let formBtn = document.querySelector("#login-btn");
 let loginForm = document.querySelector(".login-form-container");
 let formClose = document.querySelector("#form-close");
 let menu = document.querySelector("#menu-bar");
@@ -41,7 +40,6 @@ videoBtn.forEach((btn) => {
     document.querySelector("#video-slider").src = src;
   });
 });
-
 var swiper = new Swiper(".review-slider", {
   spaceBetween: 20,
   loop: true,
@@ -227,3 +225,27 @@ function showBanquets(position) {
 //   }
 // }
 // }
+// Get the login button
+const loginBtn = document.getElementById("login-btn");
+
+// Get the profile modal
+const profileModal = document.getElementById("profile-modal");
+
+// Add a click event listener to the login button
+loginBtn.addEventListener("click", () => {
+  // Show the profile modal
+  profileModal.style.display = "block";
+
+  // Lock the scroll
+  document.body.style.overflow = "hidden";
+});
+
+// Add a click event listener to the close button
+const closeModalBtn = document.getElementById("profile-modal-close");
+closeModalBtn.addEventListener("click", () => {
+  // Hide the profile modal
+  profileModal.style.display = "none";
+
+  // Unlock the scroll
+  document.body.style.overflow = "auto";
+});

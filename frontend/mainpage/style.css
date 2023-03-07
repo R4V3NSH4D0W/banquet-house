@@ -14,6 +14,7 @@
   transition: all .2s linear;
 }
 
+
 *::selection{
   background:var(--orange);
   color:#fff;
@@ -799,4 +800,102 @@ header .search-bar-container label:hover{
   background-color:#007aff;
   color: white;
   border: 1px solid #007aff;
+}
+/* .sub-menu-wrap{
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  width: 320px;
+}
+.sub-menu{
+  background: #fff;
+  margin: 10px;
+}
+.user-info{
+  display: flex;
+  align-items: center;
+}
+.user-info h2{
+  font-weight: 500;
+}
+.user-info img{
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+} */
+#profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  overflow-x: hidden; 
+}
+
+#profile-modal-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+#profile-modal-close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#profile-modal-close:hover,
+#profile-modal-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#profile-info {
+  text-align: center;
+}
+
+#profile-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+#profile-info h2 {
+  margin-bottom: 10px;
+}
+#profile-info h1{
+  font-weight: bolder;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#profile-info a {
+  color: #333;
+  text-decoration: none;
+}
+
+#profile-info a:hover {
+  text-decoration: underline;
+}
+
+
+#userlogout i {
+  margin-top: 10px;
+  font-size: 26px; /* Set the size of the icon */
+  margin-left: 5px; /* Add some spacing between the icon and the link */
+  color: #007aff;
+}
+#userlogout i:hover{
+  color: blue;
 }

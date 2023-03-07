@@ -45,7 +45,7 @@ html::-webkit-scrollbar-thumb{
     padding: 10px 10%;
     width: 100%;
     background-color: #00c6ff;
-    /* position: fixed; */
+    /* position: absolute; */
 }
 
 .logo{

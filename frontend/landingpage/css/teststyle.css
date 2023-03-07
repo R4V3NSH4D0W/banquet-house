@@ -35,13 +35,13 @@ html::-webkit-scrollbar-thumb{
     border-radius: 5rem;
 }
 
-.header{
+/* .header{
     width: 100%;
     min-height: 100vh;
     background: ffffff;
     color: #525252;
     
-}
+} */
 
 .navbar{
     display: flex;
@@ -49,8 +49,9 @@ html::-webkit-scrollbar-thumb{
     justify-content: space-between;
     padding: 10px 10%;
     width: 100%;
-    background-color: #00539CFF;
-    /* position: fixed; */
+    height: 4.5rem;
+    background-color: #333;
+    
 }
 
 header{
@@ -129,17 +130,34 @@ header{
     font-weight: bold;
     color: #fff;
 }
-
+.navbar ul li a:hover{
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .navbar ul li::after{
     content: '';
     height: 3px;
     width: 0;
-    background: #fff;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
     left: 0;
     bottom: -10px;
     transition: 0.5s;
     position: absolute;
 }
+#owner {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: justify;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 18px;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
 
 .navbar ul li:hover::after{
     width: 100%;
@@ -197,7 +215,6 @@ header{
 }
 
 /* slider */
-
 
 
 .header .home .home-slider .swiper-slide{
@@ -765,68 +782,76 @@ footer {
   }
 
   /* contact us css */
-.contact-us-section {
+  .contact-us-section {
     display: flex;
     align-items: flex-start;
     margin-left: 10rem;
     margin-top: 30px;
-
-}
-
-#contact-form {
+  }
+  
+  #contact-form {
     width: 50%;
-}
-.map-container {
+  }
+  
+  .map-container {
     position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; 
+    z-index: 0;
   }
-
-#map {
+  
+  #map {
     width: 50%;
     height: 400px;
     margin-left: 10rem;
-}
-
-@media screen and (max-width: 768px) {
+    z-index: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
     .contact-us-section {
-        flex-direction: column;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0;
     }
-
-    #contact-form, #map {
-        width: 100%;
+  
+    #contact-form,
+    #map {
+      width: 100%;
+      margin-left: 0;
     }
-}
-.contact-field{
+  }
+  
+  .contact-field {
     margin-top: 20px;
-}
- .form-group #name,
-#email,
-#phone,
-#text-message {
-  width: 25rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  height: 30px;
-}
-
-#text-message {
-  height: 100px; /* set a height for the textarea */
-}
-
- #bird {
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
+  }
+  
+  .form-group #name,
+  #email,
+  #phone,
+  #text-message {
+    width: 25rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 30px;
+  }
+  
+  #text-message {
+    height: 100px; /* set a height for the textarea */
+  }
+  
+  #bird {
+    /* background-color: #007bff; */
+    background-color: transparent;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
   
   
 
