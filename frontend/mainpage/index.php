@@ -12,12 +12,14 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -48,7 +50,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
         <div class="icons">
             <i class="fas fa-search" id="search-btn"></i>
-            <button id="login-btn" style="background: transparent;" onclick="toggleProfileModal()"><i class="fas fa-user"></i></button>
+            <button id="login-btn" style="background: transparent;" onclick="toggleProfileModal()"><i
+                    class="fas fa-user"></i></button>
 
         </div>
 
@@ -108,17 +111,17 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         $profile = mysqli_query($conn, "SELECT * FROM user where id=$user_id");
         $profileresult = mysqli_fetch_assoc($profile);
     ?>
-        <div id="profile-modal">
-            <div id="profile-modal-content">
-                <div id="profile-modal-close">&times;</div>
-                <div id="profile-info">
-                    <h1>User <span style="color:#007aff;">Profile</span></h1>
-                    <img src="./uploads/63df833b805724.66967991.jpg" alt="User Profile Image">
-                    <h2><?php echo $profileresult['name'] ?></h2>
-                    <a href="logout.php" id="userlogout"><i class="fa-solid fa-right-from-bracket"></i></a>
-                </div>
+    <div id="profile-modal">
+        <div id="profile-modal-content">
+            <div id="profile-modal-close">&times;</div>
+            <div id="profile-info">
+                <h1>User <span style="color:#007aff;">Profile</span></h1>
+                <img src="./uploads/63df833b805724.66967991.jpg" alt="User Profile Image">
+                <h2><?php echo $profileresult['name'] ?></h2>
+                <a href="logout.php" id="userlogout"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         </div>
+    </div>
     <?php }
     ?>
     <!-- user profile ends here -->
@@ -250,7 +253,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                 </div>
             </div>
             <div class="image-item">
-                <img src="./uploads/63f784bfe1a3e0.12268603.jpg" alt="Image 3" onclick="location.href='venue.php?type=other';">
+                <img src="./uploads/63f784bfe1a3e0.12268603.jpg" alt="Image 3"
+                    onclick="location.href='venue.php?type=other';">
                 <div class=" image-text">
                     <h3>Others</h3>
                     <!-- <p>Image 3 description goes here</p> -->
@@ -293,17 +297,17 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     $address_parts = explode(',', $row['address']);
                     $address = trim($address_parts[0]);
             ?>
-                    <div class="box">
-                        <img src="../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
-                        <div class="content">
-                            <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
-                            </h3>
+            <div class="box">
+                <img src="../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
+                <div class="content">
+                    <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
+                    </h3>
 
-                            <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                            <p><?php echo $row["details"]; ?></p>
+                    <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                    <p><?php echo $row["details"]; ?></p>
 
-                            <div class="stars">
-                                <?php
+                    <div class="stars">
+                        <?php
                                 // Show average rating as stars
                                 $avg_rating = $row['average_rating'];
                                 $full_stars = floor($avg_rating);
@@ -319,18 +323,18 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                                     echo '<i class="far fa-star"></i>';
                                 }
                                 ?>
-                            </div>
-                            <!-- <div class="price"> $90.00 <span>$120.00</span> </div> -->
-                            <a href="../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
-                                More</a>
-                        </div>
                     </div>
-                <?php
+                    <!-- <div class="price"> $90.00 <span>$120.00</span> </div> -->
+                    <a href="../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
+                        More</a>
+                </div>
+            </div>
+            <?php
                 }
             endforeach;
             if ($count > 3) {
                 ?>
-                <button class="view-more" onclick="location.href='./viewall/allbanquets.php';">View All</button>
+            <button class="view-more" onclick="location.href='./viewall/allbanquets.php';">View All</button>
             <?php
             }
             ?>
@@ -394,18 +398,25 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <!-- custom js file link  -->
     <script src="script.js"></script>
     <script>
-        function toggleProfileModal() {
-            // Check if the user is logged in
-            <?php if (isset($_SESSION['user_id'])) { ?>
-                var profileModal = document.getElementById("profile-modal");
-                profileModal.style.display = profileModal.style.display === "block" ? "none" : "block";
-            <?php } else { ?>
-                var confirmLogin = confirm("You need to login to view your profile. Do you want to go to the login page?");
-                if (confirmLogin) {
-                    window.location.href = "../../login/index.php";
-                }
-            <?php } ?>
-        }
+    function toggleProfileModal() {
+        // Check if the user is logged in
+        <?php if (isset($_SESSION['user_id'])) { ?>
+        var profileModal = document.getElementById("profile-modal");
+        profileModal.style.display = profileModal.style.display === "block" ? "none" : "block";
+        <?php } else { ?>
+        swal({
+            title: "Login To View Your Profile",
+            text: "Do you want to go to the login page?",
+            icon: "warning",
+            buttons: ["Cancel", "Login"],
+            className: "custom-alert-box",
+        }).then((value) => {
+            if (value) {
+                window.location.href = "../../login/index.php";
+            }
+        });
+        <?php } ?>
+    }
     </script>
 
 </body>

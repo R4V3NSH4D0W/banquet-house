@@ -12,7 +12,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
 
@@ -33,7 +34,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
         <div id="menu-bar" class="fas fa-bars"></div>
 
-        <a href="#" class="logo"><span>BANQUET</span>HOUSE</a>
+        <a href="../index.php" class="logo"><span>BANQUET</span>HOUSE</a>
 
         <nav class="navbar">
             <!-- <a href="#home">home</a>
@@ -45,10 +46,9 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <a href="#contact">contact</a> -->
         </nav>
 
-        <div class="icons">
-            <!-- <i class="fas fa-search" id="search-btn"></i> -->
+        <!-- <div class="icons">
             <i class="fas fa-user" id="login-btn"></i>
-        </div>
+        </div> -->
 
         <!-- <form action="" class="search-bar-container">
             <input type="search" id="search-bar" placeholder="search here...">
@@ -142,24 +142,24 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 <!-- custom js file link  -->
 <script src="../script.js"></script>
 <script>
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showBanquets);
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showBanquets);
+} else {
+    alert("Geolocation is not supported by this browser.");
+}
 
-    function showBanquets(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("banquets").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET", "function.php?lat=" + lat + "&lng=" + lng, true);
-        xmlhttp.send();
-    }
+function showBanquets(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("banquets").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "function.php?lat=" + lat + "&lng=" + lng, true);
+    xmlhttp.send();
+}
 </script>
 
 </html>

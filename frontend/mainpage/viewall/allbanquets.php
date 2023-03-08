@@ -12,7 +12,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+        crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
 
@@ -33,7 +34,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
         <div id="menu-bar" class="fas fa-bars"></div>
 
-        <a href="#" class="logo"><span>BANQUET</span>HOUSE</a>
+        <a href="../index.php" class="logo"><span>BANQUET</span>HOUSE</a>
 
         <nav class="navbar">
             <!-- <a href="#home">home</a>
@@ -45,10 +46,9 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             <a href="#contact">contact</a> -->
         </nav>
 
-        <div class="icons">
-            <!-- <i class="fas fa-search" id="search-btn"></i> -->
-            <i class="fas fa-user" id="login-btn"></i>
-        </div>
+        <!-- <div class="icons">
+              <i class="fas fa-user" id="login-btn"></i>
+        </div> -->
 
         <!-- <form action="" class="search-bar-container">
             <input type="search" id="search-bar" placeholder="search here...">
@@ -126,17 +126,17 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     $avg_rating_query = mysqli_query($conn, "SELECT AVG(rating) as average_rating FROM review WHERE admin_id = '{$row['admin_id']}'");
                     $avg_rating = mysqli_fetch_assoc($avg_rating_query)['average_rating'];
             ?>
-                    <div class="box">
-                        <img src="../../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
-                        <div class="content">
-                            <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
-                            </h3>
+            <div class="box">
+                <img src="../../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
+                <div class="content">
+                    <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
+                    </h3>
 
-                            <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                            <p><?php echo $row["details"]; ?></p>
+                    <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                    <p><?php echo $row["details"]; ?></p>
 
-                            <div class="stars">
-                                <?php
+                    <div class="stars">
+                        <?php
                                 // Show average rating as stars
                                 $full_stars = floor($avg_rating);
                                 $half_star = round($avg_rating - $full_stars, 1);
@@ -151,11 +151,11 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                                     echo '<i class="far fa-star"></i>';
                                 }
                                 ?>
-                            </div>
-                            <a href="../../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
-                                More</a>
-                        </div>
                     </div>
+                    <a href="../../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
+                        More</a>
+                </div>
+            </div>
             <?php
                 }
 
@@ -166,7 +166,8 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     </section>
     <div class="pagination" style="margin-left:13rem; margin-bottom:10rem;">
         <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-            <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?> class="active" <?php endif; ?>><?php echo $i; ?></a>
+        <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?>
+            class="active" <?php endif; ?>><?php echo $i; ?></a>
         <?php endfor; ?>
     </div>
     <!-- footer section -->

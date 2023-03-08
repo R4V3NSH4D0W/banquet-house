@@ -851,7 +851,9 @@ footer {
     border: none;
     cursor: pointer;
   }
-  
+  .swal-button--confirm {
+    background-color: #007aff !important;
+  }
   
   
 

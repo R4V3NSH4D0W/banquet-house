@@ -38,14 +38,6 @@ reviewForm.addEventListener("submit", function (event) {
   const xhr = new XMLHttpRequest();
   xhr.open("POST", "functions/send_review.php");
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-  // Create a FormData object and append the review body, rating, and page_id values
-  // const formData = new FormData();
-  // formData.append("review-body", reviewBody);
-  // formData.append("rating", rating);
-  // formData.append("page_id", pageId);
-  // const formData = new FormData(reviewForm);
-  // formData.append("page_id", pageId);
   var data =
     "review=" +
     encodeURIComponent(reviewBody) +
@@ -56,17 +48,22 @@ reviewForm.addEventListener("submit", function (event) {
   xhr.send(data);
 
   xhr.addEventListener("load", function () {
-    console.log(data);
-    // Handle the response from the server here
-    console.log(xhr.responseText);
-    alert(xhr.responseText);
-
-    // Hide the modal and overlay
-    modal.classList.add("hidden");
-    overlay.classList.add("hidden");
-
-    // Reset the form
-    reviewForm.reset();
+    if (xhr.responseText === "Review added successfully.") {
+      swal({
+        title: "Review added!",
+        text: "Thank you for your feedback!",
+        icon: "success",
+      });
+      modal.classList.add("hidden");
+      overlay.classList.add("hidden");
+      reviewForm.reset();
+    } else {
+      swal({
+        title: "Error",
+        text: xhr.responseText,
+        icon: "error",
+      });
+    }
   });
 });
 //booking
