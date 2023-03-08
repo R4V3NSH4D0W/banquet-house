@@ -227,25 +227,17 @@ function showBanquets(position) {
 // }
 // Get the login button
 const loginBtn = document.getElementById("login-btn");
-
-// Get the profile modal
 const profileModal = document.getElementById("profile-modal");
+const closeModalBtn = document.getElementById("profile-modal-close");
 
-// Add a click event listener to the login button
 loginBtn.addEventListener("click", () => {
-  // Show the profile modal
   profileModal.style.display = "block";
-
-  // Lock the scroll
   document.body.style.overflow = "hidden";
+  document.documentElement.style.overflowY = "scroll";
 });
 
-// Add a click event listener to the close button
-const closeModalBtn = document.getElementById("profile-modal-close");
 closeModalBtn.addEventListener("click", () => {
-  // Hide the profile modal
   profileModal.style.display = "none";
-
-  // Unlock the scroll
   document.body.style.overflow = "auto";
+  document.documentElement.style.overflowY = "scroll";
 });

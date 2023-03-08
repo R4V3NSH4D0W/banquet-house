@@ -219,12 +219,30 @@ if (!empty($_SESSION['user_id']))
         <div class="swiper review-slider">
             <div class="swiper-wrapper review-wrapper">
                 <?php
-                $result = mysqli_query($conn, "SELECT user.name, review.comment, review.rating FROM review JOIN user ON review.user_id=user.id WHERE review.admin_id=$id");
-
+                $result = mysqli_query($conn, "SELECT user.name,review.user_id, review.comment, review.rating
+                FROM review 
+                JOIN user ON review.user_id = user.id  
+                WHERE review.admin_id = $id
+                ");
                 while ($row = mysqli_fetch_assoc($result)) :
+                    $profile_id = $row['user_id'];
+                    $profileresult = mysqli_fetch_assoc(mysqli_query($conn, "SELECT *  FROM profile where user_id=$profile_id"));
                 ?>
                 <div class="swiper-slide box">
-                    <img src="images/g-1.jpg" alt="">
+                    <?php
+                        if (empty($profileresult['profile'])) {
+                        ?>
+                    <img src="../../profileimage/no-user-profile-picture-24185395.jpg">
+                    <?php
+                        } else {
+
+                        ?>
+                    <img src="../../profileimage/<?php echo $profileresult['profile']; ?>">
+                    <?php
+                        }
+
+                        ?>
+
                     <p>
                         <?php echo $row['comment']; ?>
                     </p>

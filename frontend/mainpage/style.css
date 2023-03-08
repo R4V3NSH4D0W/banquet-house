@@ -834,7 +834,7 @@ header .search-bar-container label:hover{
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
-  overflow-x: hidden; 
+  overflow: hidden; 
 }
 
 #profile-modal-content {
@@ -874,6 +874,12 @@ header .search-bar-container label:hover{
 
 #profile-info h2 {
   margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bolder;
+  background: linear-gradient(to right, #007aff, #00bcd4);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #profile-info h1{
   font-weight: bolder;
@@ -888,7 +894,6 @@ header .search-bar-container label:hover{
 #profile-info a:hover {
   text-decoration: underline;
 }
-
 
 #userlogout i {
   margin-top: 10px;
@@ -911,4 +916,24 @@ header .search-bar-container label:hover{
 }
 .swal-button--confirm {
   background-color: #007aff !important;
+}
+.edit-profile {
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-edit {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-edit:hover {
+  background-color: #0062cc;
 }

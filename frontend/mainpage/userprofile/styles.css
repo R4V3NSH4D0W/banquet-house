@@ -1,0 +1,121 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ccc;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .image-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+  }
+  
+  .info-container h2 {
+    background: linear-gradient(to right, #0b314d, #00bfff);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .info-container p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .upload-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-row:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  .form-row label {
+    flex-basis: 30%;
+    margin-right: 10px;
+  }
+  
+  .form-row input[type="file"],
+  .form-row input[type="text"],
+  .form-row input[type="password"] {
+    flex-basis: 42%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  .form-row button[type="submit"] {
+    /* display: block; */
+    width: 10rem;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0077cc;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+  .form-row  button[type="submit"]:hover{
+    background-color: #349de9;
+  }
+  .go-back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    background-color: transparent;
+    color: #0077cc;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .fa-arrow-left {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0077cc;
+  }
+  .fa-arrow-left:hover{
+    color: blue;
+  }
+  .custom-alert-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: "Arial", sans-serif;
+    font-size: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  .swal-button--confirm {
+    background-color: #007aff !important;
+  }

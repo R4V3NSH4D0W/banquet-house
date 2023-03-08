@@ -95,7 +95,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <div class="controls">
             <span class="vid-btn active" data-src="images/vid-2.mp4"></span>
             <span class="vid-btn" data-src="images/vid-1.mp4"></span>
-            <!-- <span class="vid-btn" data-src="images/vid-3.mp4"></span> -->
+            <!-- <span class="vid-btn" data-src="images/vid-2.mp4"></span> -->
             <!-- <span class="vid-btn" data-src="images/vid-4.mp4"></span> 
             <span class="vid-btn" data-src="images/vid-5.mp4"></span> -->
         </div>
@@ -110,14 +110,30 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         $user_id = $_SESSION['user_id'];
         $profile = mysqli_query($conn, "SELECT * FROM user where id=$user_id");
         $profileresult = mysqli_fetch_assoc($profile);
+        $selectimg = mysqli_query($conn, "SELECT * FROM `profile` where user_id=$user_id");
+        $fetchimg = mysqli_fetch_assoc($selectimg);
     ?>
     <div id="profile-modal">
         <div id="profile-modal-content">
             <div id="profile-modal-close">&times;</div>
             <div id="profile-info">
                 <h1>User <span style="color:#007aff;">Profile</span></h1>
-                <img src="./uploads/63df833b805724.66967991.jpg" alt="User Profile Image">
+                <?php
+                    if (empty($fetchimg['profile'])) {
+                    ?>
+                <img src="../../profileimage/profile.png" alt="default profile">
+                <?php
+                    } else {
+                    ?>
+                <img src="../../profileimage/<?php echo $fetchimg['profile']; ?>" alt="default profile">
+                <?php
+                    }
+                    ?>
                 <h2><?php echo $profileresult['name'] ?></h2>
+                <div class=" edit-profile">
+                    <button class="profile-edit" onclick="location.href='userprofile/editprofile.php'">Edit
+                        Profile</button>
+                </div>
                 <a href="logout.php" id="userlogout"><i class="fa-solid fa-right-from-bracket"></i></a>
             </div>
         </div>

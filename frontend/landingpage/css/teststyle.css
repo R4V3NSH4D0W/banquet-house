@@ -666,6 +666,7 @@ header{
     box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
     min-width: 30rem;
     height: 20rem;
+    z-index: -1;
 }
 .review .review-slider .box img{
     text-align: center;
