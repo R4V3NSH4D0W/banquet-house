@@ -9,7 +9,6 @@ const closeBtn = document.querySelector(".close");
 addReviewModalBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
-  // Show the modal and overlay
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
 });
@@ -53,6 +52,8 @@ reviewForm.addEventListener("submit", function (event) {
         title: "Review added!",
         text: "Thank you for your feedback!",
         icon: "success",
+      }).then(() => {
+        location.reload();
       });
       modal.classList.add("hidden");
       overlay.classList.add("hidden");

@@ -93,6 +93,21 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
     <li>
         <div class="iocn-link">
             <a href="#">
+                <i class='bx bx-collection'></i>
+                <span class="link_name">Food</span>
+            </a>
+            <i class='bx bxs-chevron-down arrow'></i>
+        </div>
+        <ul class="sub-menu">
+            <li><a class="link_name" href="#">Food</a></li>
+            <li><a href="../Food/addfood.php">Add food</a></li>
+            <li><a href="../Food/view.php">View</a></li>
+
+        </ul>
+    </li>
+    <li>
+        <div class="iocn-link">
+            <a href="#">
                 <i class='bx bx-plug'></i>
                 <span class="link_name">Queries</span>
             </a>

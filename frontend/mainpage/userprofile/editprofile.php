@@ -72,15 +72,34 @@ form.addEventListener('submit', function(event) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                swal({
-                    title: "success",
-                    text: xhr.responseText,
-                    icon: "success",
-                    buttons: "OK",
-                    className: "custom-alert-box",
-                }).then(() => {
-                    location.reload();
-                });
+                if (xhr.responseText === 'Old password is incorrectNo fields have been updated') {
+                    swal({
+                        title: "Error",
+                        text: xhr.responseText,
+                        icon: "error",
+                        buttons: "OK",
+                        className: "custom-alert-box",
+                    });
+                } else if (xhr.responseText ===
+                    'Confirm Password does not matchNo fields have been updated') {
+                    swal({
+                        title: "Error",
+                        text: xhr.responseText,
+                        icon: "error",
+                        buttons: "OK",
+                        className: "custom-alert-box",
+                    });
+                } else {
+                    swal({
+                        title: "Success",
+                        text: xhr.responseText,
+                        icon: "success",
+                        buttons: "OK",
+                        className: "custom-alert-box",
+                    }).then(() => {
+                        location.reload();
+                    });
+                }
             }
         }
     }

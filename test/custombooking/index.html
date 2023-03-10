@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Event Planning Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Event Planning Form</h1>
+    <form id="event-form">
+      <div class="question">
+        <label for="event-type">What type of event are you planning?</label>
+        <select id="event-type" name="event-type">
+          <option value="wedding">Wedding</option>
+          <option value="anniversary">Anniversary</option>
+          <option value="cooperative">Cooperative Event</option>
+          <option value="conference">Conference</option>
+        </select>
+        <button type="button" id="next-1">Next</button>
+      </div>
+      <div class="question hidden" id="question-2">
+        <label for="guests">How many guests are you expecting?</label>
+        <input type="number" id="guests" name="guests" min="1" />
+        <button type="button" id="next-2">Next</button>
+      </div>
+      <div class="question hidden" id="question-3">
+        <label for="appetizers">What appetizers would you like?</label>
+        <ul>
+          <li><input type="checkbox" name="appetizers[]" value="yamba-prawns" /> Yamba Prawns</li>
+          <li><input type="checkbox" name="appetizers[]" value="veg" /> Vegetarian</li>
+          <li><input type="checkbox" name="appetizers[]" value="non-veg" /> Non-Vegetarian</li>
+        </ul>
+        <button type="button" id="next-3">Next</button>
+      </div>
+      <div class="question hidden" id="question-4">
+        <label for="soups">What soups would you like?</label>
+        <ul>
+          <li><input type="radio" name="soups" value="veg" /> Vegetarian</li>
+          <li><input type="radio" name="soups" value="non-veg" /> Non-Vegetarian</li>
+        </ul>
+        <button type="button" id="next-4">Next</button>
+      </div>
+      <div class="question hidden" id="question-5">
+        <label for="main-course">What main course would you like?</label>
+        <ul>
+          <li><input type="radio" name="main-course" value="veg" /> Vegetarian</li>
+          <li><input type="radio" name="main-course" value="non-veg" /> Non-Vegetarian</li>
+        </ul>
+        <button type="button" id="next-5">Next</button>
+        </div>
+        <div class="question hidden" id="question-6">
+        <label for="desserts">What desserts would you like?</label>
+        <ul>
+        <li><input type="checkbox" name="desserts[]" value="veg" /> Vegetarian</li>
+        <li><input type="checkbox" name="desserts[]" value="non-veg" /> Non-Vegetarian</li>
+        </ul>
+        <button type="button" id="next-6">Next</button>
+        </div>
+        <div class="question hidden" id="question-7">
+        <label for="drinks">What drinks would you like?</label>
+        <ul>
+        <li><input type="checkbox" name="drinks[]" value="hard" /> Hard drinks</li>
+        <li><input type="checkbox" name="drinks[]" value="soft" /> Soft drinks</li>
+        </ul>
+        <button type="button" id="next-7">Next</button>
+        </div>
+        <div class="question hidden" id="question-8">
+        <label for="service-options">Service Options:</label>
+        <ul>
+        <li>
+        <input type="radio" name="service-options" value="plated-menu" /> Plated Menu
+        </li>
+        <li>
+        <input type="radio" name="service-options" value="buffet" /> Buffet
+        </li>
+        <li>
+        <input type="radio" name="service-options" value="pre-plated" /> Pre-plated
+        </li>
+        <li>
+        <input type="radio" name="service-options" value="plated-to-plate" /> Plated to Plate
+        </li>
+        </ul>
+        <button type="button" id="calculate-cost">Calculate Tentative Cost</button>
+        </div>
+        </form>
+        <div id="result" class="hidden">
+        <h2>Tentative Cost:</h2>
+        <p id="cost"></p>
+        </div>
+        <script src="script.js"></script>
+        
+          </body>
+        </html>
+<script>
+    const eventForm = document.getElementById("event-form");
+
+const nextButtons = eventForm.querySelectorAll("button[type='button']");
+
+nextButtons.forEach((button, index) => {
+  button.addEventListener("click", () => {
+    const currentQuestion = eventForm.querySelector(`#question-${index + 1}`);
+    const nextQuestion = eventForm.querySelector(`#question-${index + 2}`);
+    currentQuestion.classList.add("hidden");
+    nextQuestion.classList.remove("hidden");
+});
+});
+const calculateCostButton = eventForm.querySelector("#calculate-cost");
+const result = document.getElementById("result");
+const cost = document.getElementById("cost");
+
+calculateCostButton.addEventListener("click", () => {
+  const guestCount = parseInt(eventForm.querySelector("#guest-count").value);
+  const serviceOption = eventForm.querySelector('input[name="service-options"]:checked').value;
+  const costPerGuest = serviceOption === "plated-menu" ? 30 : 20;
+  const totalCost = guestCount * costPerGuest;
+
+  result.classList.remove("hidden");
+  cost.textContent = `$${totalCost}`;
+});
+
+</script>

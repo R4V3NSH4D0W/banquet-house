@@ -143,3 +143,16 @@ $rows = mysqli_query($conn, $sql);
 <script src="../sidebar/script.js"></script>
 
 </html>
+lets design QA using html CSS and JavaScript
+at first ask what type of event user want like
+weeding Anniversary cooperative event conference
+and when user click next show next option how many guests
+and again when user click next ask Appitizer show check list
+Yamba prawns veg non veg etc and when user click next soups sort
+by veg and non veg angan next main cource sort by veg and non veg
+and dessert sort by veg and non veg Desserts Hard drinks and soft
+drinks and after clicking based on type of event if event is
+birtday weeding anvery show service option plated menu
+buffet if event is co operative or conference show preplated
+and plater to plate calucate tentetive cost
+auto use flex row for every chick list

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Booking Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Custom Booking Form</h1>
+    <form id="booking-form" onsubmit="return false;">
+      <div id="question-1">
+        <p>What type of event are you organizing?</p>
+        <label>
+          <input type="radio" name="event-type" value="wedding">
+          Wedding
+        </label>
+        <label>
+          <input type="radio" name="event-type" value="anniversary">
+          Anniversary
+        </label>
+        <label>
+          <input type="radio" name="event-type" value="conference">
+          Conference
+        </label>
+        <label>
+          <input type="radio" name="event-type" value="cooperative">
+          Cooperative
+        </label>
+        <button type="button" onclick="showQuestion(2)">Next</button>
+      </div>
+      <div id="question-2" style="display: none;">
+        <p>How many guests will be attending?</p>
+        <input type="number" name="guests">
+        <button type="button" onclick="showQuestion(1)">Back</button>
+        <button type="button" onclick="showQuestion(3)">Next</button>
+      </div>
+      <div id="question-3" style="display: none;">
+        <p>What type of food would you like to serve?</p>
+        <label>
+          <input type="checkbox" name="food" value="appetizer">
+          Appetizers
+        </label>
+        <label>
+          <input type="checkbox" name="food" value="main-course">
+          Main Course
+        </label>
+        <label>
+          <input type="checkbox" name="food" value="hard-drinks">
+          Hard Drinks
+        </label>
+        <label>
+          <input type="checkbox" name="food" value="soft-drinks">
+          Soft Drinks
+        </label>
+        <label>
+          <input type="checkbox" name="food" value="dessert">
+          Dessert
+        </label>
+        <button type="button" onclick="showQuestion(2)">Back</button>
+        <button type="button" onclick="showQuestion(4)">Next</button>
+      </div>
+      <div id="question-4" style="display: none;">
+        <p>What type of service would you like?</p>
+        <label>
+          <input type="checkbox" name="service" value="buffet">
+          Buffet
+        </label>
+        <label>
+          <input type="checkbox" name="service" value="plated-menu">
+          Plated Menu
+        </label>
+        <label>
+          <input type="checkbox" name="service" value="platter-to-plate">
+          Platter to Plate
+        </label>
+        <button type="button" onclick="showQuestion(3)">Back</button>
+        <button type="submit" onclick="getBookingOptions()">Submit</button>
+      </div>
+    </form>
+    <script>
+      function showQuestion(questionNumber) {
+        document.getElementById('question-' + (questionNumber - 1)).style.display = 'none';
+        document.getElementById('question-' + questionNumber).style.display = 'block';
+      }
+  
+      function getBookingOptions() {
+        const eventType = document.querySelector('input[name="eventtype"]:checked').value;
+const guests = document.querySelector('input[name="guests"]').value;
+const food = [];
+const foodCheckboxes = document.querySelectorAll('input[name="food"]:checked');
+foodCheckboxes.forEach((checkbox) => {
+food.push(checkbox.value);
+});
+const service = [];
+const serviceCheckboxes = document.querySelectorAll('input[name="service"]:checked');
+serviceCheckboxes.forEach((checkbox) => {
+service.push(checkbox.value);
+});
+console.log('Event Type:', eventType);
+console.log('Guests:', guests);
+console.log('Food:', food);
+console.log('Service:', service);
+// Submit the form data to the server
+}
+</script>
+</body>
+</html>

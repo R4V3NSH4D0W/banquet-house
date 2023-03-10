@@ -190,25 +190,65 @@ if (!empty($_SESSION['user_id']))
             endforeach;
             ?>
         </div>
-        <style>
-        .option a {
-            border-radius: 0.5;
-            background-color: #007aff;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-        }
 
-        .option a:hover {
-            background-color: blue;
-        }
-        </style>
 
-        <div class="option" style="text-align:center;">
-            <a href="../userbooking/booking.php?page_id=<?php echo $id; ?>">custom book</a>
-        </div>
+
     </section>
+    <div id="custom-booking-container">
+        <?php
+        if (isset($_SESSION['user_id'])) {
+        ?>
+        <button onclick="redirectToBooking()" class="custom-booking">Custom Booking</button>
+        <?php
+        } else {
+        ?>
+        <button onclick="showLoginPrompt()" class="custom-booking">Custom Booking</button>
+        <?php
+        }
+        ?>
+    </div>
 
+    <script>
+    function showLoginPrompt() {
+        swal({
+            title: 'Oops!',
+            text: 'You need to login to access this feature.',
+            icon: 'error',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "OK",
+                    value: true,
+                    visible: true,
+                    className: "",
+                    closeModal: true
+                }
+            }
+        }).then(function(result) {
+            if (result) {
+                redirectToLogin();
+            }
+        });
+    }
+
+    function redirectToLogin() {
+        window.location.href = "http://localhost/banquethouses/login/";
+    }
+
+    function redirectToBooking() {
+        const pageId =
+            <?php echo isset($_GET['page_id']) ? $_GET['page_id'] : '1'; ?>;
+        const url =
+            `http://localhost/banquethouses/frontend/userbooking/booking.php?page_id=${pageId}`;
+        window.location.href = url;
+    }
+    </script>
     <!-- pricing section ends here -->
 
     <!-- review section stats here -->

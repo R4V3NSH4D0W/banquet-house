@@ -235,3 +235,18 @@
       padding: 60px;
   }
 }
+#custom-booking-container button{
+ background-color: #007aff; 
+ color: white;
+ padding: 10px 20px;
+ border: none;
+ font-size: 16px;
+ border-radius: 4px;
+ cursor: pointer;
+ display: block;
+ margin: 0 auto;
+
+}
+#custom-booking-container button:hover{
+  background-color: blue;
+}
