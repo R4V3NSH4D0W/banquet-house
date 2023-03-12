@@ -38,25 +38,24 @@ if (!isset($admin_id)) {
             <span class="text">Dashboard</span>
         </div>
         <?php
-    // Set the number of rows per page
-    $rows_per_page = 8;
+        // Set the number of rows per page
+        $rows_per_page = 8;
 
-    // Get the current page number from the URL
-    $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        // Get the current page number from the URL
+        $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-    // Calculate the starting row number for the current page
-    $start = ($page_number - 1) * $rows_per_page;
+        // Calculate the starting row number for the current page
+        $start = ($page_number - 1) * $rows_per_page;
 
-    // Query the database for the current page's rows
-    $row = mysqli_query($conn, "SELECT *
-        FROM reservation 
-        JOIN user on reservation.user_id=user.id 
-        WHERE reservation.admin_id='$admin_id'
-        ORDER BY reservation.id DESC
+        // Query the database for the current page's rows
+        $row = mysqli_query($conn, "SELECT *
+    FROM reservation 
+     JOIN user on
+      reservation.user_id=user.id 
+      where reservation.admin_id='$admin_id' AND reservation.status='rejected'
         LIMIT $start, $rows_per_page");
-    $i = 1;
-?>
-
+        $i = 1;
+        ?>
         <div class="container">
             <div class="main-container">
                 <h1>New Booking</h1>
@@ -69,6 +68,7 @@ if (!isset($admin_id)) {
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
+
                     <?php foreach ($row as $row) : ?>
                     <tr>
                         <td><?php echo $i++ ?></td>
@@ -80,17 +80,16 @@ if (!isset($admin_id)) {
                     </tr>
                     <?php endforeach; ?>
                 </table>
-
                 <!-- Add pagination links -->
                 <?php
-            // Query the database to count the total number of rows
-            $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reservation WHERE admin_id='$admin_id'");
-            $row = mysqli_fetch_assoc($result);
-            $total_rows = $row['total'];
+                // Query the database to count the total number of rows
+                $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reservation WHERE admin_id='$admin_id' AND reservation.status='rejected'");
+                $row = mysqli_fetch_assoc($result);
+                $total_rows = $row['total'];
 
-            // Calculate the total number of pages
-            $total_pages = ceil($total_rows / $rows_per_page);
-        ?>
+                // Calculate the total number of pages
+                $total_pages = ceil($total_rows / $rows_per_page);
+                ?>
 
                 <div class="pagination">
                     <?php if ($page_number > 1) : ?>
@@ -111,7 +110,6 @@ if (!isset($admin_id)) {
                 </div>
             </div>
         </div>
-
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -136,7 +134,7 @@ if (!isset($admin_id)) {
                     document.getElementById("modal-content").innerHTML = this.responseText;
                 }
             };
-            xhr.open("GET", "get-details.php?id=" + id, true);
+            xhr.open("GET", "get-cancelled.php?id=" + id, true);
             xhr.send();
         }
 
@@ -164,7 +162,6 @@ if (!isset($admin_id)) {
 </body>
 
 </html>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 function acceptReservation(res_id) {

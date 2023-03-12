@@ -180,4 +180,5 @@ deleteButtons.forEach(button => {
 });
 </script>
 <script src="../sidebar/script.js"></script>
-< /html>
+
+</html>

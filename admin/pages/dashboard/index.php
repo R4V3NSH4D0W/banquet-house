@@ -13,7 +13,8 @@ if (!isset($admin_id)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../sidebar/style.css">
     <link rel="stylesheet" href="style.css">
@@ -93,7 +94,17 @@ if (!isset($admin_id)) {
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">68</div>
+                        <?php
+                        $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reservation where admin_id='$admin_id' AND status='pending'");
+                        ?>
+                        <div class="number"><?php if ($result->num_rows > 0) {
+                                                $row = $result->fetch_assoc();
+                                                $total_package = $row['total'];
+                                                echo $total_package;
+                                            } else {
+                                                echo "0";
+                                            }
+                                            ?></div>
                         <div class="card-name">New Booking</div>
                     </div>
                     <div class="icon-box">
@@ -102,7 +113,17 @@ if (!isset($admin_id)) {
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">68</div>
+                        <?php
+                        $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reservation where admin_id='$admin_id' AND status='accepted'");
+                        ?>
+                        <div class="number"><?php if ($result->num_rows > 0) {
+                                                $row = $result->fetch_assoc();
+                                                $total_package = $row['total'];
+                                                echo $total_package;
+                                            } else {
+                                                echo "0";
+                                            }
+                                            ?></div>
                         <div class="card-name">Approved Booking</div>
                     </div>
                     <div class="icon-box">
@@ -111,11 +132,21 @@ if (!isset($admin_id)) {
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">NRS 4500</div>
-                        <div class="card-name">Earnings</div>
+                        <?php
+                        $result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM reservation where admin_id='$admin_id' AND status='rejected'");
+                        ?>
+                        <div class="number"><?php if ($result->num_rows > 0) {
+                                                $row = $result->fetch_assoc();
+                                                $total_package = $row['total'];
+                                                echo $total_package;
+                                            } else {
+                                                echo "0";
+                                            }
+                                            ?></div>
+                        <div class="card-name">Rejected Booking</div>
                     </div>
                     <div class="icon-box">
-                        <!-- <i class="fa-regular fa-money-bill"></i> -->
+                        <i class="fas fa-solid fa-book"></i>
                     </div>
                 </div>
             </div>

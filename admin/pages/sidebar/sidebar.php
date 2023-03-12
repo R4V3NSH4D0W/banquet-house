@@ -84,10 +84,10 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         </div>
         <ul class="sub-menu">
             <li><a class="link_name" href="#">Booking</a></li>
-            <li><a href="../Booking/newbooking.php">New Booking</a></li>
-            <li><a href="#">Approved Booking</a></li>
-            <li><a href="#">Cancelled booking</a></li>
-            <li><a href="#">All booking</a></li>
+            <li><a href="../Booking/pendingbooking.php">New Booking</a></li>
+            <li><a href="../Booking/approvedbooking.php">Approved Booking</a></li>
+            <li><a href="../Booking/cancelledbooking.php">Cancelled booking</a></li>
+            <li><a href="../Booking/newbooking.php">All booking</a></li>
         </ul>
     </li>
     <li>

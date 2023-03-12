@@ -14,6 +14,7 @@
     <!-- FullCalendar JavaScript -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -27,26 +28,26 @@
     <div id='calendar'></div>
 </body>
 <script>
-    $(document).ready(function() {
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+        events: {
+            url: 'fetch-booking-data.php',
+            type: 'GET',
+            data: {
+                start: 'start',
+
             },
-            events: {
-                url: 'fetch-booking-data.php',
-                type: 'GET',
-                data: {
-                    start: 'start',
-                    end: 'end'
-                },
-                success: function(data) {
-                    console.log(data);
-                }
+            success: function(data) {
+                console.log(data);
             }
-        });
+        }
     });
+});
 </script>
 
 </html>
