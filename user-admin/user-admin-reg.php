@@ -21,12 +21,49 @@ if (!isset($user_id)) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="../frontend/mainpage/style.css">
 
 
     <title>Document</title>
 </head>
 
 <body>
+    <header>
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <a href="#" class="logo"><span>BANQUET</span>HOUSE</a>
+
+        <nav class="navbar">
+            <!-- <a href="#home">home</a>
+    <a href="#book">book</a>
+    <a href="#packages">packages</a>
+    <a href="#services">services</a>
+    <a href="#gallery">gallery</a>
+    <a href="#review">review</a>
+    <a href="#contact">contact</a> -->
+        </nav>
+
+        <div class="icons">
+            <i class="fas fa-search" id="search-btn"></i>
+            <button id="login-btn" style="background: transparent;" onclick="toggleProfileModal()"><i
+                    class="fas fa-user"></i></button>
+
+        </div>
+
+        <form action="" class="search-bar-container">
+            <input type="search" id="search-bar" placeholder="search here...">
+            <label for="search-bar" onclick="search()" class="fas fa-search"></label>
+        </form>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <h1>Banquet Owner Request Form</h1>
         <form>
@@ -73,14 +110,59 @@ if (!isset($user_id)) {
                 <select id="city">
                     <option value="kathmandu">Kathmandu</option>
                     <option value="pokhara">Pokhara</option>
+                    <option value="Dhankuta">Dhankuta</option>
+                    <option value="Dharan">Dharan</option>
+                    <option value="Birathnagar">Birathanagr</option>
+                    <option value="chitawan">Chitawan</option>
+                    <option value="hetuda">Hetuda</option>
+
                 </select>
+            </div>
+            <div class="field">
+                <label for="detail">Banquet reservation cost:</label>
+                <input type="number" id="cost" name="cost" placeholder="reservation cost" required>
             </div>
             <div class="submit">
                 <button type="submit" id="submit">Submit</button>
             </div>
         </form>
     </div>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>about us</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur adipisci expedita, est
+                    facilis
+                    nisi qui facere nesciunt laudantium quibusdam, repellat nihil, nulla dolorem saepe debitis
+                    reiciendis incidunt. Labore, autem praesentium.</p>
+            </div>
+            <div class="box">
+                <h3>Avilabe Locations</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
 
+            </div>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#">Kathmandu</a>
+                <a href="#">Pokhara</a>
+                <a href="#">Dharan</a>
+                <a href="#">Dhankuta</a>
+
+            </div>
+            <div class="box">
+                <h3>follow us</h3>
+                <a href="#">facebook</a>
+                <a href="#">instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">github</a>
+
+            </div>
+        </div>
+        <h1 class="credit">created by<span> GoFFy Guys</span> | all right reserved !</h1>
+    </section>
 </body>
 <script src="script.js">
 </script>
@@ -97,6 +179,7 @@ document.getElementById('submit').addEventListener('click', function(event) {
     var address = document.getElementById('address').value;
     var detail = document.getElementById('detail').value;
     var fileInput = document.getElementById('file-input');
+    var cost = document.getElementById('cost');
     if (address === '' || detail === '') {
         alert('Please enter both address and detail');
         return;
@@ -122,6 +205,7 @@ document.getElementById('submit').addEventListener('click', function(event) {
     formData.append('banquetname', banquetname);
     formData.append('type', type);
     formData.append('number', number);
+    formData.append('cost', cost);
     formData.append('file', fileInput.files[0]);
     console.log(formData);
     xhr.send(formData);

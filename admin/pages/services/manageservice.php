@@ -18,6 +18,7 @@ if (!isset($admin_id)) {
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -61,18 +62,16 @@ if (!isset($admin_id)) {
                         $i = 1;
                         ?>
                         <?php foreach ($row as $row) : ?>
-                        <tr id=<?php echo $row["id"]; ?>>
-                            <td><?php echo $i++ ?></td>
-                            <td><?php echo $row["servicename"]; ?></td>
-                            <td><?php echo $row["servicedesc"]; ?></td>
-                            <td>NRS <?php echo $row["serviceprice"]; ?></td>
-                            <td>
-                                <a class="edit" href="editservice.php?id=<?php echo $row['id']; ?>"><i
-                                        class='bx bx-edit'></i></a>
-                                <a class="delete" onclick="submitData(<?php echo $row['id']; ?>);"><i
-                                        class='bx bx-trash'></i></a>
-                            </td>
-                        </tr>
+                            <tr id=<?php echo $row["id"]; ?>>
+                                <td><?php echo $i++ ?></td>
+                                <td><?php echo $row["servicename"]; ?></td>
+                                <td><?php echo $row["servicedesc"]; ?></td>
+                                <td>NRS <?php echo $row["serviceprice"]; ?></td>
+                                <td>
+                                    <a class="edit" href="editservice.php?id=<?php echo $row['id']; ?>"><i class='bx bx-edit'></i></a>
+                                    <a class="delete" onclick="submitData(<?php echo $row['id']; ?>);"><i class='bx bx-trash'></i></a>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>
@@ -90,39 +89,39 @@ if (!isset($admin_id)) {
 
 </html>
 <style>
-table {
-    margin-top: 20px;
-    width: 100%;
-    border-collapse: collapse;
+    table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
 
-}
+    }
 
-th,
-td {
-    border: 1px solid #dddddd;
-    padding: 8px;
-    text-align: center;
-}
+    th,
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: center;
+    }
 
-th {
-    background-color: #dddddd;
-}
+    th {
+        background-color: #dddddd;
+    }
 
-.edit {
-    background-color: #4CAF50;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
+    .edit {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
 
-.delete {
-    background-color: red;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
+    .delete {
+        background-color: red;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+    }
 </style>

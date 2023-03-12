@@ -6,6 +6,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    margin-bottom: 20px;
   }
   
   h1 {
@@ -70,7 +71,7 @@
   #map {
     flex: 1;
     height: 400px;
-    width: 790px;
+    width: 760px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 5px;

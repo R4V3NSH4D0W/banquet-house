@@ -17,6 +17,7 @@ if (!isset($admin_id)) {
     <link rel="stylesheet" href="../sidebar/style.css">
     <link rel="stylesheet" href="../services/style2.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -64,33 +65,33 @@ if (!isset($admin_id)) {
 </body>
 <script src="../sidebar/script.js"></script>
 <script>
-const form = document.querySelector('form');
-const submitBtn = form.querySelector('button.add');
+    const form = document.querySelector('form');
+    const submitBtn = form.querySelector('button.add');
 
-submitBtn.addEventListener('click', function(event) {
-    event.preventDefault();
+    submitBtn.addEventListener('click', function(event) {
+        event.preventDefault();
 
-    const formData = new FormData(form);
+        const formData = new FormData(form);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'function.php');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: xhr.responseText
-                });
-                console.log(xhr.responseText);
-                form.reset();
-            } else {
-                console.error('Error:', xhr.status);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'function.php');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: xhr.responseText
+                    });
+                    console.log(xhr.responseText);
+                    form.reset();
+                } else {
+                    console.error('Error:', xhr.status);
+                }
             }
-        }
-    };
-    xhr.send(formData);
-});
+        };
+        xhr.send(formData);
+    });
 </script>
 
 </html>

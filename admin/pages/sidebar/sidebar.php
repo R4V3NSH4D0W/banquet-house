@@ -7,6 +7,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
 
     <span class="logo_name"><?php echo $user["name"] ?></span>
 </div>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <ul class="nav-links">
     <li>
         <a href="#">
@@ -77,7 +78,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
     <li>
         <div class="iocn-link">
             <a href="#">
-                <i class='bx bx-book-alt'></i>
+                <i class='bx bx-bookmarks'></i>
                 <span class="link_name">Booking</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
@@ -93,7 +94,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
     <li>
         <div class="iocn-link">
             <a href="#">
-                <i class='bx bx-collection'></i>
+                <i class='bx bx-bowl-hot'></i>
                 <span class="link_name">Food</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
@@ -108,27 +109,27 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
     <li>
         <div class="iocn-link">
             <a href="#">
-                <i class='bx bx-plug'></i>
+                <i class='bx bx-question-mark'></i>
                 <span class="link_name">Queries</span>
             </a>
             <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
             <li><a class="link_name" href="#">Queries</a></li>
-            <li><a href="#">Unread queries</a></li>
+            <li><a href="../queries/newqueries.php">Unread queries</a></li>
             <li><a href="#">read quries</a></li>
         </ul>
     </li>
     <li>
         <a href="#">
-            <i class='bx bxs-map'></i>
-            <span class="link_name">Map</span>
+            <i class='bx bxs-calendar-event'></i>
+            <span class="link_name">Event</span>
         </a>
         <ul class="sub-menu blank">
-            <li><a class="link_name" href="../Map/index.php">Map</a></li>
+            <li><a class="link_name" href="../calender/index.php">Event</a></li>
         </ul>
     </li>
-    <li>
+    <!-- <li>
         <a href="#">
             <i class='bx bx-cog'></i>
             <span class="link_name">Setting</span>
@@ -136,7 +137,7 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
         <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Setting</a></li>
         </ul>
-    </li>
+    </li> -->
     <li>
         <div class="profile-details">
             <div class="profile-content">

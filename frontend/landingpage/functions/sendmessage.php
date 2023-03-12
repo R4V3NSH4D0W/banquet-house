@@ -5,4 +5,4 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
 $message = $_POST['message'];
-$result = mysqli_query($conn, "INSERT INTO query Values('','$name','$email','$phone','$message','$id')");
+$result = mysqli_query($conn, "INSERT INTO query Values('','$name','$email','$phone','$message','$id','unread')");
