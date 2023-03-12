@@ -27,8 +27,6 @@ if (!empty($_SESSION['user_id']))
         crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 
 
     <!-- css linked -->
@@ -411,8 +409,6 @@ if (!empty($_SESSION['user_id']))
                 <div class="form-group">
                     <textarea id="text-message" name="message" placeholder="Your message .." required></textarea>
                 </div>
-                <div class="g-recaptcha" data-sitekey="6LehVfUkAAAAAGXkj2NXTYLFVuJDJT0NPKYIj7Xf"></div>
-
                 <input type="hidden" id="page-id" name="page_id" value="YOUR_PAGE_ID">
                 <button type="submit" id="bird"><i class="fa-sharp fa-solid fa-paper-plane"></i></button>
             </form>
@@ -535,19 +531,7 @@ if (!empty($_SESSION['user_id']))
             return;
         }
 
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-            swal({
-                title: "Error",
-                text: "Please complete the reCAPTCHA!",
-                icon: "error",
-                button: "OK",
-            });
-            return;
-        }
-
         const formData = new FormData(form);
-        formData.append('g-recaptcha-response', recaptchaResponse);
         const xhr = new XMLHttpRequest();
         xhr.open('POST',
             'http://localhost/banquethouses/frontend/landingpage/functions/sendmessage.php?page_id=' +
@@ -563,7 +547,6 @@ if (!empty($_SESSION['user_id']))
                         button: "OK",
                     });
                     form.reset();
-                    grecaptcha.reset();
                 } else {
                     swal({
                         title: "Error",
@@ -573,6 +556,7 @@ if (!empty($_SESSION['user_id']))
                     });
                 }
             }
+
         };
 
         const params = new URLSearchParams(formData);
