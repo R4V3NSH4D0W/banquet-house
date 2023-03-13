@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $soups = isset($_POST['soups']) ? explode(',', str_replace(' ', '', $_POST['soups'])) : '';
     $mainCourses = isset($_POST['maincourse']) ? explode(',', str_replace(' ', '', $_POST['maincourse'])) : '';
     $desserts = isset($_POST['dessert']) ? explode(',', str_replace(' ', '', $_POST['dessert'])) : '';
-    $harddrinks = isset($_POST['hardrinks']) ? explode(',', str_replace(' ', '', $_POST['hardrinks'])) : '';
+    $harddrinks = isset($_POST['harddrinks']) ? explode(',', str_replace(' ', '', $_POST['harddrinks'])) : '';
     $softdrinks = isset($_POST['softdrinks']) ? explode(',', str_replace(' ', '', $_POST['softdrinks'])) : '';
     $totalprice = $_POST['total-price'];
     $bookingDate = $_POST['bookingdate'];

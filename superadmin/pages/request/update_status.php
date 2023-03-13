@@ -32,7 +32,7 @@ $row = mysqli_fetch_assoc($result);
 $status = $row['status'];
 $admin_id = $row['admin_id'];
 
-// Update the user table based on the banquet status
+// Update the user table based on the admin id
 if ($status == 'active') {
     $sql = "UPDATE user SET type='admin' WHERE id=$admin_id";
     mysqli_query($conn, $sql);

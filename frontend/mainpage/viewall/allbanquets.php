@@ -12,8 +12,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
 
@@ -126,17 +125,17 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                     $avg_rating_query = mysqli_query($conn, "SELECT AVG(rating) as average_rating FROM review WHERE admin_id = '{$row['admin_id']}'");
                     $avg_rating = mysqli_fetch_assoc($avg_rating_query)['average_rating'];
             ?>
-            <div class="box">
-                <img src="../../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
-                <div class="content">
-                    <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
-                    </h3>
+                    <div class="box">
+                        <img src="../../../user-admin/uploads/<?php echo $row["image"]; ?>" alt="">
+                        <div class="content">
+                            <h3><?php echo $row["banquetname"]; ?> <p><?php echo $row["capacity"]; ?> Guests</p>
+                            </h3>
 
-                    <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
-                    <p><?php echo $row["details"]; ?></p>
+                            <h3> <i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></h3>
+                            <p><?php echo $row["details"]; ?></p>
 
-                    <div class="stars">
-                        <?php
+                            <div class="stars">
+                                <?php
                                 // Show average rating as stars
                                 $full_stars = floor($avg_rating);
                                 $half_star = round($avg_rating - $full_stars, 1);
@@ -151,11 +150,11 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
                                     echo '<i class="far fa-star"></i>';
                                 }
                                 ?>
+                            </div>
+                            <a href="../../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
+                                More</a>
+                        </div>
                     </div>
-                    <a href="../../landingpage/home.php?page_id=<?php echo $row["admin_id"]; ?>" class="btn">View
-                        More</a>
-                </div>
-            </div>
             <?php
                 }
 
@@ -166,8 +165,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
     </section>
     <div class="pagination" style="margin-left:13rem; margin-bottom:10rem;">
         <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-        <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?>
-            class="active" <?php endif; ?>><?php echo $i; ?></a>
+            <a href="?page=<?php echo $i; ?>&rows_per_page=<?php echo $rows_per_page; ?>" <?php if ($page == $i) : ?> class="active" <?php endif; ?>><?php echo $i; ?></a>
         <?php endfor; ?>
     </div>
     <!-- footer section -->
@@ -176,9 +174,9 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
         <div class="box-container">
             <div class="box">
                 <h3>about us</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur adipisci expedita, est facilis
-                    nisi qui facere nesciunt laudantium quibusdam, repellat nihil, nulla dolorem saepe debitis
-                    reiciendis incidunt. Labore, autem praesentium.</p>
+                <p>GoFFy Guys is a team of Kantipur City College students who created this website for their academic
+                    requirements. The website provides information on programming, web development, and computer
+                    science. Their goal is to provide accurate and useful information.</p>
             </div>
             <div class="box">
                 <h3>Avilabe Locations</h3>
@@ -190,10 +188,10 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
             </div>
             <div class="box">
                 <h3>quick links</h3>
-                <a href="#">Kathmandu</a>
-                <a href="#">Pokhara</a>
-                <a href="#">Dharan</a>
-                <a href="#">Dhankuta</a>
+                <a href="#venue">venue</a>
+                <a href="#banquetshouse">Banquet</a>
+                <a href="#location">Location</a>
+                <a href="../../login/index.php">Login</a>
 
             </div>
             <div class="box">
@@ -205,7 +203,7 @@ require '/programs/xampp/htdocs/banquethouses/connection/config.php';
 
             </div>
         </div>
-        <h1 class="credit">created by<span> Team GOF</span> | all right reserved !</h1>
+        <h1 class="credit">created by<span> GoFFy Guys</span> | all right reserved !</h1>
     </section>
 </body>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
