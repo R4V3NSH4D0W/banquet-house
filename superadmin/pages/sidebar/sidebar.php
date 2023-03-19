@@ -2,6 +2,9 @@
 $super_id = $_SESSION['super_id'];
 $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id = $super_id"));
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/animations.min.css"
+    integrity="sha512-GKHaATMc7acW6/GDGVyBhKV3rST+5rMjokVip0uTikmZHhdqFWC7fGBaq6+lf+DOS5BIO8eK6NcyBYUBCHUBXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="logo-details">
     <i class='bx bxl-xing bx-flip-horizontal' style='color:#e01111'></i>
 
@@ -26,9 +29,9 @@ $user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM user WHERE id =
             <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
-            <li><a class="link_name">Application</a></li>
-            <li><a href="../request/request.php">view Requests</a></li>
-            <li><a href="">Manage services</a></li>
+            <li><a class="link_name">banquets</a></li>
+            <li><a href="../request/request.php">Banquet Status</a></li>
+            <li><a href="../pending/index.php">Requests</a></li>
         </ul>
     </li>
     <li>
