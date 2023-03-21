@@ -1,0 +1,22 @@
+#calendar{
+    margin: 0 auto;
+    width: 600px;
+}
+.fc-day:hover {
+    cursor: pointer;
+  }
+  .note-container {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+  }
+  .note {
+    color: red;
+    font-size: 20px;
+  }
+  
+  .note-container p {
+    color: #999;
+  }
